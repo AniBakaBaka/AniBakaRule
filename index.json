@@ -101,7 +101,7 @@
       "key": "hc34567",
       "title": "影视森林",
       "by": "auto-generator",
-      "rev": 1,
+      "rev": 2,
       "intro": "影视森林聚合全网最新的电影、电视剧、动漫、综艺等高清资源，供网友免费在线观看 and 下载。",
       "site": "https://www.hc34567.com/",
       "badge": "https://www.hc34567.com/favicon.ico",
@@ -242,13 +242,13 @@
       "key": "tvtfun",
       "title": "TvTFun",
       "by": "auto-generator",
-      "rev": 1,
+      "rev": 2,
       "intro": "TvTFun，番剧自由，从这里开始！",
       "site": "https://www.tvtfun.net/",
       "badge": "https://www.tvtfun.net/favicon.ico",
       "labels": [
         "anime",
-        "player_aaaa"
+        "webview"
       ],
       "ref": "tvtfun.json"
     },
@@ -284,7 +284,7 @@
       "key": "605dm",
       "title": "樱花风车动漫 (605dm)",
       "by": "auto-generator",
-      "rev": 1,
+      "rev": 2,
       "intro": "樱花动漫致力于为所有动漫迷们免费提供最新最快的高清动画下载及在线观看资源。",
       "site": "https://www.605dm.com/",
       "badge": "https://www.605dm.com/favicon.ico",
