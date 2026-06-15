@@ -1,0 +1,355 @@
+{
+  "format": "anx-rulehub/1",
+  "title": "Anicli Anime Rule Hub",
+  "intro": "Cleaned Anicli rule repository. Built-in duplicates and generated rules that did not pass parser validation were removed.",
+  "synced": "2026-06-15T00:00:00Z",
+  "entries": [
+    {
+      "key": "7sefun",
+      "title": "七色番",
+      "by": "anicli",
+      "rev": 2,
+      "intro": "七色番提供最新番剧TV、剧场版在线高速播放，每日及时更新，是动漫迷的不二选择！",
+      "site": "https://www.7sefun.top/",
+      "badge": "https://www.7sefun.top/favicon.ico",
+      "labels": [
+        "anime",
+        "player_aaaa",
+        "iframe",
+        "webview",
+        "anti_bot_webview"
+      ],
+      "ref": "7sefun.json"
+    },
+    {
+      "key": "enlienli",
+      "title": "OmoFun Enlienli",
+      "by": "anicli",
+      "rev": 2,
+      "intro": "Omofun是一个专注于动漫资源分享和在线播放的平台，涵盖日本新番、经典动漫作品以及一些国产动画和剧场版电影。",
+      "site": "https://enlienli.link/",
+      "badge": "https://enlienli.link/template/mxpro/mxtheme/images/favicon.png",
+      "labels": [
+        "anime",
+        "player_aaaa",
+        "iframe",
+        "webview",
+        "anti_bot_webview"
+      ],
+      "ref": "enlienli.json"
+    },
+    {
+      "key": "eacg1",
+      "title": "EACG动漫",
+      "by": "anicli",
+      "rev": 1,
+      "intro": "EACG动漫，提供好看的现代耽美动漫和最新日番、表番在线免费播放。",
+      "site": "https://www.eacg1.com/",
+      "badge": "https://www.eacg1.com/favicon.ico",
+      "labels": [
+        "anime",
+        "player_aaaa",
+        "dplayer"
+      ],
+      "ref": "eacg1.json"
+    },
+    {
+      "key": "cyfz",
+      "title": "次元番",
+      "by": "anicli",
+      "rev": 1,
+      "intro": "次元番，提供高清动漫资源在线搜索与免费观看。",
+      "site": "https://www.cyfz.top/",
+      "badge": "https://www.cyfz.top/favicon.ico",
+      "labels": [
+        "anime",
+        "player_aaaa",
+        "iframe",
+        "artplayer"
+      ],
+      "ref": "cyfz.json"
+    },
+    {
+      "key": "11kt",
+      "title": "去看吧 (QuKanBa)",
+      "by": "auto-generator",
+      "rev": 1,
+      "intro": "海外更新最快的动漫社区，为您提供无修动漫、BL动漫等丰富动漫资源在线免费观看。",
+      "site": "https://11kt.net/",
+      "badge": "https://11kt.net/favicon.ico",
+      "labels": [
+        "anime",
+        "player_aaaa"
+      ],
+      "ref": "11kt.json"
+    },
+    {
+      "key": "jibi",
+      "title": "叽哔动漫网",
+      "by": "auto-generator",
+      "rev": 1,
+      "intro": "叽哔动漫网拥有上万集高清晰画质的在线动漫，观看完全免费、无须注册、高速播放。",
+      "site": "https://www.jibi.cc/",
+      "badge": "https://www.jibi.cc/favicon.ico",
+      "labels": [
+        "anime",
+        "player_aaaa"
+      ],
+      "ref": "jibi.json"
+    },
+    {
+      "key": "hc34567",
+      "title": "影视森林",
+      "by": "auto-generator",
+      "rev": 1,
+      "intro": "影视森林聚合全网最新的电影、电视剧、动漫、综艺等高清资源，供网友免费在线观看 and 下载。",
+      "site": "https://www.hc34567.com/",
+      "badge": "https://www.hc34567.com/favicon.ico",
+      "labels": [
+        "anime",
+        "player_aaaa"
+      ],
+      "ref": "hc34567.json"
+    },
+    {
+      "key": "ani_pekolove",
+      "title": "佩可爱动漫 (peko.love)",
+      "by": "auto-generator",
+      "rev": 1,
+      "intro": "佩可爱动漫 (peko.love)，为您提供优质的动漫在线播放与分享。",
+      "site": "https://ani.pekolove.net/",
+      "badge": "https://ani.pekolove.net/favicon.ico",
+      "labels": [
+        "anime",
+        "player_aaaa"
+      ],
+      "ref": "ani_pekolove.json"
+    },
+    {
+      "key": "lmdm",
+      "title": "狸猫动漫网",
+      "by": "auto-generator",
+      "rev": 1,
+      "intro": "狸猫动漫为广大动漫、海外剧爱好者提供全站视频资源免费在线观看服务。",
+      "site": "https://lmdm.cc/",
+      "badge": "https://lmdm.cc/favicon.ico",
+      "labels": [
+        "anime",
+        "player_aaaa"
+      ],
+      "ref": "lmdm.json"
+    },
+    {
+      "key": "milimili",
+      "title": "米粒米粒 (Milimili)",
+      "by": "auto-generator",
+      "rev": 1,
+      "intro": "米粒米粒，追番不等待，开心生活每一天！致力于打造好看的动漫在线观看网站。",
+      "site": "https://milimili.nl/",
+      "badge": "https://milimili.nl/favicon.ico",
+      "labels": [
+        "anime",
+        "player_aaaa"
+      ],
+      "ref": "milimili.json"
+    },
+    {
+      "key": "knvod",
+      "title": "KNVOD",
+      "by": "auto-generator",
+      "rev": 1,
+      "intro": "KNVOD，为您提供最新电影、电视剧和动漫等高清影视资源在线观看。",
+      "site": "https://www.knvod.com/",
+      "badge": "https://www.knvod.com/favicon.ico",
+      "labels": [
+        "anime",
+        "player_aaaa",
+        "anti_bot_webview"
+      ],
+      "ref": "knvod.json"
+    },
+    {
+      "key": "libhd",
+      "title": "LIBVIO",
+      "by": "auto-generator",
+      "rev": 1,
+      "intro": "LIBVIO视频网，提供电影、电视剧、日韩美剧、韩综、动漫等视频在线免费观看。",
+      "site": "https://www.libhd.com/",
+      "badge": "https://www.libhd.com/favicon.ico",
+      "labels": [
+        "anime",
+        "player_aaaa"
+      ],
+      "ref": "libhd.json"
+    },
+    {
+      "key": "rebozj",
+      "title": "热播之家",
+      "by": "auto-generator",
+      "rev": 1,
+      "intro": "热播之家是一个无广告蓝光1080P画质、流畅秒播不卡顿的免费在线追剧平台！",
+      "site": "https://www.rebozj.art/",
+      "badge": "https://www.rebozj.art/favicon.ico",
+      "labels": [
+        "anime",
+        "player_aaaa"
+      ],
+      "ref": "rebozj.json"
+    },
+    {
+      "key": "skr_skr2",
+      "title": "樱之空动漫",
+      "by": "auto-generator",
+      "rev": 1,
+      "intro": "樱之空动漫是一个极具个人色彩、神秘又温馨的二次元圣地，提供好看的动漫、日剧及歌曲。",
+      "site": "https://skr.skr2.cc:666/",
+      "badge": "https://skr.skr2.cc:666/favicon.ico",
+      "labels": [
+        "anime",
+        "player_aaaa"
+      ],
+      "ref": "skr_skr2.json"
+    },
+    {
+      "key": "yinghua289",
+      "title": "樱花动漫 (Yinghua)",
+      "by": "auto-generator",
+      "rev": 1,
+      "intro": "樱花动漫致力于为所有动漫迷们免费提供最新最快的高清动画下载及在线观看资源。",
+      "site": "https://www.yinghua289.com/",
+      "badge": "https://www.yinghua289.com/favicon.ico",
+      "labels": [
+        "anime",
+        "player_aaaa"
+      ],
+      "ref": "yinghua289.json"
+    },
+    {
+      "key": "fcwdm",
+      "title": "番茶屋",
+      "by": "auto-generator",
+      "rev": 1,
+      "intro": "番茶屋是专注于日本动漫番剧的在线观看平台，提供最新番剧、经典动漫全集免费高清播放。",
+      "site": "https://www.fcwdm.com/",
+      "badge": "https://www.fcwdm.com/favicon.ico",
+      "labels": [
+        "anime",
+        "player_aaaa"
+      ],
+      "ref": "fcwdm.json"
+    },
+    {
+      "key": "tvtfun",
+      "title": "TvTFun",
+      "by": "auto-generator",
+      "rev": 1,
+      "intro": "TvTFun，番剧自由，从这里开始！",
+      "site": "https://www.tvtfun.net/",
+      "badge": "https://www.tvtfun.net/favicon.ico",
+      "labels": [
+        "anime",
+        "player_aaaa"
+      ],
+      "ref": "tvtfun.json"
+    },
+    {
+      "key": "ios_mifun",
+      "title": "MiFun",
+      "by": "auto-generator",
+      "rev": 1,
+      "intro": "MiFun在线动漫专注于资源收集整理，海量有效的高质量动漫资源在线观看，完全免费。",
+      "site": "https://ios.mifun.org/",
+      "badge": "https://ios.mifun.org/favicon.ico",
+      "labels": [
+        "anime",
+        "player_aaaa"
+      ],
+      "ref": "ios_mifun.json"
+    },
+    {
+      "key": "omofun03",
+      "title": "omofun动漫视频网 (omofun)",
+      "by": "auto-generator",
+      "rev": 1,
+      "intro": "Omofun是一个专注于动漫资源分享和在线播放的平台，提供丰富的日本新番、经典动漫及剧场版资源。",
+      "site": "https://omofun03.top/",
+      "badge": "https://omofun03.top/favicon.ico",
+      "labels": [
+        "anime",
+        "player_aaaa"
+      ],
+      "ref": "omofun03.json"
+    },
+    {
+      "key": "605dm",
+      "title": "樱花风车动漫 (605dm)",
+      "by": "auto-generator",
+      "rev": 1,
+      "intro": "樱花动漫致力于为所有动漫迷们免费提供最新最快的高清动画下载及在线观看资源。",
+      "site": "https://www.605dm.com/",
+      "badge": "https://www.605dm.com/favicon.ico",
+      "labels": [
+        "anime",
+        "player_aaaa"
+      ],
+      "ref": "605dm.json"
+    },
+    {
+      "key": "didahd",
+      "title": "嘀嗒影视 (Dida HD)",
+      "by": "auto-generator",
+      "rev": 1,
+      "intro": "专注高分电影，高清HD在线，极速秒播不卡顿！",
+      "site": "https://www.didahd.xyz/",
+      "badge": "https://www.didahd.xyz/favicon.ico",
+      "labels": [
+        "anime",
+        "player_aaaa"
+      ],
+      "ref": "didahd.json"
+    },
+    {
+      "key": "1anime2026",
+      "title": "第一动漫 (1anime.me)",
+      "by": "auto-generator",
+      "rev": 1,
+      "intro": "最新里番、hanime、hentai anime、成人动漫、3D区动画在线播放。",
+      "site": "https://1anime2026.cc/",
+      "badge": "https://1anime2026.cc/favicon.ico",
+      "labels": [
+        "anime",
+        "player_aaaa"
+      ],
+      "ref": "1anime2026.json"
+    },
+    {
+      "key": "hanime1",
+      "title": "Hanime1",
+      "by": "auto-generator",
+      "rev": 1,
+      "intro": "知名成人动漫与里番在线视频分享平台。",
+      "site": "https://hanime1.me/",
+      "badge": "https://hanime1.me/favicon.ico",
+      "labels": [
+        "anime",
+        "player_aaaa",
+        "anti_bot_webview"
+      ],
+      "ref": "hanime1.json"
+    },
+    {
+      "key": "hanimeone",
+      "title": "Hanime1.me (Mirror)",
+      "by": "auto-generator",
+      "rev": 1,
+      "intro": "Hanime1.me 带给你完美的H动漫、H动画、里番在线看体验。",
+      "site": "https://hanimeone.me/",
+      "badge": "https://hanimeone.me/favicon.ico",
+      "labels": [
+        "anime",
+        "player_aaaa"
+      ],
+      "ref": "hanimeone.json"
+    }
+  ]
+}
