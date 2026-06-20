@@ -1,4 +1,4 @@
-# AniBaka 规则库
+# Anicli 规则订阅中心
 
 本目录提供动漫网站解析规则，使用 `rule/index.json` 作为订阅入口。
 
@@ -19,7 +19,7 @@
 | 叽哔动漫网 | `jibi` | [https://www.jibi.cc/](https://www.jibi.cc/) | [jibi.json](./jibi.json) |
 | 影视森林 | `hc34567` | [https://www.hc34567.com/](https://www.hc34567.com/) | [hc34567.json](./hc34567.json) |
 | 佩可爱动漫 (peko.love) | `ani_pekolove` | [https://ani.pekolove.net/](https://ani.pekolove.net/) | [ani_pekolove.json](./ani_pekolove.json) |
-| 狸猫动漫网 | `lmdm` | [https://lmdm.cc/](https://lmdm.cc/) | [lmdm.json](./lmdm.json) |
+| 路漫漫动漫 | `lm6` | [https://m.lm6.net/](https://m.lm6.net/) | [lm6.json](./lm6.json) |
 | 米粒米粒 (Milimili) | `milimili` | [https://milimili.nl/](https://milimili.nl/) | [milimili.json](./milimili.json) |
 | KNVOD | `knvod` | [https://www.knvod.com/](https://www.knvod.com/) | [knvod.json](./knvod.json) |
 | LIBVIO | `libhd` | [https://www.libhd.com/](https://www.libhd.com/) | [libhd.json](./libhd.json) |

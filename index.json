@@ -113,7 +113,7 @@
       "key": "ani_pekolove",
       "title": "佩可爱动漫 (peko.love)",
       "by": "auto-generator",
-      "rev": 1,
+      "rev": 2,
       "intro": "佩可爱动漫 (peko.love)，为您提供优质的动漫在线播放与分享。",
       "site": "https://ani.pekolove.net/",
       "badge": "https://ani.pekolove.net/favicon.ico",
@@ -124,18 +124,19 @@
       "ref": "ani_pekolove.json"
     },
     {
-      "key": "lmdm",
-      "title": "狸猫动漫网",
-      "by": "auto-generator",
+      "key": "lm6",
+      "title": "路漫漫动漫",
+      "by": "anicli",
       "rev": 1,
-      "intro": "狸猫动漫为广大动漫、海外剧爱好者提供全站视频资源免费在线观看服务。",
-      "site": "https://lmdm.cc/",
-      "badge": "https://lmdm.cc/favicon.ico",
+      "intro": "路漫漫在线动漫提供日本动漫、国产动漫、动画电影等免费在线观看。",
+      "site": "https://m.lm6.net/",
+      "badge": "https://m.lm6.net/favicon.ico",
       "labels": [
         "anime",
-        "player_aaaa"
+        "player_aaaa",
+        "webview"
       ],
-      "ref": "lmdm.json"
+      "ref": "lm6.json"
     },
     {
       "key": "milimili",
