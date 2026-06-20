@@ -1,4 +1,4 @@
-# Anicli 规则订阅中心
+# AniBaka 规则库
 
 本目录提供动漫网站解析规则，使用 `rule/index.json` 作为订阅入口。
 
