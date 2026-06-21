@@ -184,13 +184,15 @@
       "key": "rebozj",
       "title": "热播之家",
       "by": "auto-generator",
-      "rev": 1,
+      "rev": 2,
       "intro": "热播之家是一个无广告蓝光1080P画质、流畅秒播不卡顿的免费在线追剧平台！",
       "site": "https://www.rebozj.art/",
       "badge": "https://www.rebozj.art/favicon.ico",
       "labels": [
         "anime",
-        "player_aaaa"
+        "player_aaaa",
+        "iframe",
+        "webview"
       ],
       "ref": "rebozj.json"
     },
@@ -198,7 +200,7 @@
       "key": "skr_skr2",
       "title": "樱之空动漫",
       "by": "auto-generator",
-      "rev": 1,
+      "rev": 2,
       "intro": "樱之空动漫是一个极具个人色彩、神秘又温馨的二次元圣地，提供好看的动漫、日剧及歌曲。",
       "site": "https://skr.skr2.cc:666/",
       "badge": "https://skr.skr2.cc:666/favicon.ico",
