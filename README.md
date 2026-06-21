@@ -1,11 +1,11 @@
-# Anicli 规则订阅中心
+# AniBaka 规则订阅中心
 
 本目录提供动漫网站解析规则，使用 `rule/index.json` 作为订阅入口。
 
 > **说明**：各规则文件（如 `yinghua289.json`）为 JSON 格式，仅展示基本信息
 > （`id` / `name` / `baseUrl` / `description`）；完整解析配置已加密放入 `pack`
 > 字段（`bakax://` = gzip + AES-256-CBC），无法直接阅读或复制使用。
-> 请在 Anicli App 内的「规则库」中一键安装，App 会自动解密。
+> 请在 AniBaka App 内的「规则库」中一键安装，App 会自动解密。
 
 ## 规则列表
 
@@ -23,7 +23,8 @@
 | 米粒米粒 (Milimili) | `milimili` | [https://milimili.nl/](https://milimili.nl/) | [milimili.json](./milimili.json) |
 | KNVOD | `knvod` | [https://www.knvod.com/](https://www.knvod.com/) | [knvod.json](./knvod.json) |
 | LIBVIO | `libhd` | [https://www.libhd.com/](https://www.libhd.com/) | [libhd.json](./libhd.json) |
-| 热播之家 | `rebozj` | [https://www.rebozj.art/](https://www.rebozj.art/) | [rebozj.json](./rebozj.json) |
+| 嗷呜动漫 | `aowu` | [https://www.aowu.tv/](https://www.aowu.tv/) | [aowu.json](./aowu.json) |
+| AkiAnime | `akianime` | [https://www.akianime.com/](https://www.akianime.com/) | [akianime.json](./akianime.json) |
 | 樱之空动漫 | `skr_skr2` | [https://skr.skr2.cc:666/](https://skr.skr2.cc:666/) | [skr_skr2.json](./skr_skr2.json) |
 | 樱花动漫 (Yinghua) | `yinghua289` | [https://www.yinghua289.com/](https://www.yinghua289.com/) | [yinghua289.json](./yinghua289.json) |
 | 番茶屋 | `fcwdm` | [https://www.fcwdm.com/](https://www.fcwdm.com/) | [fcwdm.json](./fcwdm.json) |

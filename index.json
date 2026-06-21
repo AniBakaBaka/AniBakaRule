@@ -1,13 +1,13 @@
 {
   "format": "anx-rulehub/1",
-  "title": "Anicli Anime Rule Hub",
-  "intro": "Cleaned Anicli rule repository. Built-in duplicates and generated rules that did not pass parser validation were removed.",
+  "title": "AniBaka 动漫规则中心",
+  "intro": "提供各动漫站点的搜索、详情、播放解析规则，支持在 App 内一键安装。",
   "synced": "2026-06-15T00:00:00Z",
   "entries": [
     {
       "key": "7sefun",
       "title": "七色番",
-      "by": "anicli",
+      "by": "anibaka",
       "rev": 2,
       "intro": "七色番提供最新番剧TV、剧场版在线高速播放，每日及时更新，是动漫迷的不二选择！",
       "site": "https://www.7sefun.top/",
@@ -23,7 +23,7 @@
     {
       "key": "enlienli",
       "title": "OmoFun Enlienli",
-      "by": "anicli",
+      "by": "anibaka",
       "rev": 2,
       "intro": "Omofun是一个专注于动漫资源分享和在线播放的平台，涵盖日本新番、经典动漫作品以及一些国产动画和剧场版电影。",
       "site": "https://enlienli.link/",
@@ -39,7 +39,7 @@
     {
       "key": "eacg1",
       "title": "EACG动漫",
-      "by": "anicli",
+      "by": "anibaka",
       "rev": 1,
       "intro": "EACG动漫，提供好看的现代耽美动漫和最新日番、表番在线免费播放。",
       "site": "https://www.eacg1.com/",
@@ -54,7 +54,7 @@
     {
       "key": "cyfz",
       "title": "次元番",
-      "by": "anicli",
+      "by": "anibaka",
       "rev": 1,
       "intro": "次元番，提供高清动漫资源在线搜索与免费观看。",
       "site": "https://www.cyfz.top/",
@@ -126,7 +126,7 @@
     {
       "key": "lm6",
       "title": "路漫漫动漫",
-      "by": "anicli",
+      "by": "anibaka",
       "rev": 1,
       "intro": "路漫漫在线动漫提供日本动漫、国产动漫、动画电影等免费在线观看。",
       "site": "https://m.lm6.net/",
@@ -181,20 +181,35 @@
       "ref": "libhd.json"
     },
     {
-      "key": "rebozj",
-      "title": "热播之家",
-      "by": "auto-generator",
-      "rev": 2,
-      "intro": "热播之家是一个无广告蓝光1080P画质、流畅秒播不卡顿的免费在线追剧平台！",
-      "site": "https://www.rebozj.art/",
-      "badge": "https://www.rebozj.art/favicon.ico",
+      "key": "aowu",
+      "title": "嗷呜动漫",
+      "by": "anibaka",
+      "rev": 1,
+      "intro": "嗷呜动漫-幻想轻音部",
+      "site": "https://www.aowu.tv/",
+      "badge": "https://www.aowu.tv/favicon.ico",
+      "labels": [
+        "anime",
+        "webview",
+        "artplayer"
+      ],
+      "ref": "aowu.json"
+    },
+    {
+      "key": "akianime",
+      "title": "AkiAnime",
+      "by": "anibaka",
+      "rev": 1,
+      "intro": "AkiAnime-最新动漫尽在Aki",
+      "site": "https://www.akianime.com/",
+      "badge": "https://www.akianime.com/favicon.ico",
       "labels": [
         "anime",
         "player_aaaa",
         "iframe",
         "webview"
       ],
-      "ref": "rebozj.json"
+      "ref": "akianime.json"
     },
     {
       "key": "skr_skr2",
