@@ -1,8 +1,8 @@
 {
   "format": "anx-rulehub/1",
-  "title": "AniBaka 动漫规则中心",
+  "title": "AniBaka 规则库",
   "intro": "提供各动漫站点的搜索、详情、播放解析规则，支持在 App 内一键安装。",
-  "synced": "2026-06-15T00:00:00Z",
+  "synced": "2026-06-24T00:00:00Z",
   "entries": [
     {
       "key": "7sefun",
@@ -153,18 +153,18 @@
       "ref": "milimili.json"
     },
     {
-      "key": "knvod",
-      "title": "KNVOD",
-      "by": "auto-generator",
+      "key": "mwcy",
+      "title": "喵物次元",
+      "by": "anibaka",
       "rev": 1,
-      "intro": "KNVOD，为您提供最新电影、电视剧和动漫等高清影视资源在线观看。",
-      "site": "https://www.knvod.com/",
-      "badge": "https://www.knvod.com/favicon.ico",
+      "intro": "喵物次元，致力于动漫番剧资源收集，是一个二次元观影追番动漫网站。",
+      "site": "https://www.mwcy.net/",
+      "badge": "https://www.mwcy.net/favicon.ico",
       "labels": [
         "anime",
         "player_aaaa"
       ],
-      "ref": "knvod.json"
+      "ref": "mwcy.json"
     },
     {
       "key": "libhd",

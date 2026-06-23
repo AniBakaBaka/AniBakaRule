@@ -21,7 +21,7 @@
 | 佩可爱动漫 (peko.love) | `ani_pekolove` | [https://ani.pekolove.net/](https://ani.pekolove.net/) | [ani_pekolove.json](./ani_pekolove.json) |
 | 路漫漫动漫 | `lm6` | [https://m.lm6.net/](https://m.lm6.net/) | [lm6.json](./lm6.json) |
 | 米粒米粒 (Milimili) | `milimili` | [https://milimili.nl/](https://milimili.nl/) | [milimili.json](./milimili.json) |
-| KNVOD | `knvod` | [https://www.knvod.com/](https://www.knvod.com/) | [knvod.json](./knvod.json) |
+| 喵物次元 | `mwcy` | [https://www.mwcy.net/](https://www.mwcy.net/) | [mwcy.json](./mwcy.json) |
 | LIBVIO | `libhd` | [https://www.libhd.com/](https://www.libhd.com/) | [libhd.json](./libhd.json) |
 | 嗷呜动漫 | `aowu` | [https://www.aowu.tv/](https://www.aowu.tv/) | [aowu.json](./aowu.json) |
 | AkiAnime | `akianime` | [https://www.akianime.com/](https://www.akianime.com/) | [akianime.json](./akianime.json) |
