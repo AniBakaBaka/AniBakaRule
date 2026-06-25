@@ -91,7 +91,7 @@
       "badge": "https://www.jibi.cc/favicon.ico",
       "labels": [
         "anime",
-        "player_aaaa"
+        "有广告"
       ],
       "ref": "jibi.json"
     },
@@ -105,7 +105,7 @@
       "badge": "https://www.hc34567.com/favicon.ico",
       "labels": [
         "anime",
-        "player_aaaa"
+        "有广告"
       ],
       "ref": "hc34567.json"
     },
@@ -148,7 +148,7 @@
       "badge": "https://milimili.nl/favicon.ico",
       "labels": [
         "anime",
-        "player_aaaa"
+        "有广告"
       ],
       "ref": "milimili.json"
     },
@@ -167,18 +167,19 @@
       "ref": "mwcy.json"
     },
     {
-      "key": "libhd",
-      "title": "LIBVIO",
+      "key": "ezdmw",
+      "title": "E站弹幕网",
       "by": "auto-generator",
       "rev": 1,
-      "intro": "LIBVIO视频网，提供电影、电视剧、日韩美剧、韩综、动漫等视频在线免费观看。",
-      "site": "https://www.libhd.com/",
-      "badge": "https://www.libhd.com/favicon.ico",
+      "intro": "E站弹幕网，提供动漫番剧在线观看与弹幕互动。",
+      "site": "https://www.ezdmw.org/",
+      "badge": "https://www.ezdmw.org/favicon.ico",
       "labels": [
         "anime",
-        "player_aaaa"
+        "iframe",
+        "webview"
       ],
-      "ref": "libhd.json"
+      "ref": "ezdmw.json"
     },
     {
       "key": "aowu",

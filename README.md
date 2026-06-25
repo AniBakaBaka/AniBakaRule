@@ -22,7 +22,7 @@
 | 路漫漫动漫 | `lm6` | [https://m.lm6.net/](https://m.lm6.net/) | [lm6.json](./lm6.json) |
 | 米粒米粒 (Milimili) | `milimili` | [https://milimili.nl/](https://milimili.nl/) | [milimili.json](./milimili.json) |
 | 喵物次元 | `mwcy` | [https://www.mwcy.net/](https://www.mwcy.net/) | [mwcy.json](./mwcy.json) |
-| LIBVIO | `libhd` | [https://www.libhd.com/](https://www.libhd.com/) | [libhd.json](./libhd.json) |
+| E站弹幕网 | `ezdmw` | [https://www.ezdmw.org/](https://www.ezdmw.org/) | [ezdmw.json](./ezdmw.json) |
 | 嗷呜动漫 | `aowu` | [https://www.aowu.tv/](https://www.aowu.tv/) | [aowu.json](./aowu.json) |
 | AkiAnime | `akianime` | [https://www.akianime.com/](https://www.akianime.com/) | [akianime.json](./akianime.json) |
 | 樱之空动漫 | `skr_skr2` | [https://skr.skr2.cc:666/](https://skr.skr2.cc:666/) | [skr_skr2.json](./skr_skr2.json) |
