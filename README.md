@@ -1,11 +1,8 @@
-# AniBaka 规则订阅中心
+# AniBaka 规则库
 
 本目录提供动漫网站解析规则，使用 `rule/index.json` 作为订阅入口。
 
-> **说明**：各规则文件（如 `yinghua289.json`）为 JSON 格式，仅展示基本信息
-> （`id` / `name` / `baseUrl` / `description`）；完整解析配置已加密放入 `pack`
-> 字段（`bakax://` = gzip + AES-256-CBC），无法直接阅读或复制使用。
-> 请在 AniBaka App 内的「规则库」中一键安装，App 会自动解密。
+> 解密出来有奖励（，可在软件内导出json。这里就是闲的加密的
 
 ## 规则列表
 
