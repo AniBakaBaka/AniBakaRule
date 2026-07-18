@@ -1,8 +1,83 @@
 {
+  "format": "anx-rule/2",
   "id": "11kt",
   "name": "去看吧 (QuKanBa)",
   "baseUrl": "https://11kt.net",
+  "iconUrl": "https://k8dm.com/template/vfed/asset/img/favicon.png",
   "description": "海外更新最快的动漫社区，为您提供无修动漫、BL动漫等丰富动漫资源在线免费观看。",
-  "encrypted": true,
-  "pack": "bakax://bUT2T8LKKhYmBFONzS-EB_SzYr-jx7LBWUkXi8yun95j9HvXeZM6tNua_pjbBAkgAIR8VHqf0bWz9zUwuvoJnXPRgeEPcbEF2cOyEjShk6YSf909jSb1lM7smijN0Gl5hABQKxBGrm-J_h2YgzGB7qAlFq5JchiBJm4wsmYoAzNlGU8PWx9zVFIKLt3AYykQkI-e4x21w4742knhkLPidiEPkBrQ3AGrvG0CLODtu9RimzZR4sKyAjuo84MUenOgdKXIIJFCLQT7YxaUiWh9yfV0tPoLHjDwU7VxYDLCkEqFfu0ejhquACxd5y56jYL9LrBiwor8oLrUlrmRwR1Qh_mbI0yfqmFluWEcHceKjI-uhVhMkUItxvsG_FoMq7esh6QYjwMXLOPul0JWE-JS4cjmSAbfJKGtWUPOitr7K7BlZyKbIxPMNKAovO0m0H6aT9ya6dXAwp8ZdVImhFCkyQHAgxJ0UTYwuhcVIz6Fm3FyHxkB2fC__wRtmj10PKLJmURI32y6Mjh1R3BFUs2fzhnRGa45ElXxY-ARYQx6rsXM9NMM-5LcZk1WPaUFiipCRZyl4fmUHA-pQvWIwOVmPUuwl2zg_h433D8MumMWlsDHbM2jO0eapf82hvTIfs1SOZ6Nhdmf5Fp8Gu6JLIeV_WG9kfi5lccX1VCZDTKcwNB6Sj3Dj8q1GFi13ils6SBr4Bnny64oB6Z2HkPqUnlXI4IhnzLEHCK4y94AqriKFKjKbVPRu6pYTqXiuNFCzQdYYoZuTgCBzXhTMimqNxX-S2g6CdUDdIScP02f2ZsJpNWtXVRNgLB_6HlxyuHzlcWH"
+  "headers": {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+    "Referer": "https://11kt.net/"
+  },
+  "search": [
+    {
+      "op": "first",
+      "branches": [
+        [
+          {
+            "op": "maccmsSuggest",
+            "detailUrlTemplate": "/index.php/vod/detail/id/{id}.html"
+          }
+        ],
+        [
+          {
+            "op": "searchList",
+            "selectors": [
+              "dl.fed-deta-info"
+            ]
+          }
+        ]
+      ]
+    }
+  ],
+  "detail": [
+    {
+      "op": "follow"
+    },
+    {
+      "op": "episodes",
+      "listSelectors": [
+        ".fed-play-item"
+      ]
+    }
+  ],
+  "play": [
+    {
+      "op": "follow"
+    },
+    {
+      "op": "first",
+      "branches": [
+        [
+          {
+            "op": "select",
+            "css": "#fed-play-iframe",
+            "attr": "data-play"
+          },
+          {
+            "op": "regex",
+            "pattern": "^...(.*)",
+            "group": 1
+          },
+          {
+            "op": "crypto",
+            "algo": "base64",
+            "mode": "decrypt"
+          }
+        ],
+        [
+          {
+            "op": "playerAaaa",
+            "var": "player_aaaa",
+            "key": "url"
+          }
+        ],
+        [
+          {
+            "op": "videoUrl"
+          }
+        ]
+      ]
+    }
+  ]
 }

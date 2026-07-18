@@ -1,8 +1,67 @@
 {
+  "format": "anx-rule/2",
   "id": "skr_skr2",
   "name": "樱之空动漫",
   "baseUrl": "https://skr.skr2.cc:666",
+  "iconUrl": "https://skr.skr2.cc:666/favicon.ico",
   "description": "樱之空动漫是一个极具个人色彩、神秘又温馨的二次元圣地，提供好看的动漫、日剧及歌曲。",
-  "encrypted": true,
-  "pack": "bakax://SSBZBkrZ14BAXYYK0IWaGClYO4V5wQNnTdzLfvGZhoKlk9V-tIwtV0HrX8SmCuf3fPZ4wDupT7eDfVxzF7xD2vbxtYZNCm-4ra77wT6SfMt1UJAFiBLnfgNUtH34OHZiSmteJpm1qVq0bbzEaNgL8hjPFotyCm3onvDbgJmP9ASK4eb-hVUod0lena6B2yP2QeNJfjgDsPrzKVHwMJaEM2qcrd-pO2gwiztelBD2jZCGdmD9_TuksV6bmbRNHuikZmCzCA2MnLLcvmKInBx1qVDye8YZgMZ2cqUeEiIgdif5OhY6FEDIylXm2D4gM98rYv79opWGl6hZ1-tnWyQfWiLwOMWsBw_CdMYtQNF2C1s5A5H30hfUOO_AZ7njXWvQMR0xlQFckIFWtVUnkwvH_tBEAjO5-TlRBnX67rYgnwjCPCecxIuCBPvRLOMlF_g2ZmUhSHNnSR3V51b0UGnp24t4-PAC5UZ5bqEL_8GAoPxc_MGRPIB8vkYPdPyYBQIuTrMJmIpgfCYnEG8MOtKkaUdKNSDvI13Z7t-BEJT5sRXXuIfDHkkYEd9gXESg3UxgkDjvewe9cdbMNVanOhEHNB96r-sxA3Qcb3H1mLlSGHX7-cf79zYbiKKDeOFhgpEtW6bqYIA9isT1rkTmX8q3jj515sIXI_4mCOAAa7O6Upr6xyB_afa67huOpcXmZPk3ksGkljnLVAiI8gUJgyrJG3t759KtS6niR4SUh4TjEkCI3QBo38sEmqGV1QKh0RPBywgimqQ3PPcykQQhRr5ikEPYsDbC1WtIos7Jm3fxWM3FRZflU0_OpD5JwwKrMXy5lYpe4u7-gZuolBtgPEUI-UMlLOO2CRuwQhIn17GnR0t30XZNCZOKLwl6MhovRDfduu-Gl7hfyMEFqjD2v4z0vA"
+  "headers": {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+    "Referer": "https://skr.skr2.cc:666/"
+  },
+  "search": [
+    {
+      "op": "first",
+      "branches": [
+        [
+          {
+            "op": "maccmsSuggest",
+            "urlKey": "url",
+            "detailUrlTemplate": "/voddetail/{id}/"
+          }
+        ],
+        [
+          {
+            "op": "searchList",
+            "selectors": [
+              ""
+            ]
+          }
+        ]
+      ]
+    }
+  ],
+  "detail": [
+    {
+      "op": "follow"
+    },
+    {
+      "op": "episodes",
+      "listSelectors": [
+        ".play_list_box, .content_playlist, .stui-content__playlist, .myui-content__list"
+      ]
+    }
+  ],
+  "play": [
+    {
+      "op": "follow"
+    },
+    {
+      "op": "first",
+      "branches": [
+        [
+          {
+            "op": "playerAaaa",
+            "var": "player_aaaa",
+            "key": "url"
+          }
+        ],
+        [
+          {
+            "op": "videoUrl"
+          }
+        ]
+      ]
+    }
+  ]
 }

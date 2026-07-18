@@ -1,0 +1,102 @@
+{
+  "format": "anx-rule/2",
+  "id": "dalvdm",
+  "name": "打驴动漫 (dalvdm)",
+  "baseUrl": "https://www.dalvdm.cc",
+  "iconUrl": "https://xffkws.iflytek.com/group1/M00/B2/45/rB_aXmf1F1-AfbABAACZDIxclBE816.png",
+  "description": "大千视界_打驴动漫，无广告所有樱花动漫番剧免费看，全蓝光画质永久免费观看。",
+  "useWebview": true,
+  "headers": {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
+    "Referer": "https://www.dalvdm.cc/"
+  },
+  "search": [
+    {
+      "op": "first",
+      "branches": [
+        [
+          {
+            "op": "fetch",
+            "url": "/"
+          },
+          {
+            "op": "maccmsSuggest",
+            "detailUrlTemplate": "/index.php/vod/detail/id/{id}.html",
+            "verify": true
+          }
+        ],
+        [
+          {
+            "op": "fetch",
+            "url": "/index.php/vod/search/wd/{keyword}.html"
+          },
+          {
+            "op": "searchList",
+            "selectors": [
+              ".public-list-box, .module-card-item, .module-poster-item, .module-search-item, a[href*=\"/vod/detail/\"]"
+            ]
+          }
+        ]
+      ]
+    }
+  ],
+  "detail": [
+    {
+      "op": "follow"
+    },
+    {
+      "op": "episodes",
+      "listSelectors": [
+        ".anthology-list-box:not(:first-child) ul.anthology-list-play",
+        "ul.anthology-list-play"
+      ],
+      "tabSelectors": [
+        ".anthology-tab .swiper-slide:not(:first-child)",
+        ".anthology-tab .swiper-slide"
+      ]
+    }
+  ],
+  "play": [
+    {
+      "op": "follow"
+    },
+    {
+      "op": "first",
+      "branches": [
+        [
+          {
+            "op": "playerAaaa",
+            "var": "player_aaaa",
+            "key": "url"
+          },
+          {
+            "op": "setVar",
+            "name": "dalvSniffToken",
+            "value": "{url:raw}"
+          },
+          {
+            "op": "template",
+            "value": "https://dm.dalvdm.cc/?url={dalvSniffToken}"
+          },
+          {
+            "op": "sniff",
+            "goal": "video",
+            "url": "{url:raw}"
+          }
+        ],
+        [
+          {
+            "op": "videoUrl"
+          }
+        ],
+        [
+          {
+            "op": "sniff",
+            "goal": "video",
+            "url": "{episodeId:raw}"
+          }
+        ]
+      ]
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "format": "anx-rule/2",
+  "id": "age",
+  "name": "AGE动漫",
+  "baseUrl": "https://www.agedm.io",
+  "iconUrl": "https://www.agedm.io/favicon.ico",
+  "description": "AGE动漫视频源，源网址www.agedm.io",
+  "headers": {
+    "Referer": "https://www.agedm.io/"
+  },
+  "useWebview": true,
+  "search": [
+    {
+      "op": "fetch",
+      "url": "/search?query={keyword}"
+    },
+    {
+      "op": "searchList",
+      "selectors": [
+        ".cata_video_item",
+        ".card"
+      ],
+      "detailPattern": "/detail/"
+    }
+  ],
+  "detail": [
+    {
+      "op": "follow"
+    },
+    {
+      "op": "episodes",
+      "tabSelectors": [
+        "button[data-bs-target^=\"#playlist-source-\"]"
+      ],
+      "listSelectors": [
+        "div[id^=\"playlist-source-\"]"
+      ]
+    }
+  ],
+  "play": [
+    {
+      "op": "follow"
+    },
+    {
+      "op": "first",
+      "branches": [
+        [
+          {
+            "op": "select",
+            "css": "iframe",
+            "attr": "src"
+          },
+          {
+            "op": "regex",
+            "pattern": "[?&](?:url|v|vid)=(https?[^&]+)",
+            "group": 1
+          }
+        ],
+        [
+          {
+            "op": "select",
+            "css": "iframe",
+            "attr": "src"
+          },
+          {
+            "op": "sniff",
+            "goal": "video"
+          }
+        ],
+        [
+          {
+            "op": "videoUrl"
+          }
+        ],
+        [
+          {
+            "op": "select",
+            "css": "iframe",
+            "attr": "src"
+          },
+          {
+            "op": "follow"
+          },
+          {
+            "op": "videoUrl"
+          },
+          {
+            "op": "regex",
+            "pattern": "^(?!.*(?:adposter|/Play/ad|advertis|/ads?/|poster\\.mp4|loading\\.|ploading|preroll|midroll|postroll|commercial|promo\\.))https?://\\S+",
+            "group": 0,
+            "ignoreCase": true
+          }
+        ]
+      ]
+    }
+  ]
+}

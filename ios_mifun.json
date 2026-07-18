@@ -1,8 +1,102 @@
 {
+  "format": "anx-rule/2",
   "id": "ios_mifun",
   "name": "MiFun",
   "baseUrl": "https://ios.mifun.org",
+  "iconUrl": "https://ugc.hitv.com/1/230324151010E2CA349174CE432E9353E29DE5C0EQ0NF/sVoWeL0.png?mxtheme/images/favicon.png",
   "description": "MiFun在线动漫专注于资源收集整理，海量有效的高质量动漫资源在线观看，完全免费。",
-  "encrypted": true,
-  "pack": "bakax://svVJKB4S2-buGXeyBmPwO546I-lzYqAUZlXbD5uzDfckaoU_lsxbAmU8ltYrrxh8hoJdC7M85_nLbFY7ujBQUT1Ca342gj6Ih5dgToZgXK-FTpJLm_wX5pfIaBh2B-sIi-FzvqWPT2WX4rVEKNHck9gv8k3naQ26OAjhi7x-9EKHJiN79orsoYEK-TFZldcXwCmFAmForbfZ5Mv88ng3C_-0eJYaHSwHZnQXdqLSTuXv1FRGIMO8uHOGiu77Q9BLDIXRLiQsykOHAZ4ldntXBCdGpNWAJC7WzfCodC98vBEHzNLogN8G8e0U0f9WRVTR44OpIXgwMubIEe6Lc1uYrDLY2lxZ8_QmTAfFO9XHn9Q-qY4SgWmlXHcBWNa7ZvWY6DRjKmdHLMr0r56snKPCI-wYg4T7ZFwcnj4kgUxnm85Y5cfXVY0crPRjkXPsgpbl8Q2a3sObSCKJMdm9vaoggA6AN9p5f1MrJgllTkI2IdlOc2gMznoKDiVChogpWeZRGL_RP6l0oTzGgFPJ0dKUNzWqbz4AVuYzuRh3yp7qC28uuJ8avy_znFh3JsWFpqxEOjOqxg9FRX0EoEZYqoQQxQp58qS0sergy8mKJI2dFYila_lhhQWpYc2hO2wnWTbDRnyRI7CbZmvtedT6BoQrYH6axTz5Tk3hdliMfNjR0pNd7NSAHenhX0Djfkswcxu2OQESfyq9I8Hwy9qjy-D5whMeluRPl2D0DTernFTmm5fci6YDoj0c5QjeueplxyJlFAQQANe-4O1awUl9yZa-2YlA2NflWJpW4ijxV1HDhG-_WHRW9Z2L_Qn0jrL5ChPHnmB44BHJht6KAxvLGbzdh2u8YIq9FZ_aiNBZWqI--u6nnDEl6dca6Elj6mTs0ex82bq3YUEAVaCNrVLz4zqamg"
+  "useWebview": true,
+  "headers": {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+    "Accept": "*/*",
+    "Referer": "https://ios.mifun.org/"
+  },
+  "search": [
+    {
+      "op": "maccmsSuggest",
+      "urlKey": "url",
+      "detailUrlTemplate": "/voddetail/{id}/"
+    }
+  ],
+  "detail": [
+    {
+      "op": "follow"
+    },
+    {
+      "op": "episodes",
+      "listSelectors": [
+        "ul.hl-plays-list"
+      ]
+    }
+  ],
+  "play": [
+    {
+      "op": "follow"
+    },
+    {
+      "op": "playerAaaa",
+      "var": "player_aaaa",
+      "key": "url"
+    },
+    {
+      "op": "setVar",
+      "name": "mediaToken",
+      "value": "{url:raw}"
+    },
+    {
+      "op": "first",
+      "branches": [
+        [
+          {
+            "op": "fetch",
+            "url": "https://data.m3u8.in/player/?url={mediaToken}"
+          },
+          {
+            "op": "regex",
+            "pattern": "const\\s+Sign\\s*=\\s*\"([^\"]+)\"",
+            "group": 1
+          },
+          {
+            "op": "setVar",
+            "name": "mediaSign",
+            "value": "{url:raw}"
+          },
+          {
+            "op": "fetch",
+            "url": "https://data.m3u8.in/player/api.php?url={mediaToken}&sign={mediaSign}",
+            "headers": {
+              "X-Requested-With": "XMLHttpRequest",
+              "Referer": "https://data.m3u8.in/player/?url={mediaToken}"
+            }
+          },
+          {
+            "op": "json",
+            "path": "url"
+          }
+        ],
+        [
+          {
+            "op": "template",
+            "value": "https://data.m3u8.in/player/?url={mediaToken}"
+          },
+          {
+            "op": "sniff",
+            "goal": "video"
+          }
+        ],
+        [
+          {
+            "op": "sniff",
+            "goal": "video"
+          }
+        ]
+      ]
+    },
+    {
+      "op": "setMediaHeaders",
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+      }
+    }
+  ]
 }

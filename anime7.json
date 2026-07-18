@@ -1,14 +1,13 @@
 {
   "format": "anx-rule/2",
-  "id": "didahd",
-  "name": "嘀嗒影视 (Dida HD)",
-  "baseUrl": "https://www.didahd.xyz",
-  "iconUrl": "https://www.didahd.xyz/template/mytheme/statics/img/newfavicon.png",
-  "description": "专注高分电影，高清HD在线，极速秒播不卡顿！",
-  "useWebview": true,
+  "id": "anime7",
+  "name": "Anime7 动画线上看",
+  "baseUrl": "https://anime7.top",
+  "iconUrl": "https://ani7.b-cdn.net/upload/logo/web-icon.png",
+  "description": "Anime7 动画线上看，提供日韩动漫、剧场版、国产动漫等高清在线观看。",
   "headers": {
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
-    "Referer": "https://www.didahd.xyz/"
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
+    "Referer": "https://anime7.top/"
   },
   "search": [
     {
@@ -17,15 +16,19 @@
         [
           {
             "op": "maccmsSuggest",
-            "detailUrlTemplate": "/detail/{id}.html",
+            "detailUrlTemplate": "/vod-detail/{id}/",
             "verify": true
           }
         ],
         [
           {
+            "op": "fetch",
+            "url": "/vod-search/wd/{keyword}/"
+          },
+          {
             "op": "searchList",
             "selectors": [
-              ".myui-vodlist__thumb, .searchkey"
+              ".hl-list-item, a[href*=\"/vod-detail/\"]"
             ]
           }
         ]
@@ -37,21 +40,18 @@
       "op": "follow"
     },
     {
-      "op": "maccmsVerify"
-    },
-    {
       "op": "episodes",
       "listSelectors": [
-        ".myui-content__list"
+        "ul.hl-plays-list"
+      ],
+      "tabSelectors": [
+        ".hl-plays-from a"
       ]
     }
   ],
   "play": [
     {
       "op": "follow"
-    },
-    {
-      "op": "maccmsVerify"
     },
     {
       "op": "first",
@@ -61,7 +61,9 @@
             "op": "playerAaaa",
             "var": "player_aaaa",
             "key": "url"
-          },
+          }
+        ],
+        [
           {
             "op": "videoUrl"
           }
@@ -74,12 +76,6 @@
           }
         ]
       ]
-    },
-    {
-      "op": "setMediaHeaders",
-      "headers": {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
-      }
     }
   ]
 }

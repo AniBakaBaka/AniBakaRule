@@ -1,0 +1,173 @@
+{
+  "format": "anx-rule/2",
+  "id": "gugu",
+  "name": "咕咕番",
+  "baseUrl": "https://www.gugu3.com",
+  "iconUrl": "https://www.gugu3.com/upload/site/20260506-1/a0799f74e4bced939fbbc0b79cb27671.png",
+  "description": "咕咕番视频源，源网址gugu3.com，提供大量日漫番剧资源。",
+  "headers": {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
+    "Accept": "*/*",
+    "Referer": "https://www.gugu3.com/"
+  },
+  "search": [
+    {
+      "op": "first",
+      "branches": [
+        [
+          {
+            "op": "maccmsSuggest",
+            "headers": {
+              "Accept": "application/json, text/javascript, */*; q=0.01"
+            },
+            "detailUrlTemplate": "/index.php/vod/detail/id/{id}.html"
+          }
+        ],
+        [
+          {
+            "op": "fetch",
+            "url": "/index.php/vod/search/wd/{keyword}.html"
+          },
+          {
+            "op": "searchList",
+            "selectors": [
+              ".module-search-item",
+              ".search-list .item",
+              ".vod-detail.search-list"
+            ],
+            "detailPattern": "/vod/detail/"
+          }
+        ]
+      ]
+    }
+  ],
+  "detail": [
+    {
+      "op": "follow"
+    },
+    {
+      "op": "episodes",
+      "reverse": true,
+      "listSelectors": [
+        ".anthology-list-box",
+        ".anthology-list-play",
+        ".module-play-list"
+      ]
+    }
+  ],
+  "play": [
+    {
+      "op": "follow"
+    },
+    {
+      "op": "first",
+      "branches": [
+        [
+          {
+            "op": "playerAaaa",
+            "var": "player_aaaa",
+            "key": "url"
+          },
+          {
+            "op": "regex",
+            "pattern": "^(\\S{8,})$",
+            "group": 1
+          },
+          {
+            "op": "setVar",
+            "name": "token",
+            "value": "{url:raw}"
+          },
+          {
+            "op": "fetch",
+            "url": "https://player.gugu3.com/?url={token}",
+            "headers": {
+              "Referer": "https://www.gugu3.com/",
+              "Sec-Fetch-Dest": "iframe",
+              "Sec-Fetch-Mode": "navigate",
+              "Sec-Fetch-Site": "same-site"
+            }
+          },
+          {
+            "op": "setVar",
+            "name": "playerHtml",
+            "value": "{url:raw}"
+          },
+          {
+            "op": "regex",
+            "pattern": "\"time\"\\s*:\\s*\"?([0-9]+)\"?",
+            "group": 1
+          },
+          {
+            "op": "setVar",
+            "name": "time",
+            "value": "{url:raw}"
+          },
+          {
+            "op": "template",
+            "value": "{playerHtml:raw}"
+          },
+          {
+            "op": "regex",
+            "pattern": "\"key\"\\s*:\\s*\"([^\"]*)\"",
+            "group": 1
+          },
+          {
+            "op": "setVar",
+            "name": "key",
+            "value": "{url:raw}"
+          },
+          {
+            "op": "template",
+            "value": "{playerHtml:raw}"
+          },
+          {
+            "op": "regex",
+            "pattern": "\"vkey\"\\s*:\\s*\"([^\"]*)\"",
+            "group": 1
+          },
+          {
+            "op": "setVar",
+            "name": "vkey",
+            "value": "{url:raw}"
+          },
+          {
+            "op": "fetch",
+            "url": "https://player.gugu3.com/admin/mizhi_json.php",
+            "method": "POST",
+            "headers": {
+              "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+              "Accept": "application/json, text/javascript, */*; q=0.01",
+              "X-Requested-With": "XMLHttpRequest",
+              "Origin": "https://player.gugu3.com",
+              "Referer": "https://player.gugu3.com/?url={token}"
+            },
+            "body": {
+              "url": "{token:raw}",
+              "time": "{time:raw}",
+              "key": "{key:raw}",
+              "vkey": "{vkey:raw}"
+            }
+          },
+          {
+            "op": "json",
+            "path": "url"
+          },
+          {
+            "op": "regex",
+            "pattern": "^(https?://\\S+\\.(?:m3u8|mp4)(?:[?#]\\S*)?)$",
+            "group": 1
+          }
+        ]
+      ]
+    },
+    {
+      "op": "setMediaHeaders",
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
+        "Accept": "*/*",
+        "Referer": "https://player.gugu3.com/"
+      }
+    }
+  ]
+}

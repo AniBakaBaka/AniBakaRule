@@ -1,8 +1,106 @@
 {
+  "format": "anx-rule/2",
   "id": "hanimeone",
   "name": "Hanime1.me (Mirror)",
   "baseUrl": "https://hanimeone.me",
+  "iconUrl": "https://vdownload.hembed.com/image/icon/tab_logo.png?secure=EJYLwnrDlidVi_wFp3DaGw==,4867726124",
   "description": "Hanime1.me 带给你完美的H动漫、H动画、里番在线看体验。",
-  "encrypted": true,
-  "pack": "bakax://VL1CFj6pvw6HMr6e616dib5rPXturwYwixjTMyBqlFt9F38duA2-UkqLgh_nwaP2PDfBLsVRzkUaFVR2hZF_XwnYpsaI_K8LeUfWIHQbKyK8tiqX5l6eDZhPyf4daSpj0DIGRACHzaI-_Y6V3WpiZRO-reHKRkuc86qziz2yG79rOoto5QL61hjooS6r5L4opWnrdOm-VvP_-jm4trSYo4HF2dNXKr3TpBAsVliBzjbotBw4KS1ZlAMAgAqLT--Pi7gvkmUrFckJ7xaMEd44GnpvgObw0KVZSYKZe_zWuNWqt28AWSzbqh8e-GX4BP9zVleKNjrkSYT7bxI9AAqicipVuHTLSWf53j2v1sT8bprOWuWi8_8cP4xCdojX4n8EQnOL-Vo3_mnqKXa9lZw4FSnIy1vsE0z_q6cAjJrgZPN09DRAXftwZrWPu8jRUzo-rER7ceaCtxaScu0Pnsiu1o8IN5ydxeuD7dkvEC3Fq9exnypGjXpufQVnPoQPBi604QP9XpgM8FNHRQTVIhZO0hVE0V5ILDJ392EHBSE0lB_Ar4ZJ9thP0NNsMgmp7Gx_3irpuXppXUSdoutzKVRyykjmslgMN0RvU8XvZafqT-teMBOOcuGUmVksWTCLrfpkGIfx81Hky7ANeVC7vVD270kqEXTMXMAqZC5zyY1ElMfTpwz2UQd7v4FQPk_oxGp1AiSyK9Og8-FPxkUpWmBooSVcF0uSXoxGQD96jPvoB3tbRJ-9VHbvu_FwPtwEJ0bA4G8lyqDtvMeS7LWI_bG7EbyDJtr9pbOAu590yVl3mpcWPAoF8z72UL_jVL75CaNjzBFUHDNqlCmsEjTW-fvQE-ddTf4n4HxAD3-Kf3d6qPk8BZxPy2jOh3o7ID7_VB8T"
+  "headers": {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+    "Accept": "*/*",
+    "Referer": "https://hanimeone.me/"
+  },
+  "useWebview": true,
+  "search": [
+    {
+      "op": "fetch",
+      "url": "https://hanimeone.me/search?query={keyword}"
+    },
+    {
+      "op": "first",
+      "branches": [
+        [
+          {
+            "op": "jsonSeries",
+            "listPath": "list",
+            "idKey": "id",
+            "nameKey": "name",
+            "imageKey": "pic",
+            "urlKey": "url"
+          }
+        ],
+        [
+          {
+            "op": "searchList",
+            "selectors": [
+              "a.video-link[href*=\"/watch?v=\"]"
+            ]
+          }
+        ]
+      ]
+    }
+  ],
+  "detail": [
+    {
+      "op": "follow"
+    },
+    {
+      "op": "episodes",
+      "listSelectors": [
+        "#hanime1-single-video"
+      ]
+    }
+  ],
+  "play": [
+    {
+      "op": "follow"
+    },
+    {
+      "op": "first",
+      "branches": [
+        [
+          {
+            "op": "select",
+            "css": "video#player source[size=\"720\"], video#player source, video source",
+            "attr": "src"
+          }
+        ],
+        [
+          {
+            "op": "regex",
+            "pattern": "<source\\s+src=[\"\\']([^\"\\']+\\.mp4[^\"\\']*)",
+            "group": 1
+          }
+        ],
+        [
+          {
+            "op": "playerAaaa",
+            "var": "player_aaaa",
+            "key": "url"
+          }
+        ],
+        [
+          {
+            "op": "videoUrl"
+          }
+        ]
+      ]
+    },
+    {
+      "op": "first",
+      "branches": [
+        [
+          {
+            "op": "videoUrl"
+          }
+        ],
+        [
+          {
+            "op": "sniff",
+            "goal": "video"
+          }
+        ]
+      ]
+    }
+  ]
 }

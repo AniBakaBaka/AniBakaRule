@@ -1,8 +1,119 @@
 {
+  "format": "anx-rule/2",
   "id": "7sefun",
   "name": "七色番",
   "baseUrl": "https://www.7sefun.top",
+  "iconUrl": "https://www.7sefun.top/pc/img/favicon.ico",
   "description": "七色番提供最新番剧TV、剧场版在线高速播放，每日及时更新，是动漫迷的不二选择！",
-  "encrypted": true,
-  "pack": "bakax://BiKPlMeSBo_yF1N1e_18TkraZ3W9uQbzwiSIeVS8-ZVxtNr29jDaktvIxwmEaEWkLIQOnrTZrjVsG63pFbhjGVE37wIEylhfjOnmLShx4qshU1ZIvSUj0nKEOQFInbwJqVCa1E9t7tIqZSEY1n_V82_XWbJARRTcZ4bqQqeHiYRBS9s-EBcpvqvXWMPcLyj62s9zb8_4GHoatlaT7tjvyCj451Q-gB_REMYqY2FGz2dfqSSR21EjeVXqX2UNZbvr-FmRG1yo9we6cgzkoaOTi1PgiOmBj1m-c4_whnFTz1Oy5nbWpv77wLYTy2RmLjNNY3eXGuZ0BluuFZjYWGuT4_ZeseYZlxkbZizTPmkptFyPf69ovtbYTQcUoKzqRgxuLeY7bjBoiuYFQ4w4_KittLRNclwvjRbiQgWRSNXaJqi4rKY2k1oJ98aQBgzd4tAxj5kpLg8fAsGlBi4Fxf87qbevA-t8d0vKC5w0Muexl_16A0PyQlk0nzkr0lwO7Alyyo2p48UEE-tu0cGHU9CZWmTxN6VUuhMUG8TOtYG0XMjtLh--HDuvu43ehlNR0BBCeqwIQOclDGhMLHaYSRVLoGjvYtL4AmI2ZGZniWZauATOPIfkoqDea-Y7F-ilEG0GdG_oOReq1o_3f7B-9R27nUYOMA7w7WU9UxPCCGRP4gl4NI18HP9nSEbnsYWs6J5e2OuVZHHE1LkaMMGdfHL5tOoi7Hqgycuuyrlk9Uodv7irBDwkiaw7IYD7EFx7fqnABCkmG8iHlxozPZ-WMHfDdPYmPUS4ad1oCsRxOX1Mctzdhf69XZIbH12WadseFHKdpE6jhv0ObiAQ9nQZeBTIL8RrVvgjDuW7wMQdLnnBTNW9Xu85tohJmvnPQGi6WdpmvA2U4KbMXxllnqR3B5NzSsdcrJJM0x9MmapoVKeU3vtF3eKGiZa5gzaQjLI7vrPxWhSwB2yEsVmzeEv5NZD0FlLDl6ATCiCkmyIkVBdt6y5GgtLEQn8Bk7XFtqTz0bErdEZInxQoiBZrUY6Aqx92jrOk2mFhj5p60ktuO0bkp77oQTEnCUUd7fGe6SjDA1eEhDq1Z8acpdiosXaImXNPXYir3krvydRoOn0uZNfHkS5QpUfbPVLJYYMzPPN-q0Pl7OvP_roEf3sQ7MEE63iPg6aNVUk6v_Ry7ouGa8ijI5DVs7SNxcxg7uZVbN3P6HblyPBj9QdsmQCY8llGw4W-kKER8E4F2WKI5GeafhbJDDn-rl_WDXmmLizVTj-9TSntOBF2dcKg0acrDRXim3jVfeHYs6QcUZ0s1uw9ewry0wyfB0A6LJn1_7OuKcXzYPPGGNO6vDwEH1o8eQ9iJHgDMtk_eKUQwk1k3tQbHClWRtg"
+  "headers": {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+    "Accept": "*/*",
+    "Referer": "https://www.7sefun.top/"
+  },
+  "useWebview": true,
+  "search": [
+    {
+      "op": "fetch",
+      "url": "https://www.7sefun.top/vodsearch/-------------.html?wd={keyword}"
+    },
+    {
+      "op": "first",
+      "branches": [
+        [
+          {
+            "op": "jsonSeries",
+            "listPath": "list",
+            "idKey": "id",
+            "nameKey": "name",
+            "imageKey": "pic",
+            "urlKey": "url"
+          }
+        ],
+        [
+          {
+            "op": "searchList",
+            "selectors": [
+              "a.video-wrapper[href*=\"/voddetail/\"], .module-card-item, .module-poster-item, .module-search-item, .stui-vodlist__box, .stui-vodlist li, a[href*=\"/voddetail/\"], a[href*=\"/vod/detail/\"], a[href*=\"/detail/\"]"
+            ]
+          }
+        ]
+      ]
+    }
+  ],
+  "detail": [
+    {
+      "op": "follow"
+    },
+    {
+      "op": "episodes",
+      "listSelectors": [
+        ".vod-play-list-container, .module-play-list, .module-player-list, .stui-content__playlist, .anthology-list-box, .anthology-list-play, .playlist, .play-list, .play_list, .episode-list, #playlist, .episodes"
+      ]
+    }
+  ],
+  "play": [
+    {
+      "op": "follow"
+    },
+    {
+      "op": "first",
+      "branches": [
+        [
+          {
+            "op": "playerAaaa",
+            "var": "player_aaaa",
+            "key": "url"
+          }
+        ],
+        [
+          {
+            "op": "videoUrl"
+          }
+        ]
+      ]
+    },
+    {
+      "op": "first",
+      "branches": [
+        [
+          {
+            "op": "videoUrl"
+          }
+        ],
+        [
+          {
+            "op": "setVar",
+            "name": "playerTarget",
+            "value": "{url:raw}"
+          },
+          {
+            "op": "template",
+            "value": "https://dp.no3acg.com/player/ec.php?code=qw&if=1&from=lmm&url={playerTarget}"
+          },
+          {
+            "op": "follow",
+            "headers": {
+              "Referer": "https://www.7sefun.top/"
+            }
+          },
+          {
+            "op": "ecPlayer"
+          }
+        ],
+        [
+          {
+            "op": "sniff",
+            "goal": "video",
+            "url": "{episodeId:raw}"
+          }
+        ]
+      ]
+    },
+    {
+      "op": "setMediaHeaders",
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+      }
+    }
+  ]
 }

@@ -1,14 +1,14 @@
 {
   "format": "anx-rule/2",
-  "id": "omofun03",
-  "name": "omofun动漫视频网 (omofun)",
-  "baseUrl": "https://omofun03.top",
-  "iconUrl": "https://omofun03.top/template/mxpro/mxtheme/images/favicon.png",
-  "description": "Omofun是一个专注于动漫资源分享和在线播放的平台，提供丰富的日本新番、经典动漫及剧场版资源。",
+  "id": "animoe",
+  "name": "Animoe动漫",
+  "baseUrl": "https://animoe.org",
+  "iconUrl": "https://github.elemecdn.com/mstatic616/images/logo/favicon.png",
+  "description": "Animoe动漫，提供最新番剧、经典动漫全集免费高清在线观看。",
   "headers": {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
     "Accept": "*/*",
-    "Referer": "https://omofun03.top/"
+    "Referer": "https://animoe.org/"
   },
   "search": [
     {
@@ -17,16 +17,16 @@
         [
           {
             "op": "maccmsSuggest",
-            "urlKey": "url",
-            "detailUrlTemplate": "/vod/detail/id/{id}.html"
+            "detailUrlTemplate": "/info/{id}.html"
           }
         ],
         [
           {
             "op": "searchList",
             "selectors": [
-              ".module-poster-item"
-            ]
+              ".module-card-item, .module-items .module-item"
+            ],
+            "detailPattern": "/info/"
           }
         ]
       ]
@@ -39,7 +39,7 @@
     {
       "op": "episodes",
       "listSelectors": [
-        ".module-play-list-content, .module-play-list"
+        ".module-play-list"
       ]
     }
   ],
@@ -48,18 +48,22 @@
       "op": "follow"
     },
     {
+      "op": "playerAaaa",
+      "var": "player_aaaa",
+      "key": "url"
+    },
+    {
       "op": "first",
       "branches": [
         [
           {
-            "op": "playerAaaa",
-            "var": "player_aaaa",
-            "key": "url"
+            "op": "videoUrl"
           }
         ],
         [
           {
-            "op": "videoUrl"
+            "op": "sniff",
+            "goal": "video"
           }
         ]
       ]

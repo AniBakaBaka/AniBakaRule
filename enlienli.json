@@ -1,8 +1,92 @@
 {
+  "format": "anx-rule/2",
   "id": "enlienli",
   "name": "OmoFun Enlienli",
   "baseUrl": "https://enlienli.link",
+  "iconUrl": "https://enlienli.link/template/mxpro/mxtheme/images/favicon.png",
   "description": "Omofun是一个专注于动漫资源分享和在线播放的平台，涵盖日本新番、经典动漫作品以及一些国产动画和剧场版电影。",
-  "encrypted": true,
-  "pack": "bakax://IjGiukWbc3QnCg6ZntKEXEb9wuHVTmnU75Utxj6I7IeJOemlvzwQU_lLcgBy11GeuvL5zHNAM2u-G_wI3FqBJtkKhyh5JkdnVwsLbQSSPVXdfmU5vOBUFjA0PXHeVxOyqAhJNiGMnQZaVsfPyRCG-LM_mFQZTLw-1sSpIwLraGP7gVcP0Npm6Lz0_KPt6qdFSG4hPFZ8bT5hCwsiInwD3vB8_7CJsTXBDa6Y33ZHAeFDwWcwlYTqV2ed-7LU1aKdtaCgCdwtkwAAaGLcmUYiepR2m6HkU6SLyV3_f44kZZU3go9uHws10ZWKZ1vghJF5B6XfP6xvjIuQcgprOKcbsUcI1N04EOU3dDuyc1Tey2uzqCgCvqMOlEOIpZTqlOJIh15nhuWSW3x1J1xMkhEX424MJv3M2lEhVHccGtIEkPDXcbBIRcXcIO67Z6Qyz0nSwPfBSEj-I_fb0tEEeWuMJ5m8M0a8hNNpIoWCrvHxnshUspmJJ32t9vRn8vdD7rBzxUgyeLzYCxdeOezP8WdwiM9vjkc2Svg-vJdMqJAMd0aKYNZDqdJAtUtspWV0bAP186hc69SsEuYHqE8Gs1cE-wdR92MrofheDOkl2V6N61ARdwHdzvZhcfhl0dHZCOYk_74-IDElDalpoCew3Y20E21ceoSHrBYk4s-nRu7szvFlMA7qFX6uPkxJKog_4CJaeXcpU_E8NeZMHIoD8n6G_KuxiKv4Xrh-g8nuCRRsy0-JYPLhXW9jBHifUCmTCi9FquootFONm8nD7eFenPBiP_owpfh4d3SDnd21wzfDzsGA7NDkIBacXyh-obA51Tr2xtSnUE2trssE_Q13J7nGATj9_13_zsc5Do3cE3CwrDxhLbYCjFKBxo0NwVI6gZNV2CgSIid9iu6fftdsP8IuZbTPRVO9SciTxz7wMQTGxvlNyTwVBYLtsjZi6IaL4Eaob5lTERq53VJwxIJVUV42qXBd8Cr-YY7MSScUqrhtV-MCT4SCph6gpiBvbKK83emPyXxdyVMM4neJ4d4_vhYbUGbUwGMyK5gn73_J8VUdUXWotG5dWWiKfn8m68obYkWoyBOaQredKE28QuIINgjVQcNTT4OJOeGzeS_u_u0-oMBBOyXLWJwhCMZWzwxegnhfreTb4ypJ4y6iN6z4oAdyzQSLwz0kHcK5HoD4EW9L82473PyMWpDRe66bcs2vJsmXmKnZyKInKgaqqzdn5tiFy5YgJ2gYL4GZPS4lwutUkbhxMfCpv5UNEVLmgpDnGMsO-h7s24e1JTOQECiRnpJuvhnSucbPdcI8eg6Q9wlLMpsXByAH4_kwmJu2iBMNJndh5-EhalMmB3lnhkiKp6MgkTQ0fyfHKI2wa58LA0tU5R8"
+  "headers": {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+    "Accept": "*/*",
+    "Referer": "https://enlienli.link/"
+  },
+  "useWebview": true,
+  "search": [
+    {
+      "op": "fetch",
+      "url": "https://enlienli.link/vod/search.html?wd={keyword}"
+    },
+    {
+      "op": "first",
+      "branches": [
+        [
+          {
+            "op": "jsonSeries",
+            "listPath": "list",
+            "idKey": "id",
+            "nameKey": "name",
+            "imageKey": "pic",
+            "urlKey": "url"
+          }
+        ],
+        [
+          {
+            "op": "searchList",
+            "selectors": [
+              ".module-card-item, a.module-card-item[href], .module-poster-item, .module-search-item, a[href*=\"/vod/detail/\"], a[href*=\"/voddetail/\"], a[href*=\"/detail/\"]"
+            ]
+          }
+        ]
+      ]
+    }
+  ],
+  "detail": [
+    {
+      "op": "follow"
+    },
+    {
+      "op": "episodes",
+      "listSelectors": [
+        ".module-play-list, .module-player-list, .module-player-list.tab-list, .stui-content__playlist, .anthology-list-box, .playlist, .play-list, .play_list, .episode-list, #playlist, .episodes"
+      ]
+    }
+  ],
+  "play": [
+    {
+      "op": "follow"
+    },
+    {
+      "op": "first",
+      "branches": [
+        [
+          {
+            "op": "playerAaaa",
+            "var": "player_aaaa",
+            "key": "url"
+          }
+        ],
+        [
+          {
+            "op": "videoUrl"
+          }
+        ]
+      ]
+    },
+    {
+      "op": "first",
+      "branches": [
+        [
+          {
+            "op": "videoUrl"
+          }
+        ],
+        [
+          {
+            "op": "sniff",
+            "goal": "video"
+          }
+        ]
+      ]
+    }
+  ]
 }

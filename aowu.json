@@ -1,8 +1,85 @@
 {
+  "format": "anx-rule/2",
   "id": "aowu",
   "name": "嗷呜动漫",
   "baseUrl": "https://www.aowu.tv",
+  "iconUrl": "https://www.aowu.tv/favicon.ico",
   "description": "嗷呜动漫-幻想轻音部",
-  "encrypted": true,
-  "pack": "bakax://2podHEDaO8qPP919_Kk92r8OBK_6FCEA8xTZ9NON-BQJMQD5Ij62aH9FaFFLLg6VP4tjp3skK0nlqzbwk70-xJJXUOX0484UEy2D8rhIwkoNkDDhIWRubSI8w8ENq7hZWMo9yp8uYIfJk4Npkth2kB1BrCJGd-JRrgsX-sN6gT-y7XsPh_IdsPGgRi1tNeaDevcx-g5JhyqS2yOcqM_Z5gqB-YO0cMlgFiHCFBVMH9kr0abRSxEK2JInJmTGVs7OyeRMW1cSkvmD1fmvDeZSqg9sldEblo1l2X0TGHn-s9bj66icmuLhz7AZlDwx4Qlhhk5P3MKGWCZpRcVcJ9s1mnLDAUF9kg6gbmz99mM0p4HSss2nvzp82kvvQdFRstiM-r18BYGIcAmgWqdkjY5-5XLEYxB4o_1hhoByCFSEaNzq9Go6cMMGfS9leziH3d17-EAF8Sif5Fp758xROwaZmw8FyV0H0VoZwaHmNhuUOgV3n7Wve-pbMjY_istkrPzkdTs68Uoqx0fBgUhfTOqDB_aihsc0KBE2qJ8nG0uKe6ArCEWZ8TaOEgbgxPeAPGcXJqg_VOPpLQI8V3upF8A2wMathSjipPkOOTvHcWpUeMXF-tInkzwqkkvIHpKaJIH6AXgO3bvWEN1y-3z1_8ID1YknsCawcj3tu24jkgfWI_91VxBw7v3NVSwgK6K90f3Zb4wxWunlaA8l-C4H46kSFGrW6x2utNPk_XaBWvfsxK4UJC8kh9665Jp2QNnrN6kQrahEFrgcIgia_COhwiu6f6eyfeXl6AcLOHRRahvpVFZjvHuJXob4pOS4AsYnxXvtf5QxEekYomOR1AM3qnLkBVDPXf8RYk2piTVRRApSyx3BPecFQNHmyhE7I9mCNNqD7w2jxtqZ6CsfG2IzD3Sl_zQlIboZKpjaftBoAQd8MgNyfwo5vBbl_jiTnKhFgNTzkUa9QLWGJk0r0g29DV3JqBZy_3cLlid74YNwqRgwOkc"
+  "headers": {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36",
+    "Accept": "*/*",
+    "Referer": "https://www.aowu.tv/"
+  },
+  "useWebview": true,
+  "search": [
+    {
+      "op": "maccmsSuggest",
+      "detailUrlTemplate": "/bangumi/{id}.html",
+      "idTransform": "baseN",
+      "idAlphabet": "CSqxIWYbLFQjsvy9RZdDu0HPait4MTU7NVenrwABXf2GK8EJOhklmp56cg13oz",
+      "idSuffix": "CCS"
+    }
+  ],
+  "detail": [
+    {
+      "op": "follow"
+    },
+    {
+      "op": "episodes",
+      "listSelectors": [
+        ".anthology-list-box",
+        ".anthology-list-play"
+      ],
+      "tabSelectors": [
+        ".anthology-tab .swiper-slide",
+        ".anthology-tab a",
+        ".module-tab-item",
+        ".tab-item"
+      ]
+    }
+  ],
+  "play": [
+    {
+      "op": "follow"
+    },
+    {
+      "op": "first",
+      "branches": [
+        [
+          {
+            "op": "playerAaaa",
+            "var": "player_aaaa",
+            "key": "url"
+          },
+          {
+            "op": "videoUrl"
+          }
+        ],
+        [
+          {
+            "op": "playerAaaa",
+            "var": "player_aaaa",
+            "key": "url"
+          },
+          {
+            "op": "follow"
+          },
+          {
+            "op": "videoUrl"
+          }
+        ],
+        [
+          {
+            "op": "videoUrl"
+          }
+        ],
+        [
+          {
+            "op": "sniff",
+            "goal": "video"
+          }
+        ]
+      ]
+    }
+  ]
 }

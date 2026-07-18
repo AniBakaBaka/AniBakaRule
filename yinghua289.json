@@ -1,8 +1,66 @@
 {
+  "format": "anx-rule/2",
   "id": "yinghua289",
   "name": "樱花动漫 (Yinghua)",
   "baseUrl": "https://www.yinghua289.com",
+  "iconUrl": "https://www.yinghua289.com/statics/img/favicon.ico",
   "description": "樱花动漫致力于为所有动漫迷们免费提供最新最快的高清动画下载及在线观看资源。",
-  "encrypted": true,
-  "pack": "bakax://IDj073zPPdF4TVH3kT8rMMQhRAiwHVICoKj5g8FZpLfbjlafqu6y03frko4rAKa1-QVJMS2GNCOlJW_zp4oy4WzYfQ32tYp88htq-znUmRDm__2Ko0yPQcw1m59-8EuGEy5vRkvR6Y3aEA0gFkoVP1Y9S9ERWHmw9hhPdGrc1r9yHg5XQ8ylW9sziXLE6N0ZiblYaH167wD1adtOEJ03gMITIX7xBN7qknCqtFbBie9QAclgAIakonxznYtVVTn1piQ0Ae_HQQCo_XJ2ie0q3zs1yJvts09uAAJkZdLPaW4W307vOXUXkM4jvJAGjmiixiYAt-z79hBn-_IdR-4vU_gTjB9lwMfuyCNcOHcM1ynDdHFrKiGIu4ik4bfjrKRPHeklLA1bvqQJjshOA3U3udJO_2i8qVKAs9TITewTLOy-LyNqiIdouw7ucjKIedajTBDo4FI0sMsUOuuN98OK4-f7UF0A6kjcyr1uwDPpmiJyXOv3A080l6-zE4BZUFwXCqbxYepJYdHNoiCyS7oJdp0M3CZNyPMw-kTaCYEi1P5G5cZtK2iY0fPcDD2zeA9suO5f8KAQqCqdaGyVobFdQmHTtvXhyV-W--PQeQaJ2Jz7QUCFl8wZT13Klf8R3fJBVGQwK2Hnz5DQNiQa7SpyTBTWLkGcYrtVIHLawOJa4-aKLymfaUp2EvXMgdZda_KukDjbDjdyU_YwXN4u4xcxzwiAnUnRMxBrhNWaiB3yyGdxv2eN3iLJVFS4FrtHjf5dHSUzryTrBZswvhHz9jWdIHFeQc_dJ7WCTKzOM6Y9D3XJloj0g60bfYgQP97ZbkP58RVP8UlVZEz_MFn5bcVz_A"
+  "headers": {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+    "Referer": "https://www.yinghua289.com/"
+  },
+  "search": [
+    {
+      "op": "first",
+      "branches": [
+        [
+          {
+            "op": "maccmsSuggest",
+            "detailUrlTemplate": "/index.php/vod/detail/id/{id}.html"
+          }
+        ],
+        [
+          {
+            "op": "searchList",
+            "selectors": [
+              ".stui-vodlist__media li, .stui-vodlist li"
+            ]
+          }
+        ]
+      ]
+    }
+  ],
+  "detail": [
+    {
+      "op": "follow"
+    },
+    {
+      "op": "episodes",
+      "listSelectors": [
+        ".stui-content__playlist"
+      ]
+    }
+  ],
+  "play": [
+    {
+      "op": "follow"
+    },
+    {
+      "op": "first",
+      "branches": [
+        [
+          {
+            "op": "playerAaaa",
+            "var": "player_aaaa",
+            "key": "url"
+          }
+        ],
+        [
+          {
+            "op": "videoUrl"
+          }
+        ]
+      ]
+    }
+  ]
 }

@@ -1,8 +1,94 @@
 {
+  "format": "anx-rule/2",
   "id": "eacg1",
   "name": "EACG动漫",
   "baseUrl": "https://www.eacg1.com",
+  "iconUrl": "https://k8dm.com/template/vfed/asset/img/favicon.png",
   "description": "EACG动漫，提供好看的现代耽美动漫和最新日番、表番在线免费播放。",
-  "encrypted": true,
-  "pack": "bakax://1bf0nKduVjux4Z8KPnX6TsUzZv8IJO2mB7yPetXha-HcEenv1XxhDqn4J4474SnIUClT9SqXNU54eIVSMgReAhDwJ6zLoArOOwYgs6WmNAztzPkGq_H2lvBKtoGdMjxZeCEDFtTfaSd69B3um58lDPXxjJlGj2Kh9D-R3scvdym5qDA4aNg-KaW60fuc_MQ1xRR8m4BDB72HRJb-06ka2QzH3JIcB8_6ktta5uMYjbQESk1bbVXM8yr1UOAa_jXjVXVf7g1Y1lwTczygoL5XV7BjPLza64kRA5MmssehHqMobZtYPzwa9Voe4bnwVSa2MV9AhamN5FgNyISUHX6Uph4M6-hw4_qrwdHeO9bfO1yYvvZvphMPKDO3i0xibUfV_tzz8Hu9r40ogLQZnzqyzuFr6HBKjIKPADDxh95fLFirUus6xIg7UuxD1ke4sPT_npIKxdRKdD1KCTGedHF9B6eZG3cTA6GWggDcO-2_FPDyKqN_fgm-rm-nr0sSR1VwWMJKhrHajoZc5qAxdcztdizfLB5-Hq2ohVKyrbItm0uQ2beScMusXFCOu83tNufVm4-mlgUE6HaIsfXMtmc2jV_mDfucI1qiCzHBlzIIGa9-UDPDUg9F0r3wPLvgt5MBI7V3MEwrUKhj3PzHiH_STZoxa8JX3McIY4T1akAXs7mG2pMtbwoPNIi9oiX4J2ShQJ0xVmN9O-2CN-4dFQH9VG9VknZqpZ666kMWhoABQWpigwhIRk19g15qHJzwtA1w6YS99yKHZhFsb8g4F9725MUAHBR8CORpKfJsnZeR4pqiPjkbc71hxHUpGRs6chyAp6RFNJGz9gEnPKARHcW1igJQ50toFhHCgsaFsVwAcP9KvZJsdh9vCP3x1hPcvkz5Wv4idZagD5r8r6RHlIRmm3p1yFqSm8sy-vmH3jTy6PI"
+  "headers": {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36",
+    "Referer": "https://www.eacg1.com/"
+  },
+  "search": [
+    {
+      "op": "fetch",
+      "url": "https://www.eacg1.com/vodsearch/-------------.html?wd={keyword}"
+    },
+    {
+      "op": "first",
+      "branches": [
+        [
+          {
+            "op": "jsonSeries",
+            "listPath": "list",
+            "idKey": "id",
+            "nameKey": "name",
+            "imageKey": "pic",
+            "detailUrlTemplate": "/voddetails-{id}.html"
+          }
+        ],
+        [
+          {
+            "op": "searchList",
+            "selectors": [
+              "dl.fed-deta-info"
+            ],
+            "detailPattern": "/voddetails-"
+          }
+        ]
+      ]
+    }
+  ],
+  "detail": [
+    {
+      "op": "follow"
+    },
+    {
+      "op": "episodes",
+      "tabSelectors": [
+        ".fed-drop-tops li.fed-drop-btns a"
+      ],
+      "listSelectors": [
+        ".fed-play-item"
+      ]
+    }
+  ],
+  "play": [
+    {
+      "op": "follow"
+    },
+    {
+      "op": "first",
+      "branches": [
+        [
+          {
+            "op": "select",
+            "css": "#fed-play-iframe",
+            "attr": "data-play"
+          },
+          {
+            "op": "replace",
+            "pattern": "^.{3}",
+            "regex": true,
+            "replacement": ""
+          },
+          {
+            "op": "crypto",
+            "algo": "base64",
+            "mode": "decrypt"
+          }
+        ],
+        [
+          {
+            "op": "videoUrl"
+          }
+        ],
+        [
+          {
+            "op": "sniff"
+          }
+        ]
+      ]
+    }
+  ]
 }

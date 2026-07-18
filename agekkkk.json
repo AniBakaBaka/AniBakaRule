@@ -1,0 +1,93 @@
+{
+  "format": "anx-rule/2",
+  "id": "agekkkk",
+  "name": "4K动漫",
+  "baseUrl": "https://cn.agekkkk.com",
+  "iconUrl": "https://cn.agekkkk.com/template/the4/statics/img/favicon.ico",
+  "description": "4K动漫，提供日漫、国漫、美漫和剧场版等在线资源。",
+  "headers": {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
+    "Accept": "*/*",
+    "Referer": "https://cn.agekkkk.com/"
+  },
+  "useWebview": true,
+  "search": [
+    {
+      "op": "fetch",
+      "url": "/search/{keyword}-------------.html"
+    },
+    {
+      "op": "maccmsVerify"
+    },
+    {
+      "op": "searchList",
+      "selectors": [
+        "li.col-md-6",
+        "a[href*=\"/anime/\"]"
+      ],
+      "detailPattern": "/anime/"
+    }
+  ],
+  "detail": [
+    {
+      "op": "follow"
+    },
+    {
+      "op": "episodes",
+      "tabSelectors": [
+        "ul.channel-tab li"
+      ],
+      "listSelectors": [
+        "ul.play-list-content"
+      ]
+    }
+  ],
+  "play": [
+    {
+      "op": "follow"
+    },
+    {
+      "op": "first",
+      "branches": [
+        [
+          {
+            "op": "playerAaaa",
+            "var": "player_aaaa",
+            "key": "url"
+          },
+          {
+            "op": "regex",
+            "pattern": "^(https?://\\S+\\.(?:m3u8|mp4)(?:[?#]\\S*)?)$",
+            "group": 1
+          }
+        ],
+        [
+          {
+            "op": "select",
+            "css": "iframe",
+            "attr": "src"
+          },
+          {
+            "op": "sniff",
+            "goal": "video"
+          }
+        ],
+        [
+          {
+            "op": "sniff",
+            "goal": "video",
+            "url": "{episodeId:raw}"
+          }
+        ]
+      ]
+    },
+    {
+      "op": "setMediaHeaders",
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
+        "Accept": "*/*",
+        "Referer": "https://cn.agekkkk.com/"
+      }
+    }
+  ]
+}

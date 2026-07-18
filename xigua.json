@@ -1,0 +1,88 @@
+{
+  "format": "anx-rule/2",
+  "id": "xigua",
+  "name": "西瓜卡通",
+  "baseUrl": "https://www.xgcartoon.com",
+  "iconUrl": "https://www.xgcartoon.com/xgct/icon/favicon-32x32.png",
+  "description": "西瓜卡通视频源，源网址www.xgcartoon.com",
+  "headers": {
+    "Referer": "https://www.xgcartoon.com/"
+  },
+  "search": [
+    {
+      "op": "fetch",
+      "url": "/search?q={keyword}"
+    },
+    {
+      "op": "searchList",
+      "listXPath": "//a[contains(@class,\"topic-list-item\")]",
+      "nameXPath": ".//div[contains(@class,\"h3\")]",
+      "linkXPath": "",
+      "nameFilter": "^([^(（【]+)",
+      "keywordMatch": true
+    }
+  ],
+  "detail": [
+    {
+      "op": "follow"
+    },
+    {
+      "op": "episodes",
+      "listSelectors": [
+        ".detail-right__volumes"
+      ]
+    }
+  ],
+  "play": [
+    {
+      "op": "follow"
+    },
+    {
+      "op": "first",
+      "branches": [
+        [
+          {
+            "op": "select",
+            "css": "iframe[src*=\"vid=\"]",
+            "attr": "src"
+          },
+          {
+            "op": "regex",
+            "pattern": "vid=([a-f0-9-]+)",
+            "group": 1
+          },
+          {
+            "op": "template",
+            "value": "https://xgct-video.bzcdn.net/{url:raw}/playlist.m3u8"
+          },
+          {
+            "op": "regex",
+            "pattern": "^(https://xgct-video\\.bzcdn\\.net/[a-f0-9-]+/playlist\\.m3u8)$",
+            "group": 1
+          }
+        ],
+        [
+          {
+            "op": "regex",
+            "pattern": "vid=([a-f0-9-]+)",
+            "group": 1
+          },
+          {
+            "op": "template",
+            "value": "https://xgct-video.bzcdn.net/{url:raw}/playlist.m3u8"
+          },
+          {
+            "op": "regex",
+            "pattern": "^(https://xgct-video\\.bzcdn\\.net/[a-f0-9-]+/playlist\\.m3u8)$",
+            "group": 1
+          }
+        ],
+        [
+          {
+            "op": "videoUrl"
+          }
+        ]
+      ]
+    }
+  ]
+}

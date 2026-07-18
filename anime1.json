@@ -1,0 +1,65 @@
+{
+  "format": "anx-rule/2",
+  "id": "anime1",
+  "name": "Anime1",
+  "baseUrl": "https://anime1.me",
+  "iconUrl": "https://anime1.me/favicon-32x32.png",
+  "description": "Anime1 番剧源，源网站 anime1.me，建议使用繁体中文搜索。",
+  "headers": {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36",
+    "Accept": "*/*",
+    "Referer": "https://anime1.me/"
+  },
+  "search": [
+    {
+      "op": "anime1Search",
+      "url": "https://d1zquzjgwo9yb.cloudfront.net/",
+      "idIndex": 0,
+      "nameIndex": 1,
+      "caseSensitive": true
+    }
+  ],
+  "detail": [
+    {
+      "op": "anime1Detail",
+      "url": "https://anime1.me/?cat={seriesId:raw}",
+      "itemSelector": "video[data-apireq]",
+      "tokenAttribute": "data-apireq",
+      "nextSelector": ".nav-previous a",
+      "maxPages": 32,
+      "reverse": true,
+      "sourceName": "Anime1",
+      "episodeNameTemplate": "第{index}集"
+    }
+  ],
+  "play": [
+    {
+      "op": "anime1Play",
+      "url": "https://v.anime1.me/api",
+      "method": "POST",
+      "contentType": "form",
+      "tokenField": "d",
+      "sourcePath": "s[0].src",
+      "mediaBaseUrl": "https://v.anime1.me/",
+      "cookieNames": [
+        "e",
+        "p",
+        "h"
+      ],
+      "cookiePrefixes": [
+        "_ga"
+      ],
+      "headers": {
+        "Accept": "application/json, text/plain, */*",
+        "Origin": "https://anime1.me",
+        "Referer": "https://anime1.me/"
+      },
+      "mediaHeaders": {
+        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 13_3_1) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.4 Safari/605.1.15",
+        "Accept": "*/*",
+        "Referer": "https://anime1.me/"
+      },
+      "validateWithCookies": true
+    }
+  ]
+}

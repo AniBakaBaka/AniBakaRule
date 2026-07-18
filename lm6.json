@@ -1,8 +1,54 @@
 {
+  "format": "anx-rule/2",
   "id": "lm6",
   "name": "路漫漫动漫",
   "baseUrl": "https://m.lm6.net",
+  "iconUrl": "https://m.lm6.net/template/jable/statics/icon/favicon-32x32.png",
   "description": "路漫漫在线动漫提供日本动漫、国产动漫、动画电影等免费在线观看。",
-  "encrypted": true,
-  "pack": "bakax://ZVWL9iS02wfNkPahtP5lpauErleTMSy-f0hV9jQCcMBh_gEi60ZigY-J6jrh5Ie2Giunzhe22aTioGBm8DkHaZU_1JltERQPeuirVA2jqFugktFfi1UMIiB_CkxxKN_xxTl-cYUizSIm4HYJq2SbGG09PBhylulMh8C7izSt_lt33bmaz_-UCv7p7OVg_WpNNkMzbgKmtnf_YukI9hQjEZRlbCX_W-UDMZnkmR23cBA9Npov56VTVeHueBxtX4v_C-1jexHrSuuEXK5VfTf7MpgFPRryIPCoDHcxLPJCkmSVuCDgZlT68q43aB3WuCEk9VIBRKNBcJ7DpxlclE9UK-Lbb5gn5-gtnHceH1-OZBDcYJGnuYGIonZn4h9NOBUe6PlGetH20RWvbS3ilQTMpG9fyOQOidbmYzenNeSbjpcSLEoCug5bU-L17kQZcFJriXqiOlmKU4TX4aLq7T977XW5JYvTrP_wmo_4wHWJB8OMMXczt8GKmsyviZAdw_SHaVaRM9eNoQxM9rgC9AqaJYL9-GcqcjMOmCG01mFmzA3fL3pv520Lc9buFUsgKvnX4MOHuAbYgRNDe_F0kejXsyIfNY14piaDygtDgbmjRJ55QW5ZO_1bMQSUgsruF-iCGFzlGmAxDEgMLGw5HTGU3A"
+  "useWebview": true,
+  "headers": {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
+    "Accept": "*/*",
+    "Referer": "https://m.lm6.net/"
+  },
+  "search": [
+    {
+      "op": "sniff",
+      "goal": "html",
+      "url": "/index.php/vod/search/wd/{keyword}.html",
+      "readyContains": ["video-img-box"],
+      "rejectContains": ["身份验证", "安全验证"],
+      "timeoutMs": 30000,
+      "settleMs": 2000
+    },
+    {
+      "op": "searchList",
+      "selectors": [".video-img-box .detail"],
+      "detailPattern": "/detail/"
+    }
+  ],
+  "detail": [
+    {
+      "op": "sniff",
+      "goal": "html",
+      "url": "{seriesId:raw}",
+      "readyContains": ["module-player-list"],
+      "rejectContains": ["身份验证", "安全验证"],
+      "timeoutMs": 30000,
+      "settleMs": 2000
+    },
+    {
+      "op": "episodes",
+      "listSelectors": [
+        ".module-player-list"
+      ]
+    }
+  ],
+  "play": [
+    {
+      "op": "sniff",
+      "goal": "video",
+      "url": "{episodeId:raw}"
+    }
+  ]
 }

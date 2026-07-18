@@ -1,8 +1,66 @@
 {
+  "format": "anx-rule/2",
   "id": "jibi",
   "name": "叽哔动漫网",
   "baseUrl": "https://www.jibi.cc",
+  "iconUrl": "https://www.jibi.cc/upload/mxprocms/20240530-1/811f55cb787194c59e3f6d1d8724571c.jpg",
   "description": "叽哔动漫网拥有上万集高清晰画质的在线动漫，观看完全免费、无须注册、高速播放。",
-  "encrypted": true,
-  "pack": "bakax://dINZ2NpJSS4-Fdh2pFaXy89pd-Z9qTGF-oda3bHYI-B8Zcjdtl38Ft953FBLRJhNgvtp0jTNoQYJGfiHITtVbAYhRq106vNaqST061M0lqXB4QBOc_5rmls76tXg9nwlbm2-7T_XZBDDhl89CkqyZTdQglJ0QngWQc6SdQq8sld6K3D1OHt9RPSTidL2fQ28eBrCRYGfBgWdCLJXWDiTgGWMvKJ1tgFJkshZPM_hNAkpzJVaBefr_nNT0e97V3gaxpnbXbVIC1-Qc7ygT1Jc3xbQ3gSuZF7sGw_zg-t3gK26pmQh83vBhUtBBC0nuZ-XbfeaCiTThOyFvVTxOhLlPq-s8PFpNWONOmuqAgI_P34rF1H3MhG2i3vLwi3894QgZAxVuViydiDesQARrtgHCPKGAvt7y7ShLjed7jF7zjaGX1YlFKa4BcHWmTRtXy8O62BWfmFyeZ6lzM2Da5alv6aJAUY9Czb-UTrJWC1a6FXeSNXpgpcPgmqXb_vFczNiHrU-GwI19JSvQarElixRAVdENMJlRHAQRM4Y7NYSmK59FWZBujQ1DX7SCL9_sU_vKu1-LiPtwZ6b-MZkhbZ5e-69qjsjj8mhF7_x0SQnf9HCcgybqCzorjLU8m-8eWG9r9DtowgNBuIR9hDdBHVEHaWYfXGceeLeYKLkHWTFrN4Fa1JFmWPZbGRu7jAS2ev8P36nZL3K7CU9KIeFLVkexaQPOJcGb0ZE6QAO8MLSIJcz95B55cHOU4VmE2x2Pj7Sq-jHtLnLGe85bxfUHFa8BIpxCnmdWuJ0IB8y4bguYpNYJlVSHDHCjsle9uwMUd2msr7xqymN9sVWMVXakC7zBxycc969e8PMa8bzwXU5odpcNFIpnN69jW5Pb0WtdCZZxqz296J8BiLbTVHbaORYQhsC5M8IvAGWP1Zb-WHUAui7HVsZEdbj9Ti9swwU4qEX"
+  "headers": {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+    "Referer": "https://www.jibi.cc/"
+  },
+  "search": [
+    {
+      "op": "first",
+      "branches": [
+        [
+          {
+            "op": "maccmsSuggest",
+            "detailUrlTemplate": "/index.php/vod/detail/id/{id}.html"
+          }
+        ],
+        [
+          {
+            "op": "searchList",
+            "selectors": [
+              ".module-card-item, .module-items .module-item"
+            ]
+          }
+        ]
+      ]
+    }
+  ],
+  "detail": [
+    {
+      "op": "follow"
+    },
+    {
+      "op": "episodes",
+      "listSelectors": [
+        ".stui-content__playlist, .myui-content__playlist, .myui-content__list, .module-play-list, .module-play-list-content, .module-player-list, .anthology-list-box, .play_list_box, .playlist-list, .playlist_full, .playlist, .play-list, .play_list, .fed-play-item, .hl-plays-list, #playlist, .episode-list"
+      ]
+    }
+  ],
+  "play": [
+    {
+      "op": "follow"
+    },
+    {
+      "op": "first",
+      "branches": [
+        [
+          {
+            "op": "playerAaaa",
+            "var": "player_aaaa",
+            "key": "url"
+          }
+        ],
+        [
+          {
+            "op": "videoUrl"
+          }
+        ]
+      ]
+    }
+  ]
 }

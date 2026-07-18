@@ -1,0 +1,157 @@
+{
+  "format": "anx-rule/2",
+  "id": "dmhy",
+  "name": "动漫花园",
+  "baseUrl": "https://share.dmhy.org",
+  "iconUrl": "https://share.dmhy.org/favicon.ico",
+  "description": "动漫花园 BT 资源站，按动画与字幕组整理磁力资源。",
+  "headers": {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
+    "Accept": "text/html,application/xhtml+xml",
+    "Accept-Language": "zh-CN,zh;q=0.9"
+  },
+  "useWebview": true,
+  "search": [
+    {
+      "op": "first",
+      "branches": [
+        [
+          {
+            "op": "fetch",
+            "url": "/topics/list?keyword={keyword}"
+          }
+        ],
+        [
+          {
+            "op": "sniff",
+            "goal": "html",
+            "url": "/topics/list?keyword={keyword}"
+          }
+        ]
+      ]
+    },
+    {
+      "op": "torrentRecords",
+      "mode": "series",
+      "rowSelector": "#topic_list tbody tr",
+      "titleSelector": "td.title a[target=\"_blank\"]",
+      "titleAttr": "text",
+      "idSelector": "a[href^=\"magnet:\"]",
+      "idAttr": "href",
+      "sourceNameSelector": "td.title span.tag a",
+      "sourceNameAttr": "text",
+      "sizeSelector": "td:nth-child(5)",
+      "sizeAttr": "text",
+      "fansubPattern": {
+        "pattern": "^[\\[【]([^\\]】]+)[\\]】]",
+        "group": 1
+      },
+      "episodePatterns": [
+        {
+          "pattern": "[-–—]\\s*(\\d+(?:\\.\\d+)?)\\s*(?:v\\d+)?\\s*(?:END|FIN|FINAL)?",
+          "group": 1
+        },
+        {
+          "pattern": "第\\s*(\\d+(?:\\.\\d+)?)[話话集]",
+          "group": 1
+        },
+        {
+          "pattern": "EP\\.?\\s*(\\d+(?:\\.\\d+)?)",
+          "group": 1
+        },
+        {
+          "pattern": "S\\d+E(\\d+(?:\\.\\d+)?)",
+          "group": 1
+        }
+      ],
+      "titleStripPatterns": [
+        "[\\[【][^\\]】]*[\\]】]",
+        "[\\(（][^\\)）]*[\\)）]"
+      ],
+      "animeCleanupPatterns": [
+        "[-–—：:]\\s*$",
+        "^\\s*[-–—：:]"
+      ],
+      "animeNameSeparators": [
+        " / "
+      ],
+      "seriesIdTemplate": "{baseUrl:raw}/topics/list?keyword={animeName}",
+      "descriptionTemplate": "{count:raw}个资源 · {fansubs:raw}"
+    }
+  ],
+  "detail": [
+    {
+      "op": "first",
+      "branches": [
+        [
+          {
+            "op": "follow"
+          }
+        ],
+        [
+          {
+            "op": "sniff",
+            "goal": "html",
+            "url": "{seriesId:raw}"
+          }
+        ]
+      ]
+    },
+    {
+      "op": "torrentRecords",
+      "mode": "episodes",
+      "rowSelector": "#topic_list tbody tr",
+      "titleSelector": "td.title a[target=\"_blank\"]",
+      "titleAttr": "text",
+      "idSelector": "a[href^=\"magnet:\"]",
+      "idAttr": "href",
+      "sourceNameSelector": "td.title span.tag a",
+      "sourceNameAttr": "text",
+      "sizeSelector": "td:nth-child(5)",
+      "sizeAttr": "text",
+      "fansubPattern": {
+        "pattern": "^[\\[【]([^\\]】]+)[\\]】]",
+        "group": 1
+      },
+      "episodePatterns": [
+        {
+          "pattern": "[-–—]\\s*(\\d+(?:\\.\\d+)?)\\s*(?:v\\d+)?\\s*(?:END|FIN|FINAL)?",
+          "group": 1
+        },
+        {
+          "pattern": "第\\s*(\\d+(?:\\.\\d+)?)[話话集]",
+          "group": 1
+        },
+        {
+          "pattern": "EP\\.?\\s*(\\d+(?:\\.\\d+)?)",
+          "group": 1
+        },
+        {
+          "pattern": "S\\d+E(\\d+(?:\\.\\d+)?)",
+          "group": 1
+        }
+      ],
+      "titleStripPatterns": [
+        "[\\[【][^\\]】]*[\\]】]",
+        "[\\(（][^\\)）]*[\\)）]"
+      ],
+      "animeCleanupPatterns": [
+        "[-–—：:]\\s*$",
+        "^\\s*[-–—：:]"
+      ],
+      "animeNameSeparators": [
+        " / "
+      ],
+      "expectedAnimeNameQuery": "keyword",
+      "unknownSourceName": "未知字幕组",
+      "episodeIndexMode": "sequence",
+      "episodeNameTemplate": "第{episode:raw}话{sizeSuffix:raw}"
+    }
+  ],
+  "play": [
+    {
+      "op": "template",
+      "value": "{episodeId:raw}"
+    }
+  ]
+}

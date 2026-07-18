@@ -1,8 +1,135 @@
 {
+  "format": "anx-rule/2",
   "id": "ani_pekolove",
   "name": "佩可爱动漫 (peko.love)",
   "baseUrl": "https://ani.pekolove.net",
+  "iconUrl": "https://ani.pekolove.net/wp-content/uploads/cropped-acglogo2-2-32x32.png",
   "description": "佩可爱动漫 (peko.love)，为您提供优质的动漫在线播放与分享。",
-  "encrypted": true,
-  "pack": "bakax://alIZde3Q71ERzMZsLyxPCzh0bGQDJ17GpSOrE_hsO23664KX5G-aD6GCGF80jeS5L5UEyXGNaaGicifyNvQpy4xFwStlfzRgJYYRAMPzMA3GdCftSUbRHXbcWKHTpe75Zembrt6D4X1Tj4VKy-LKh91yNQcU8XxTJZkRtBSBxFlD9pa0e4JyH8oU9ckEXkIKJCJvCaM2R_YCL2Ozy3kW8vZs8o2Q_qbb8jAlQ4Kse4BGnJLFspxgbVVPqiIpW2J9e6AsLPbv_QJjrJEf6VeCGXbAQBzvH086kF3FOvup2_Eebkd6Fx9HUlxV-ubUCvrhe9Promw1DhZox50rMyRZqWzH11_kTCvNDZcFmYqKBXpbvFR4vr7eBiLXegwzF2xxUa8Ty03E8-RnU3xKlnfCw1d9XQUuf0NbxGgRkYueXIBv6X_PVLdEgIplIYxpYWWWpOBQPWCCakiYrs_Z93nDunRTZTRLSAPegVMG4hmk0JCfCyUPuzYdMG7nB5XZw1PD_EennfJfUD1anDlPgbfgPvafBwdARG_876MrjwmhDtNmIHJW-J7T9_QVgLMXFvZHBl9Uh3WYhSG_9z9JmnO6BBtpcneb2Rb6-MF5PyBdXzWqjJ6YhVcBdtgSxB-UgiIBgxkMeYtFAmUeqTp4y5QENS-htJ-KZfxP1x0SLz1rN-U"
+  "directConnection": true,
+  "headers": {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+    "Referer": "https://ani.pekolove.net/"
+  },
+  "search": [
+    {
+      "op": "fetch",
+      "url": "https://ani.pekolove.net/?s={keyword}"
+    },
+    {
+      "op": "first",
+      "branches": [
+        [
+          {
+            "op": "searchList",
+            "selectors": [
+              "a[itemprop=\"name\"]"
+            ]
+          }
+        ],
+        [
+          {
+            "op": "searchList",
+            "selectors": [
+              "a[itemprop=\"name\"][href*=\"/anime/\"]",
+              "a[class^=\"ptl-\"][href*=\"/anime/\"]",
+              "a[class*=\" ptl-\"][href*=\"/anime/\"]"
+            ],
+            "detailPattern": "/anime/"
+          }
+        ]
+      ]
+    }
+  ],
+  "detail": [
+    {
+      "op": "follow"
+    },
+    {
+      "op": "episodes",
+      "roadsXPath": "//div[contains(@class, \"entry-content\")]",
+      "itemsXPath": ".//div[contains(@class, \"wp-block-columns\") and contains(@class, \"is-not-stacked-on-mobile\")]//a[contains(@class, \"pbb-\") and contains(text(), \"集\")]"
+    }
+  ],
+  "play": [
+    {
+      "op": "fetch",
+      "url": "{episodeId:raw}/?_={timestamp:raw}",
+      "headers": {
+        "Cache-Control": "no-cache",
+        "Referer": "https://ani.pekolove.net/"
+      }
+    },
+    {
+      "op": "select",
+      "css": "iframe[data-src*=\"/anime/player/?url=\"]",
+      "attr": "data-src"
+    },
+    {
+      "op": "setVar",
+      "name": "playerUrl",
+      "value": "{url:raw}"
+    },
+    {
+      "op": "fetch",
+      "url": "{playerUrl:raw}",
+      "headers": {
+        "Referer": "{episodeId:raw}"
+      }
+    },
+    {
+      "op": "query",
+      "name": "st",
+      "input": "{playerUrl:raw}",
+      "var": "st"
+    },
+    {
+      "op": "query",
+      "name": "token",
+      "input": "{playerUrl:raw}",
+      "var": "token"
+    },
+    {
+      "op": "fetch",
+      "url": "https://ani.pekolove.net/pvs_pulse.php?st={st}&token={token}",
+      "playbackKeepAlive": true,
+      "intervalSeconds": 10,
+      "expectedBody": "ok",
+      "variables": {
+        "playerUrl": "https://video.pekolove.mov/anime/player/?url={mediaUrl}&st={st}&e={e}&token={token}"
+      },
+      "headers": {
+        "Cache-Control": "no-cache",
+        "Origin": "https://video.pekolove.mov",
+        "X-Requested-With": "XMLHttpRequest",
+        "Referer": "{playerUrl:raw}"
+      }
+    },
+    {
+      "op": "first",
+      "branches": [
+        [
+          {
+            "op": "query",
+            "name": "url",
+            "input": "{playerUrl:raw}"
+          }
+        ],
+        [
+          {
+            "op": "videoUrl"
+          }
+        ]
+      ]
+    },
+    {
+      "op": "setMediaHeaders",
+      "materializeHls": true,
+      "headers": {
+        "Accept": "*/*",
+        "Origin": "https://video.pekolove.mov",
+        "Referer": "{playerUrl:raw}",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36"
+      }
+    }
+  ]
 }

@@ -1,0 +1,129 @@
+{
+  "format": "anx-rule/2",
+  "id": "2kdm",
+  "name": "MuteFun动漫 (2kdm)",
+  "baseUrl": "https://www.2kdm.com",
+  "iconUrl": "https://image1.ljcdn.com/materials/cmsapi/1a5b58f50c23e5475dc6a8bb827035e2.png",
+  "description": "MuteFun动漫网站-无声乐趣，提供日漫、美漫、特摄、日剧等高清在线观看。",
+  "useWebview": true,
+  "headers": {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
+    "Referer": "https://www.2kdm.com/"
+  },
+  "search": [
+    {
+      "op": "first",
+      "branches": [
+        [
+          {
+            "op": "maccmsSuggest",
+            "detailUrlTemplate": "/voddetail/{id}.html",
+            "verify": true
+          }
+        ],
+        [
+          {
+            "op": "fetch",
+            "url": "/vodsearch/{keyword}-------------.html"
+          },
+          {
+            "op": "searchList",
+            "selectors": [
+              ".module-card-item, .module-poster-item, .module-search-item, a[href*=\"/voddetail/\"]"
+            ]
+          }
+        ]
+      ]
+    }
+  ],
+  "detail": [
+    {
+      "op": "follow"
+    },
+    {
+      "op": "episodes",
+      "listSelectors": [
+        ".module-play-list"
+      ],
+      "tabSelectors": [
+        ".module-tab-item"
+      ]
+    }
+  ],
+  "play": [
+    {
+      "op": "follow"
+    },
+    {
+      "op": "setVar",
+      "name": "playerHtml",
+      "value": "{url:raw}"
+    },
+    {
+      "op": "playerAaaa",
+      "var": "player_aaaa",
+      "key": "url"
+    },
+    {
+      "op": "setVar",
+      "name": "mediaToken",
+      "value": "{url:raw}"
+    },
+    {
+      "op": "template",
+      "value": "{playerHtml:raw}"
+    },
+    {
+      "op": "regex",
+      "pattern": "\"from\"\\s*:\\s*\"([^\"]+)\"",
+      "group": 1
+    },
+    {
+      "op": "setVar",
+      "name": "playerFrom",
+      "value": "{url:raw}"
+    },
+    {
+      "op": "template",
+      "value": "{playerHtml:raw}"
+    },
+    {
+      "op": "regex",
+      "pattern": "\"id\"\\s*:\\s*\"([^\"]+)\"",
+      "group": 1
+    },
+    {
+      "op": "setVar",
+      "name": "playerId",
+      "value": "{url:raw}"
+    },
+    {
+      "op": "first",
+      "branches": [
+        [
+          {
+            "op": "fetch",
+            "url": "/addons/dp/player/dp.php?key=0&from={playerFrom}&id={playerId}&api=&url={mediaToken}&jump="
+          },
+          {
+            "op": "videoUrl"
+          }
+        ],
+        [
+          {
+            "op": "sniff",
+            "goal": "video",
+            "url": "{episodeId:raw}"
+          }
+        ]
+      ]
+    },
+    {
+      "op": "setMediaHeaders",
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
+        "Accept": "*/*"
+      }
+    }
+  ]
+}

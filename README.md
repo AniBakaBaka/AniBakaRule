@@ -1,40 +1,33 @@
-# AniBaka 规则订阅中心
+# AniBaka 规则目录
 
-本目录提供动漫网站解析规则，使用 `rule/index.json` 作为订阅入口。
+本目录保存 Baka 使用的声明式视频源规则，`index.json` 是规则订阅索引。规则负责描述第三方站点的搜索、详情、选集和播放地址解析流程；应用本身不托管规则所访问的视频内容。
 
-> **说明**：各规则文件（如 `yinghua289.json`）为 JSON 格式，仅展示基本信息
-> （`id` / `name` / `baseUrl` / `description`）；完整解析配置已加密放入 `pack`
-> 字段（`bakax://` = gzip + AES-256-CBC），无法直接阅读或复制使用。
-> 请在 AniBaka App 内的「规则库」中一键安装，App 会自动解密。
+## 文件格式
 
-## 规则列表
+当前仓库中的规则以可阅读的 `anx-rule/2` JSON 保存，常见字段包括：
 
-| 规则名称 | 标识符 (Key) | 目标网址 (Site) | 规则文件 (Rule File) |
-| :--- | :--- | :--- | :--- |
-| 七色番 | `7sefun` | [https://www.7sefun.top/](https://www.7sefun.top/) | [7sefun.json](./7sefun.json) |
-| OmoFun Enlienli | `enlienli` | [https://enlienli.link/](https://enlienli.link/) | [enlienli.json](./enlienli.json) |
-| EACG动漫 | `eacg1` | [https://www.eacg1.com/](https://www.eacg1.com/) | [eacg1.json](./eacg1.json) |
-| 次元番 | `cyfz` | [https://www.cyfz.top/](https://www.cyfz.top/) | [cyfz.json](./cyfz.json) |
-| 去看吧 (QuKanBa) | `11kt` | [https://11kt.net/](https://11kt.net/) | [11kt.json](./11kt.json) |
-| 叽哔动漫网 | `jibi` | [https://www.jibi.cc/](https://www.jibi.cc/) | [jibi.json](./jibi.json) |
-| 影视森林 | `hc34567` | [https://www.hc34567.com/](https://www.hc34567.com/) | [hc34567.json](./hc34567.json) |
-| 佩可爱动漫 (peko.love) | `ani_pekolove` | [https://ani.pekolove.net/](https://ani.pekolove.net/) | [ani_pekolove.json](./ani_pekolove.json) |
-| 路漫漫动漫 | `lm6` | [https://m.lm6.net/](https://m.lm6.net/) | [lm6.json](./lm6.json) |
-| 米粒米粒 (Milimili) | `milimili` | [https://milimili.nl/](https://milimili.nl/) | [milimili.json](./milimili.json) |
-| 喵物次元 | `mwcy` | [https://www.mwcy.net/](https://www.mwcy.net/) | [mwcy.json](./mwcy.json) |
-| E站弹幕网 | `ezdmw` | [https://www.ezdmw.org/](https://www.ezdmw.org/) | [ezdmw.json](./ezdmw.json) |
-| 嗷呜动漫 | `aowu` | [https://www.aowu.tv/](https://www.aowu.tv/) | [aowu.json](./aowu.json) |
-| AkiAnime | `akianime` | [https://www.akianime.com/](https://www.akianime.com/) | [akianime.json](./akianime.json) |
-| 樱之空动漫 | `skr_skr2` | [https://skr.skr2.cc:666/](https://skr.skr2.cc:666/) | [skr_skr2.json](./skr_skr2.json) |
-| 樱花动漫 (Yinghua) | `yinghua289` | [https://www.yinghua289.com/](https://www.yinghua289.com/) | [yinghua289.json](./yinghua289.json) |
-| 番茶屋 | `fcwdm` | [https://www.fcwdm.com/](https://www.fcwdm.com/) | [fcwdm.json](./fcwdm.json) |
-| TvTFun | `tvtfun` | [https://www.tvtfun.net/](https://www.tvtfun.net/) | [tvtfun.json](./tvtfun.json) |
-| MiFun | `ios_mifun` | [https://ios.mifun.org/](https://ios.mifun.org/) | [ios_mifun.json](./ios_mifun.json) |
-| omofun动漫视频网 (omofun) | `omofun03` | [https://omofun03.top/](https://omofun03.top/) | [omofun03.json](./omofun03.json) |
-| 樱花风车动漫 (605dm) | `605dm` | [https://www.605dm.com/](https://www.605dm.com/) | [605dm.json](./605dm.json) |
-| 嘀嗒影视 (Dida HD) | `didahd` | [https://www.didahd.xyz/](https://www.didahd.xyz/) | [didahd.json](./didahd.json) |
-| 第一动漫 (1anime.me) | `1anime2026` | [https://1anime2026.cc/](https://1anime2026.cc/) | [1anime2026.json](./1anime2026.json) |
-| Hanime1 | `hanime1` | [https://hanime1.me/](https://hanime1.me/) | [hanime1.json](./hanime1.json) |
-| Hanime1.me (Mirror) | `hanimeone` | [https://hanimeone.me/](https://hanimeone.me/) | [hanimeone.json](./hanimeone.json) |
+- `id`、`name`、`baseUrl`、`description`：规则基本信息。
+- `headers`：访问目标站点所需的公开请求头模板。
+- `search`、`detail`、`play`：由规则引擎执行的声明式处理管线。
+- `iconUrl`：目标站点的图标地址。
 
+规则引擎仍兼容由 `SourceCodec` 处理的封装格式，但仓库中的 JSON 规则不应被描述为不可审计的私有组件。修改规则时请保持配置可读，并避免写入个人 Cookie、登录 Token、签名后的临时媒体地址或其他凭据。
 
+## 本地使用
+
+发布构建只内置 `pubspec.yaml` 中明确列出的基础规则，其余规则通过订阅中心获取。开发环境会优先发现本仓库的 `index.json`，便于调试尚未发布的规则。
+
+真实站点测试默认跳过，可按项目根目录 README 的说明显式启用。验证规则时至少检查：
+
+1. 搜索结果可解析；
+2. 详情与选集顺序正确；
+3. 播放流程得到真实媒体地址；
+4. HLS 场景下实际媒体分片可访问，而不只是清单返回成功。
+
+## 贡献与责任边界
+
+- 只提交自行编写、来源清楚且允许公开分发的规则。
+- 不绕过付费、账号权限或数字版权管理措施。
+- 不提交用户数据、会话信息、私有接口密钥或短期签名参数。
+- 第三方站点的内容、接口和服务条款由相应站点负责，贡献者应确认其修改符合适用法律及目标站点条款。
+- 站点结构随时可能变化；索引中的介绍和可用性不构成项目方背书。

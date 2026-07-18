@@ -1,8 +1,66 @@
 {
+  "format": "anx-rule/2",
   "id": "hc34567",
   "name": "影视森林",
   "baseUrl": "https://www.hc34567.com",
+  "iconUrl": "https://www.hc34567.com/favicon.ico",
   "description": "影视森林聚合全网最新的电影、电视剧、动漫、综艺等高清资源，供网友免费在线观看 and 下载。",
-  "encrypted": true,
-  "pack": "bakax://uwlHLRj-DVWCT3ZZRoggtO83COpnWqF-igVzgv2x9P7bEPZZvUhplaP4A_EvqQUJheRjZ7xED0qU6ZH_vCjlIDXjkXvU26w1MgcLcD9XcOteZDfp701YW8jbBnX7bh67GMQLzsbQA2IzN3QyVe9rU2ZoO5oMofCVaE3GK-Cr4BrP5QieL72LEprNVv9AfsUmX7gPAM1z66N7W5n28x1TqiQ6Xg9eoJk3UTKqPmKyU6Q_RwqKMyMi-H1RdVoBDRmkMzplemwHSfkTXS68xS97RTfY2v1RoewyuPQjW2xeQEM5aIlUJKWHykl6gdiLmdbaVu4prQlUSupzoJxq6WXJmAeUOujqMO9mpcisPJ93MRfR62wtMEYdNOCyX0mspIe1yaxz-d1f6xFbLlpGKHB35yTwTKbmkGnn5dj1IRGcivkdaikrBfCXxgxFPYvYhZRN3JSSOsslJibzHCKElUZG9PqhM5xt57FBA9vHPnFKZTdKdQ6A3AzFU-9JToBSgSd0uPNRIRtjyG4tFxf0tkJcBsl4h47mbte1mcR7wMpHhEgYw6pZK57tEj2HCUdhGbPr7sP6GC1MkA56f6hpzCtUojS8hGk0JsUaNXmzmfOUNrjyvvb0ROkNCU8gAK5ruP3TbzGFcMxoSd5D8OQFhCHn0gSBE91x94lWSdExROH1aNw4E27nZCCFQyLk6DuuY2KzV6D2Juau0tbsecvvk419wH0tHBYTuXAx1XZzJYmNR_IGJrUZkXgGwx_TDQhFSQCbJzm4Z79Tbqhj_NtqUxgPqvETe5RRqZAaeY8xy-PGdR_9aOvafZ0KWiAkW7BGqyyVZ2rA2lDxQ66wwfAE5XzAae1eCUM1FZ4QaiQrJILMcCprf6tAbU7BwupLfKmTNeP5n9fP0ffxd-VuQDxrcQgerlM_kk3wb9ArD18G5w68g0bFhs5yS7jEtmsy2roi3wb0_OEXLrp6kDemrM_OUjm2o0jHNGyEeCIOf93NXoqkonU"
+  "headers": {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+    "Referer": "https://www.hc34567.com/"
+  },
+  "search": [
+    {
+      "op": "first",
+      "branches": [
+        [
+          {
+            "op": "maccmsSuggest",
+            "detailUrlTemplate": "/hcvoddetail/{id}.html"
+          }
+        ],
+        [
+          {
+            "op": "searchList",
+            "selectors": [
+              ".myui-vodlist__media li, .myui-vodlist__thumb"
+            ]
+          }
+        ]
+      ]
+    }
+  ],
+  "detail": [
+    {
+      "op": "follow"
+    },
+    {
+      "op": "episodes",
+      "listSelectors": [
+        ".stui-content__playlist, .myui-content__playlist, .myui-content__list, .module-play-list, .module-play-list-content, .module-player-list, .anthology-list-box, .play_list_box, .playlist-list, .playlist_full, .playlist, .play-list, .play_list, .fed-play-item, .hl-plays-list, #playlist, .episode-list"
+      ]
+    }
+  ],
+  "play": [
+    {
+      "op": "follow"
+    },
+    {
+      "op": "first",
+      "branches": [
+        [
+          {
+            "op": "playerAaaa",
+            "var": "player_aaaa",
+            "key": "url"
+          }
+        ],
+        [
+          {
+            "op": "videoUrl"
+          }
+        ]
+      ]
+    }
+  ]
 }
