@@ -1,33 +1,43 @@
-# AniBaka 规则目录
+# AniBaka 规则库
 
-本目录保存 Baka 使用的声明式视频源规则，`index.json` 是规则订阅索引。规则负责描述第三方站点的搜索、详情、选集和播放地址解析流程；应用本身不托管规则所访问的视频内容。
+AniBaka 动漫源规则仓库，订阅索引见 [`index.json`](index.json)。
 
-## 文件格式
+## 规则列表（35）
 
-当前仓库中的规则以可阅读的 `anx-rule/2` JSON 保存，常见字段包括：
-
-- `id`、`name`、`baseUrl`、`description`：规则基本信息。
-- `headers`：访问目标站点所需的公开请求头模板。
-- `search`、`detail`、`play`：由规则引擎执行的声明式处理管线。
-- `iconUrl`：目标站点的图标地址。
-
-规则引擎仍兼容由 `SourceCodec` 处理的封装格式，但仓库中的 JSON 规则不应被描述为不可审计的私有组件。修改规则时请保持配置可读，并避免写入个人 Cookie、登录 Token、签名后的临时媒体地址或其他凭据。
-
-## 本地使用
-
-发布构建只内置 `pubspec.yaml` 中明确列出的基础规则，其余规则通过订阅中心获取。开发环境会优先发现本仓库的 `index.json`，便于调试尚未发布的规则。
-
-真实站点测试默认跳过，可按项目根目录 README 的说明显式启用。验证规则时至少检查：
-
-1. 搜索结果可解析；
-2. 详情与选集顺序正确；
-3. 播放流程得到真实媒体地址；
-4. HLS 场景下实际媒体分片可访问，而不只是清单返回成功。
-
-## 贡献与责任边界
-
-- 只提交自行编写、来源清楚且允许公开分发的规则。
-- 不绕过付费、账号权限或数字版权管理措施。
-- 不提交用户数据、会话信息、私有接口密钥或短期签名参数。
-- 第三方站点的内容、接口和服务条款由相应站点负责，贡献者应确认其修改符合适用法律及目标站点条款。
-- 站点结构随时可能变化；索引中的介绍和可用性不构成项目方背书。
+| 规则 | 标签 | 配置 |
+| --- | --- | --- |
+| [七色番](https://www.7sefun.top/) | 少广告、高清 | [`7sefun.json`](7sefun.json) |
+| [OmoFun Enlienli](https://enlienli.link/) | 少广告、高清 | [`enlienli.json`](enlienli.json) |
+| [EACG动漫](https://www.eacg1.com/) | 有广告、高清 | [`eacg1.json`](eacg1.json) |
+| [次元番](https://www.cyfz.top/) | 无广告、高清 | [`cyfz.json`](cyfz.json) |
+| [去看吧 (QuKanBa)](https://11kt.net/) | 无广告、高清 | [`11kt.json`](11kt.json) |
+| [叽哔动漫网](https://www.jibi.cc/) | 有广告、高清 | [`jibi.json`](jibi.json) |
+| [影视森林](https://www.hc34567.com/) | 有广告、高清 | [`hc34567.json`](hc34567.json) |
+| [佩可爱动漫 (peko.love)](https://ani.pekolove.net/) | 有广告、高清 | [`ani_pekolove.json`](ani_pekolove.json) |
+| [路漫漫动漫](https://m.lm6.net/) | 少广告、高清 | [`lm6.json`](lm6.json) |
+| [打驴动漫 (dalvdm)](https://www.dalvdm.cc/) | 无广告、高清 | [`dalvdm.json`](dalvdm.json) |
+| [喵物次元](https://www.mwcy.net/) | 无广告、高清 | [`mwcy.json`](mwcy.json) |
+| [嗷呜动漫](https://www.aowu.tv/) | 无广告、高清 | [`aowu.json`](aowu.json) |
+| [AkiAnime](https://www.akianime.com/) | 无广告、超清 | [`akianime.json`](akianime.json) |
+| [樱之空动漫](https://skr.skr2.cc:666/) | 少广告、高清 | [`skr_skr2.json`](skr_skr2.json) |
+| [樱花动漫 (Yinghua)](https://www.yinghua289.com/) | 少广告、高清 | [`yinghua289.json`](yinghua289.json) |
+| [Animoe动漫](https://animoe.org/) | 无广告、高清 | [`animoe.json`](animoe.json) |
+| [TvTFun](https://www.tvtfun.net/) | 少广告、高清 | [`tvtfun.json`](tvtfun.json) |
+| [MiFun](https://ios.mifun.org/) | 无广告、高清 | [`ios_mifun.json`](ios_mifun.json) |
+| [omofun动漫视频网](https://omofun03.top/) | 少广告、高清 | [`omofun03.json`](omofun03.json) |
+| [4K动漫](https://cn.agekkkk.com/) | 少广告、超清 | [`agekkkk.json`](agekkkk.json) |
+| [嘀嗒影视 (Dida HD)](https://www.didahd.xyz/) | 少广告、超清 | [`didahd.json`](didahd.json) |
+| [Anime7 动画线上看](https://anime7.top/) | 少广告、高清 | [`anime7.json`](anime7.json) |
+| [花子动漫](https://www.huazidm.com/) | 少广告、高清 | [`huazidm.json`](huazidm.json) |
+| [Hanime1.me (Mirror)](https://hanimeone.me/) | 无广告、高清 | [`hanimeone.json`](hanimeone.json) |
+| [GirigiriLove](https://ani.girigirilove.com/) | 无广告、高清 | [`girigirilove.json`](girigirilove.json) |
+| [Xifanacg](https://anime.xifanacg.com/) | 少广告、高清 | [`xifanacg.json`](xifanacg.json) |
+| [AGE动漫](https://www.agedm.io/) | 少广告、高清 | [`age.json`](age.json) |
+| [西瓜卡通](https://www.xgcartoon.com/) | 无广告、高清 | [`xigua.json`](xigua.json) |
+| [MuteFun动漫 (2kdm)](https://www.2kdm.com/) | 无广告、高清 | [`2kdm.json`](2kdm.json) |
+| [咕咕番](https://www.gugu3.com/) | 少广告、高清 | [`gugu.json`](gugu.json) |
+| [Anime1](https://anime1.me/) | 无广告、高清 | [`anime1.json`](anime1.json) |
+| [Bimiacg](https://www.bimiacg14.net/) | 有广告、高清 | [`bimiacg.json`](bimiacg.json) |
+| [動漫花園](https://share.dmhy.org/) | 无广告、高清 | [`dmhy.json`](dmhy.json) |
+| [蜜柑计划](https://mikanani.me/) | 无广告、高清 | [`mikan.json`](mikan.json) |
+| [青空次元 (Sorani)](https://www.sorani.net/) | 无广告、高清 | [`sorani.json`](sorani.json) |
