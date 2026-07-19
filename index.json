@@ -408,7 +408,7 @@
       "key": "xifanacg",
       "title": "Xifanacg",
       "by": "anibaka",
-      "rev": 2,
+      "rev": 3,
       "intro": "Xifanacg动漫视频源，源网址anime.xifanacg.com（原内置源规则化）。",
       "site": "https://anime.xifanacg.com/",
       "badge": "https://anime.xifanacg.com/template/dsn2/static/img/fav.png",
@@ -562,6 +562,22 @@
         "高清"
       ],
       "ref": "sorani.json",
+      "engine": "anx-rule/2"
+    },
+    {
+      "key": "cycani",
+      "title": "Cycani 次元城",
+      "by": "anibaka",
+      "rev": 2,
+      "intro": "Cycani 次元城动画视频源。",
+      "site": "https://www.cycani.org/",
+      "badge": "https://www.cycity.pro/site.webp",
+      "labels": [
+        "anime",
+        "无广告",
+        "高清"
+      ],
+      "ref": "cycani.json",
       "engine": "anx-rule/2"
     }
   ]
