@@ -2,7 +2,7 @@
   "format": "anx-rulehub/2",
   "title": "AniBaka 规则库",
   "intro": "提供各动漫站点的搜索、详情、播放解析规则，支持在 App 内一键安装。",
-  "synced": "2026-07-17T14:26:40.214517Z",
+  "synced": "2026-07-22T13:45:00.000Z",
   "entries": [
     {
       "key": "7sefun",
@@ -21,19 +21,19 @@
       "engine": "anx-rule/2"
     },
     {
-      "key": "enlienli",
-      "title": "OmoFun Enlienli",
+      "key": "4kcz",
+      "title": "厂长资源",
       "by": "anibaka",
-      "rev": 4,
-      "intro": "Omofun是一个专注于动漫资源分享和在线播放的平台，涵盖日本新番、经典动漫作品以及一些国产动画和剧场版电影。",
-      "site": "https://enlienli.link/",
-      "badge": "https://enlienli.link/template/mxpro/mxtheme/images/favicon.png",
+      "rev": 1,
+      "intro": "厂长资源提供电影、剧集、番剧和动漫剧场版等高清影视资源在线观看。",
+      "site": "https://www.4kcz.com/",
+      "badge": "https://gimg1.baidu.com/gimg/app=2001&n=0&g=0n&fmt=png&src=img.czzy66.com/2020/05/cropped-90b07fe57d6142-192x192.png",
       "labels": [
         "anime",
-        "少广告",
-        "高清"
+        "有广告",
+        "超清"
       ],
-      "ref": "enlienli.json",
+      "ref": "4kcz.json",
       "engine": "anx-rule/2"
     },
     {
@@ -290,22 +290,6 @@
         "高清"
       ],
       "ref": "ios_mifun.json",
-      "engine": "anx-rule/2"
-    },
-    {
-      "key": "omofun03",
-      "title": "omofun动漫视频网 (omofun)",
-      "by": "auto-generator",
-      "rev": 3,
-      "intro": "Omofun是一个专注于动漫资源分享和在线播放的平台，提供丰富的日本新番、经典动漫及剧场版资源。",
-      "site": "https://omofun03.top/",
-      "badge": "https://omofun03.top/template/mxpro/mxtheme/images/favicon.png",
-      "labels": [
-        "anime",
-        "少广告",
-        "高清"
-      ],
-      "ref": "omofun03.json",
       "engine": "anx-rule/2"
     },
     {
@@ -568,7 +552,7 @@
       "key": "cycani",
       "title": "Cycani 次元城",
       "by": "anibaka",
-      "rev": 2,
+      "rev": 3,
       "intro": "Cycani 次元城动画视频源。",
       "site": "https://www.cycani.org/",
       "badge": "https://www.cycity.pro/site.webp",
@@ -578,6 +562,70 @@
         "高清"
       ],
       "ref": "cycani.json",
+      "engine": "anx-rule/2"
+    },
+    {
+      "key": "dm84",
+      "title": "DM84",
+      "by": "anibaka",
+      "rev": 1,
+      "intro": "DM84 动漫视频源，源网站 dm84.net（当前入口 dmbus.cc）。",
+      "site": "https://dmbus.cc/",
+      "badge": "https://dmbus.cc/favicon.ico",
+      "labels": [
+        "anime",
+        "少广告",
+        "高清"
+      ],
+      "ref": "dm84.json",
+      "engine": "anx-rule/2"
+    },
+    {
+      "key": "fsdm02",
+      "title": "番薯动漫",
+      "by": "anibaka",
+      "rev": 1,
+      "intro": "番薯动漫视频源",
+      "site": "https://www.fsdm02.com/",
+      "badge": "https://p0.ssl.qhimg.com/t016852bd7df93fb9de.png",
+      "labels": [
+        "anime",
+        "无广告",
+        "高清"
+      ],
+      "ref": "fsdm02.json",
+      "engine": "anx-rule/2"
+    },
+    {
+      "key": "jcydmz",
+      "title": "囧次元",
+      "by": "anibaka",
+      "rev": 1,
+      "intro": "囧次元动漫网页版视频源。",
+      "site": "https://www.jcydmz.com/",
+      "badge": "https://www.jcydmz.com/favicon.ico",
+      "labels": [
+        "anime",
+        "少广告",
+        "高清"
+      ],
+      "ref": "jcydmz.json",
+      "engine": "anx-rule/2"
+    },
+    {
+      "key": "mgnacg",
+      "title": "Mgnacg 橘子动漫",
+      "by": "anibaka",
+      "rev": 1,
+      "intro": "Mgnacg 橘子动漫视频源",
+      "site": "https://www.mgnacg.com/",
+      "badge": "https://r2img.nanoacg.com/favicon.png",
+      "labels": [
+        "anime",
+        "少广告",
+        "高清"
+      ],
+      "ref": "mgnacg.json",
       "engine": "anx-rule/2"
     }
   ]

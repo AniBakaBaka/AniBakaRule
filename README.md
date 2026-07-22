@@ -2,12 +2,12 @@
 
 AniBaka 动漫源规则仓库，订阅索引见 [`index.json`](index.json)。
 
-## 规则列表（35）
+## 规则列表（39）
 
 | 规则 | 标签 | 配置 |
 | --- | --- | --- |
 | [七色番](https://www.7sefun.top/) | 少广告、高清 | [`7sefun.json`](7sefun.json) |
-| [OmoFun Enlienli](https://enlienli.link/) | 少广告、高清 | [`enlienli.json`](enlienli.json) |
+| [厂长资源](https://www.4kcz.com/) | 有广告、超清 | [`4kcz.json`](4kcz.json) |
 | [EACG动漫](https://www.eacg1.com/) | 有广告、高清 | [`eacg1.json`](eacg1.json) |
 | [次元番](https://www.cyfz.top/) | 无广告、高清 | [`cyfz.json`](cyfz.json) |
 | [去看吧 (QuKanBa)](https://11kt.net/) | 无广告、高清 | [`11kt.json`](11kt.json) |
@@ -24,7 +24,6 @@ AniBaka 动漫源规则仓库，订阅索引见 [`index.json`](index.json)。
 | [Animoe动漫](https://animoe.org/) | 无广告、高清 | [`animoe.json`](animoe.json) |
 | [TvTFun](https://www.tvtfun.net/) | 少广告、高清 | [`tvtfun.json`](tvtfun.json) |
 | [MiFun](https://ios.mifun.org/) | 无广告、高清 | [`ios_mifun.json`](ios_mifun.json) |
-| [omofun动漫视频网](https://omofun03.top/) | 少广告、高清 | [`omofun03.json`](omofun03.json) |
 | [4K动漫](https://cn.agekkkk.com/) | 少广告、超清 | [`agekkkk.json`](agekkkk.json) |
 | [嘀嗒影视 (Dida HD)](https://www.didahd.xyz/) | 少广告、超清 | [`didahd.json`](didahd.json) |
 | [Anime7 动画线上看](https://anime7.top/) | 少广告、高清 | [`anime7.json`](anime7.json) |
@@ -41,3 +40,8 @@ AniBaka 动漫源规则仓库，订阅索引见 [`index.json`](index.json)。
 | [動漫花園](https://share.dmhy.org/) | 无广告、高清 | [`dmhy.json`](dmhy.json) |
 | [蜜柑计划](https://mikanani.me/) | 无广告、高清 | [`mikan.json`](mikan.json) |
 | [青空次元 (Sorani)](https://www.sorani.net/) | 无广告、高清 | [`sorani.json`](sorani.json) |
+| [Cycani 次元城](https://www.cycani.org/) | 无广告、高清 | [`cycani.json`](cycani.json) |
+| [DM84](https://dmbus.cc/) | 少广告、高清 | [`dm84.json`](dm84.json) |
+| [番薯动漫](https://www.fsdm02.com/) | 无广告、高清 | [`fsdm02.json`](fsdm02.json) |
+| [囧次元](https://www.jcydmz.com/) | 少广告、高清 | [`jcydmz.json`](jcydmz.json) |
+| [Mgnacg 橘子动漫](https://www.mgnacg.com/) | 少广告、高清 | [`mgnacg.json`](mgnacg.json) |

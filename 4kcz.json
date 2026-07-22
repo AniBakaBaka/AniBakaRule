@@ -1,0 +1,59 @@
+{
+  "format": "anx-rule/2",
+  "id": "4kcz",
+  "name": "厂长资源",
+  "baseUrl": "https://www.4kcz.com",
+  "iconUrl": "https://gimg1.baidu.com/gimg/app=2001&n=0&g=0n&fmt=png&src=img.czzy66.com/2020/05/cropped-90b07fe57d6142-192x192.png",
+  "description": "厂长资源提供电影、剧集、番剧和动漫剧场版等高清影视资源在线观看。",
+  "headers": {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+    "Accept": "*/*",
+    "Referer": "https://www.4kcz.com/"
+  },
+  "useWebview": true,
+  "search": [
+    {
+      "op": "sniff",
+      "url": "/boss1O1?q={keyword}",
+      "goal": "html",
+      "readyContains": [
+        "search_list",
+        "/movie/"
+      ],
+      "timeoutMs": 30000,
+      "settleMs": 500
+    },
+    {
+      "op": "searchList",
+      "selectors": [
+        ".search_list li"
+      ],
+      "detailPattern": "/movie/"
+    }
+  ],
+  "detail": [
+    {
+      "op": "sniff",
+      "goal": "html",
+      "readyContains": [
+        "paly_list_btn",
+        "/v_play/"
+      ],
+      "timeoutMs": 30000,
+      "settleMs": 500
+    },
+    {
+      "op": "episodes",
+      "listSelectors": [
+        ".paly_list_btn"
+      ]
+    }
+  ],
+  "play": [
+    {
+      "op": "sniff",
+      "goal": "video",
+      "timeoutMs": 30000
+    }
+  ]
+}

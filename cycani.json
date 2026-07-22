@@ -15,38 +15,38 @@
       "branches": [
         [
           {
+            "op": "sniff",
+            "goal": "html",
+            "url": "/index.php/ajax/suggest?mid=1&wd={keyword}&limit=20",
+            "readyContains": [
+              "\"list\""
+            ],
+            "rejectContains": [
+              "altcha-widget",
+              "aegis_altcha"
+            ],
+            "timeoutMs": 30000,
+            "settleMs": 0
+          },
+          {
+            "op": "select",
+            "css": "body",
+            "attr": "text"
+          },
+          {
+            "op": "jsonSeries",
+            "listPath": "list",
+            "detailUrlTemplate": "/bangumi/{id}.html"
+          }
+        ],
+        [
+          {
             "op": "maccmsSuggest",
             "verify": true,
             "headers": {
               "Accept": "application/json, text/javascript, */*; q=0.01",
               "Referer": "https://www.cycani.org/"
             },
-            "detailUrlTemplate": "/bangumi/{id}.html"
-          }
-        ],
-        [
-          {
-            "op": "sniff",
-            "goal": "html",
-            "url": "/index.php/ajax/suggest?mid=1&wd={keyword}&limit=20",
-            "readyContains": [
-              "<pre>"
-            ],
-            "rejectContains": [
-              "altcha-widget",
-              "aegis_altcha"
-            ],
-            "timeoutMs": 60000,
-            "settleMs": 0
-          },
-          {
-            "op": "select",
-            "css": "pre",
-            "attr": "text"
-          },
-          {
-            "op": "jsonSeries",
-            "listPath": "list",
             "detailUrlTemplate": "/bangumi/{id}.html"
           }
         ]
