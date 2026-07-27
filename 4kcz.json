@@ -53,6 +53,7 @@
     {
       "op": "sniff",
       "goal": "video",
+      "followEmbeddedPlayer": true,
       "timeoutMs": 30000
     }
   ]

@@ -2,7 +2,7 @@
   "format": "anx-rulehub/2",
   "title": "AniBaka 规则库",
   "intro": "提供各动漫站点的搜索、详情、播放解析规则，支持在 App 内一键安装。",
-  "synced": "2026-07-22T13:45:00.000Z",
+  "synced": "2026-07-27T05:05:00.000Z",
   "entries": [
     {
       "key": "7sefun",
@@ -24,7 +24,7 @@
       "key": "4kcz",
       "title": "厂长资源",
       "by": "anibaka",
-      "rev": 1,
+      "rev": 2,
       "intro": "厂长资源提供电影、剧集、番剧和动漫剧场版等高清影视资源在线观看。",
       "site": "https://www.4kcz.com/",
       "badge": "https://gimg1.baidu.com/gimg/app=2001&n=0&g=0n&fmt=png&src=img.czzy66.com/2020/05/cropped-90b07fe57d6142-192x192.png",
@@ -552,7 +552,7 @@
       "key": "cycani",
       "title": "Cycani 次元城",
       "by": "anibaka",
-      "rev": 3,
+      "rev": 4,
       "intro": "Cycani 次元城动画视频源。",
       "site": "https://www.cycani.org/",
       "badge": "https://www.cycity.pro/site.webp",
