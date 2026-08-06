@@ -2,7 +2,7 @@
   "format": "anx-rulehub/2",
   "title": "AniBaka 规则库",
   "intro": "提供各动漫站点的搜索、详情、播放解析规则，支持在 App 内一键安装。",
-  "synced": "2026-07-27T05:05:00.000Z",
+  "synced": "2026-08-06T11:32:35.000Z",
   "entries": [
     {
       "key": "7sefun",
@@ -136,7 +136,7 @@
       "key": "lm6",
       "title": "路漫漫动漫",
       "by": "anibaka",
-      "rev": 4,
+      "rev": 5,
       "intro": "路漫漫在线动漫提供日本动漫、国产动漫、动画电影等免费在线观看。",
       "site": "https://m.lm6.net/",
       "badge": "https://m.lm6.net/template/jable/statics/icon/favicon-32x32.png",
@@ -181,19 +181,18 @@
       "engine": "anx-rule/2"
     },
     {
-      "key": "aowu",
-      "title": "嗷呜动漫",
+      "key": "aniwatch",
+      "title": "AniWatch 动漫",
       "by": "anibaka",
-      "rev": 5,
-      "intro": "嗷呜动漫-幻想轻音部",
-      "site": "https://www.aowu.tv/",
-      "badge": "https://www.aowu.tv/favicon.ico",
+      "rev": 1,
+      "intro": "AniWatch 动漫规则，提供高清在线动漫搜索、详情与播放解析。",
+      "site": "https://www.aniwatch.top/",
+      "badge": "https://www.aniwatch.top/favicon.ico",
       "labels": [
         "anime",
-        "无广告",
         "高清"
       ],
-      "ref": "aowu.json",
+      "ref": "aniwatch.json",
       "engine": "anx-rule/2"
     },
     {
@@ -229,22 +228,6 @@
       "engine": "anx-rule/2"
     },
     {
-      "key": "yinghua289",
-      "title": "樱花动漫 (Yinghua)",
-      "by": "auto-generator",
-      "rev": 3,
-      "intro": "樱花动漫致力于为所有动漫迷们免费提供最新最快的高清动画下载及在线观看资源。",
-      "site": "https://www.yinghua289.com/",
-      "badge": "https://www.yinghua289.com/statics/img/favicon.ico",
-      "labels": [
-        "anime",
-        "少广告",
-        "高清"
-      ],
-      "ref": "yinghua289.json",
-      "engine": "anx-rule/2"
-    },
-    {
       "key": "animoe",
       "title": "Animoe动漫",
       "by": "auto-generator",
@@ -263,11 +246,11 @@
     {
       "key": "tvtfun",
       "title": "TvTFun",
-      "by": "auto-generator",
-      "rev": 5,
-      "intro": "TvTFun，番剧自由，从这里开始！",
-      "site": "https://www.tvtfun.net/",
-      "badge": "https://www.tvtfun.net/favicon-32x32.png",
+      "by": "anibaka",
+      "rev": 6,
+      "intro": "TvTFun 动漫视频规则，支持搜索、详情与播放解析。",
+      "site": "https://tvtfun.net/",
+      "badge": "https://tvtfun.net/favicon.ico",
       "labels": [
         "anime",
         "少广告",
@@ -626,6 +609,22 @@
         "高清"
       ],
       "ref": "mgnacg.json",
+      "engine": "anx-rule/2"
+    },
+    {
+      "key": "moonci",
+      "title": "Moonci",
+      "by": "anibaka",
+      "rev": 1,
+      "intro": "Moonci 动漫视频规则，支持搜索、详情与播放解析。",
+      "site": "https://www.moonci.com/",
+      "badge": "https://www.moonci.com/favicon.ico",
+      "labels": [
+        "anime",
+        "无广告",
+        "高清"
+      ],
+      "ref": "moonci.json",
       "engine": "anx-rule/2"
     }
   ]

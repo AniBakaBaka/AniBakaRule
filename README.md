@@ -17,10 +17,9 @@ AniBaka 动漫源规则仓库，订阅索引见 [`index.json`](index.json)。
 | [路漫漫动漫](https://m.lm6.net/) | 少广告、高清 | [`lm6.json`](lm6.json) |
 | [打驴动漫 (dalvdm)](https://www.dalvdm.cc/) | 无广告、高清 | [`dalvdm.json`](dalvdm.json) |
 | [喵物次元](https://www.mwcy.net/) | 无广告、高清 | [`mwcy.json`](mwcy.json) |
-| [嗷呜动漫](https://www.aowu.tv/) | 无广告、高清 | [`aowu.json`](aowu.json) |
+| [AniWatch 动漫](https://www.aniwatch.top/) | 高清 | [`aniwatch.json`](aniwatch.json) |
 | [AkiAnime](https://www.akianime.com/) | 无广告、超清 | [`akianime.json`](akianime.json) |
 | [樱之空动漫](https://skr.skr2.cc:666/) | 少广告、高清 | [`skr_skr2.json`](skr_skr2.json) |
-| [樱花动漫 (Yinghua)](https://www.yinghua289.com/) | 少广告、高清 | [`yinghua289.json`](yinghua289.json) |
 | [Animoe动漫](https://animoe.org/) | 无广告、高清 | [`animoe.json`](animoe.json) |
 | [TvTFun](https://www.tvtfun.net/) | 少广告、高清 | [`tvtfun.json`](tvtfun.json) |
 | [MiFun](https://ios.mifun.org/) | 无广告、高清 | [`ios_mifun.json`](ios_mifun.json) |
@@ -45,3 +44,4 @@ AniBaka 动漫源规则仓库，订阅索引见 [`index.json`](index.json)。
 | [番薯动漫](https://www.fsdm02.com/) | 无广告、高清 | [`fsdm02.json`](fsdm02.json) |
 | [囧次元](https://www.jcydmz.com/) | 少广告、高清 | [`jcydmz.json`](jcydmz.json) |
 | [Mgnacg 橘子动漫](https://www.mgnacg.com/) | 少广告、高清 | [`mgnacg.json`](mgnacg.json) |
+| [Moonci](https://www.moonci.com/) | 无广告、高清 | [`moonci.json`](moonci.json) |

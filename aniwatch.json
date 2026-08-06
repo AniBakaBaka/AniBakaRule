@@ -4,7 +4,7 @@
   "name": "AniWatch 动漫",
   "baseUrl": "https://www.aniwatch.top",
   "iconUrl": "https://www.aniwatch.top/favicon.ico",
-  "description": "AniWatch 动漫视频源，提供高清在线动漫观看。",
+  "description": "AniWatch 动漫规则，提供高清在线动漫搜索、详情与播放解析。",
   "headers": {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
     "Referer": "https://www.aniwatch.top/"
