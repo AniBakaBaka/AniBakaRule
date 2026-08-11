@@ -13,15 +13,8 @@
   "useWebview": true,
   "search": [
     {
-      "op": "sniff",
-      "url": "/boss1O1?q={keyword}",
-      "goal": "html",
-      "readyContains": [
-        "search_list",
-        "/movie/"
-      ],
-      "timeoutMs": 30000,
-      "settleMs": 500
+      "op": "fetch",
+      "url": "/boss1O1?q={keyword}"
     },
     {
       "op": "searchList",
@@ -33,14 +26,7 @@
   ],
   "detail": [
     {
-      "op": "sniff",
-      "goal": "html",
-      "readyContains": [
-        "paly_list_btn",
-        "/v_play/"
-      ],
-      "timeoutMs": 30000,
-      "settleMs": 500
+      "op": "follow"
     },
     {
       "op": "episodes",
@@ -51,10 +37,43 @@
   ],
   "play": [
     {
-      "op": "sniff",
-      "goal": "video",
-      "followEmbeddedPlayer": true,
-      "timeoutMs": 30000
+      "op": "first",
+      "branches": [
+        [
+          {
+            "op": "fetch",
+            "url": "{episodeId:raw}"
+          },
+          {
+            "op": "select",
+            "css": "iframe.viframe",
+            "attr": "src"
+          },
+          {
+            "op": "fetch"
+          },
+          {
+            "op": "regex",
+            "pattern": "const\\s+mysvg\\s*=\\s*'([^']+)'",
+            "group": 1
+          }
+        ],
+        [
+          {
+            "op": "sniff",
+            "goal": "video",
+            "followEmbeddedPlayer": true,
+            "timeoutMs": 30000
+          }
+        ]
+      ]
+    },
+    {
+      "op": "setMediaHeaders",
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+        "Referer": "https://www.4kcz.com/"
+      }
     }
   ]
 }

@@ -2,7 +2,7 @@
   "format": "anx-rulehub/2",
   "title": "AniBaka 规则库",
   "intro": "提供各动漫站点的搜索、详情、播放解析规则，支持在 App 内一键安装。",
-  "synced": "2026-08-06T11:32:35.000Z",
+  "synced": "2026-08-11T12:40:57.361Z",
   "entries": [
     {
       "key": "7sefun",
@@ -34,22 +34,6 @@
         "超清"
       ],
       "ref": "4kcz.json",
-      "engine": "anx-rule/2"
-    },
-    {
-      "key": "eacg1",
-      "title": "EACG动漫",
-      "by": "anibaka",
-      "rev": 4,
-      "intro": "EACG动漫，提供好看的现代耽美动漫和最新日番、表番在线免费播放。",
-      "site": "https://www.eacg1.com/",
-      "badge": "https://k8dm.com/template/vfed/asset/img/favicon.png",
-      "labels": [
-        "anime",
-        "有广告",
-        "高清"
-      ],
-      "ref": "eacg1.json",
       "engine": "anx-rule/2"
     },
     {
@@ -85,42 +69,10 @@
       "engine": "anx-rule/2"
     },
     {
-      "key": "jibi",
-      "title": "叽哔动漫网",
-      "by": "auto-generator",
-      "rev": 3,
-      "intro": "叽哔动漫网拥有上万集高清晰画质的在线动漫，观看完全免费、无须注册、高速播放。",
-      "site": "https://www.jibi.cc/",
-      "badge": "https://www.jibi.cc/upload/mxprocms/20240530-1/811f55cb787194c59e3f6d1d8724571c.jpg",
-      "labels": [
-        "anime",
-        "有广告",
-        "高清"
-      ],
-      "ref": "jibi.json",
-      "engine": "anx-rule/2"
-    },
-    {
-      "key": "hc34567",
-      "title": "影视森林",
-      "by": "auto-generator",
-      "rev": 4,
-      "intro": "影视森林聚合全网最新的电影、电视剧、动漫、综艺等高清资源，供网友免费在线观看 and 下载。",
-      "site": "https://www.hc34567.com/",
-      "badge": "https://www.hc34567.com/favicon.ico",
-      "labels": [
-        "anime",
-        "有广告",
-        "高清"
-      ],
-      "ref": "hc34567.json",
-      "engine": "anx-rule/2"
-    },
-    {
       "key": "ani_pekolove",
       "title": "佩可爱动漫 (peko.love)",
       "by": "auto-generator",
-      "rev": 8,
+      "rev": 9,
       "intro": "佩可爱动漫 (peko.love)，为您提供优质的动漫在线播放与分享。",
       "site": "https://ani.pekolove.net/",
       "badge": "https://ani.pekolove.net/wp-content/uploads/cropped-acglogo2-2-32x32.png",
@@ -165,22 +117,6 @@
       "engine": "anx-rule/2"
     },
     {
-      "key": "mwcy",
-      "title": "喵物次元",
-      "by": "anibaka",
-      "rev": 5,
-      "intro": "喵物次元，致力于动漫番剧资源收集，是一个二次元观影追番动漫网站。",
-      "site": "https://www.mwcy.net/",
-      "badge": "https://www.mwcy.net/favicon.ico",
-      "labels": [
-        "anime",
-        "无广告",
-        "高清"
-      ],
-      "ref": "mwcy.json",
-      "engine": "anx-rule/2"
-    },
-    {
       "key": "aniwatch",
       "title": "AniWatch 动漫",
       "by": "anibaka",
@@ -212,22 +148,6 @@
       "engine": "anx-rule/2"
     },
     {
-      "key": "skr_skr2",
-      "title": "樱之空动漫",
-      "by": "auto-generator",
-      "rev": 4,
-      "intro": "樱之空动漫是一个极具个人色彩、神秘又温馨的二次元圣地，提供好看的动漫、日剧及歌曲。",
-      "site": "https://skr.skr2.cc:666/",
-      "badge": "https://skr.skr2.cc:666/favicon.ico",
-      "labels": [
-        "anime",
-        "少广告",
-        "高清"
-      ],
-      "ref": "skr_skr2.json",
-      "engine": "anx-rule/2"
-    },
-    {
       "key": "animoe",
       "title": "Animoe动漫",
       "by": "auto-generator",
@@ -247,7 +167,7 @@
       "key": "tvtfun",
       "title": "TvTFun",
       "by": "anibaka",
-      "rev": 6,
+      "rev": 7,
       "intro": "TvTFun 动漫视频规则，支持搜索、详情与播放解析。",
       "site": "https://tvtfun.net/",
       "badge": "https://tvtfun.net/favicon.ico",
@@ -321,22 +241,6 @@
         "高清"
       ],
       "ref": "anime7.json",
-      "engine": "anx-rule/2"
-    },
-    {
-      "key": "huazidm",
-      "title": "花子动漫",
-      "by": "auto-generator",
-      "rev": 2,
-      "intro": "花子动漫-新番在线观看，提供高清动漫在线播放。",
-      "site": "https://www.huazidm.com/",
-      "badge": "https://www.huazidm.com/favicon.ico",
-      "labels": [
-        "anime",
-        "少广告",
-        "高清"
-      ],
-      "ref": "huazidm.json",
       "engine": "anx-rule/2"
     },
     {
@@ -468,22 +372,6 @@
       "engine": "anx-rule/2"
     },
     {
-      "key": "bimiacg",
-      "title": "Bimiacg",
-      "by": "anibaka",
-      "rev": 2,
-      "intro": "Bimiacg WebView challenge-aware 视频源。",
-      "site": "https://www.bimiacg14.net/",
-      "badge": "https://www.bimiacg14.net/favicon.ico",
-      "labels": [
-        "anime",
-        "有广告",
-        "高清"
-      ],
-      "ref": "bimiacg.json",
-      "engine": "anx-rule/2"
-    },
-    {
       "key": "dmhy",
       "title": "動漫花園",
       "by": "anibaka",
@@ -529,22 +417,6 @@
         "高清"
       ],
       "ref": "sorani.json",
-      "engine": "anx-rule/2"
-    },
-    {
-      "key": "cycani",
-      "title": "Cycani 次元城",
-      "by": "anibaka",
-      "rev": 4,
-      "intro": "Cycani 次元城动画视频源。",
-      "site": "https://www.cycani.org/",
-      "badge": "https://www.cycity.pro/site.webp",
-      "labels": [
-        "anime",
-        "无广告",
-        "高清"
-      ],
-      "ref": "cycani.json",
       "engine": "anx-rule/2"
     },
     {
@@ -625,6 +497,54 @@
         "高清"
       ],
       "ref": "moonci.json",
+      "engine": "anx-rule/2"
+    },
+    {
+      "key": "dmwo",
+      "title": "动漫窝",
+      "by": "anibaka",
+      "rev": 1,
+      "intro": "动漫窝提供最新动画、热门动漫和动画电影在线观看。",
+      "site": "https://www.dmwo.one/",
+      "badge": "https://www.dmwo.one/template/shoutu7/img/favicon.ico",
+      "labels": [
+        "anime",
+        "少广告",
+        "高清"
+      ],
+      "ref": "dmwo.json",
+      "engine": "anx-rule/2"
+    },
+    {
+      "key": "mubai",
+      "title": "GoFilm（幕白）",
+      "by": "anibaka",
+      "rev": 1,
+      "intro": "GoFilm（幕白）提供电影、剧集、综艺和动漫的在线搜索与播放。",
+      "site": "https://m.mubai.link/",
+      "badge": "https://m.mubai.link/favicon.ico",
+      "labels": [
+        "anime",
+        "无广告",
+        "高清"
+      ],
+      "ref": "mubai.json",
+      "engine": "anx-rule/2"
+    },
+    {
+      "key": "ezdmw",
+      "title": "E站弹幕网",
+      "by": "anibaka",
+      "rev": 1,
+      "intro": "E站弹幕网提供动漫搜索、分集观看和弹幕播放器。",
+      "site": "https://www.ezdmw.org/",
+      "badge": "https://www.ezdmw.org/Public/images/icon.png",
+      "labels": [
+        "anime",
+        "少广告",
+        "高清"
+      ],
+      "ref": "ezdmw.json",
       "engine": "anx-rule/2"
     }
   ]

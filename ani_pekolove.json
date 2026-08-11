@@ -77,34 +77,6 @@
       }
     },
     {
-      "op": "query",
-      "name": "st",
-      "input": "{playerUrl:raw}",
-      "var": "st"
-    },
-    {
-      "op": "query",
-      "name": "token",
-      "input": "{playerUrl:raw}",
-      "var": "token"
-    },
-    {
-      "op": "fetch",
-      "url": "https://ani.pekolove.net/pvs_pulse.php?st={st}&token={token}",
-      "playbackKeepAlive": true,
-      "intervalSeconds": 10,
-      "expectedBody": "ok",
-      "variables": {
-        "playerUrl": "https://video.pekolove.mov/anime/player/?url={mediaUrl}&st={st}&e={e}&token={token}"
-      },
-      "headers": {
-        "Cache-Control": "no-cache",
-        "Origin": "https://video.pekolove.mov",
-        "X-Requested-With": "XMLHttpRequest",
-        "Referer": "{playerUrl:raw}"
-      }
-    },
-    {
       "op": "first",
       "branches": [
         [

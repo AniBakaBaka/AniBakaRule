@@ -1,0 +1,61 @@
+{
+  "format": "anx-rule/2",
+  "id": "ezdmw",
+  "name": "E站弹幕网",
+  "baseUrl": "https://www.ezdmw.org",
+  "iconUrl": "https://www.ezdmw.org/Public/images/icon.png",
+  "description": "E站弹幕网提供动漫搜索、分集观看和弹幕播放器。",
+  "headers": {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+    "Accept": "*/*",
+    "Referer": "https://www.ezdmw.org/"
+  },
+  "search": [
+    {
+      "op": "fetch",
+      "url": "/Index/search.html?searchText={keyword}"
+    },
+    {
+      "op": "searchList",
+      "listXPath": "//*[@id='some_drama']/div",
+      "nameXPath": ".//p/span",
+      "linkXPath": ".//a"
+    }
+  ],
+  "detail": [
+    {
+      "op": "follow"
+    },
+    {
+      "op": "episodes",
+      "roadsXPath": "//section[contains(@class, 'anthology')]",
+      "itemsXPath": ".//a[contains(@class, 'circuit_switch1')]",
+      "reverseEpisodes": true
+    }
+  ],
+  "play": [
+    {
+      "op": "follow"
+    },
+    {
+      "op": "select",
+      "css": "iframe#player_iframe",
+      "attr": "src"
+    },
+    {
+      "op": "fetch"
+    },
+    {
+      "op": "select",
+      "css": "video#video",
+      "attr": "src"
+    },
+    {
+      "op": "setMediaHeaders",
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+        "Referer": "https://player.ezdmw.com/"
+      }
+    }
+  ]
+}

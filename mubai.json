@@ -1,0 +1,53 @@
+{
+  "format": "anx-rule/2",
+  "id": "mubai",
+  "name": "GoFilm（幕白）",
+  "baseUrl": "https://m.mubai.link",
+  "iconUrl": "https://m.mubai.link/favicon.ico",
+  "description": "GoFilm（幕白）提供电影、剧集、综艺和动漫的在线搜索与播放。",
+  "headers": {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+    "Accept": "application/json, text/plain, */*",
+    "Referer": "https://m.mubai.link/"
+  },
+  "search": [
+    {
+      "op": "fetch",
+      "url": "/api/searchFilm?keyword={keyword}&current=1"
+    },
+    {
+      "op": "jsonSeries",
+      "listPath": "data.list",
+      "idKey": "id",
+      "nameKey": "name",
+      "imageKey": "picture",
+      "descKey": "blurb",
+      "detailUrlTemplate": "/api/filmDetail?id={id}"
+    }
+  ],
+  "detail": [
+    {
+      "op": "follow"
+    },
+    {
+      "op": "jsonEpisodes",
+      "episodesPath": "data.detail.playList[0]",
+      "episodeNameKey": "episode",
+      "episodeIdTemplate": "{link:raw}",
+      "sourceName": "高清线路"
+    }
+  ],
+  "play": [
+    {
+      "op": "setMediaHeaders",
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "op": "regex",
+      "pattern": "^(https?://\\S+\\.(?:m3u8|mp4)(?:[?#]\\S*)?)$",
+      "group": 1
+    }
+  ]
+}
