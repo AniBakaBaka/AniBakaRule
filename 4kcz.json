@@ -13,15 +13,45 @@
   "useWebview": true,
   "search": [
     {
-      "op": "fetch",
-      "url": "/boss1O1?q={keyword}"
-    },
-    {
-      "op": "searchList",
-      "selectors": [
-        ".search_list li"
-      ],
-      "detailPattern": "/movie/"
+      "op": "first",
+      "branches": [
+        [
+          {
+            "op": "fetch",
+            "url": "/boss1O1?q={keyword}"
+          },
+          {
+            "op": "searchList",
+            "selectors": [
+              ".search_list li"
+            ],
+            "detailPattern": "/movie/"
+          }
+        ],
+        [
+          {
+            "op": "sniff",
+            "goal": "html",
+            "url": "/boss1O1?q={keyword}",
+            "readyContains": [
+              "search_list",
+              "/movie/"
+            ],
+            "rejectContains": [
+              "403 Forbidden"
+            ],
+            "timeoutMs": 45000,
+            "settleMs": 1200
+          },
+          {
+            "op": "searchList",
+            "selectors": [
+              ".search_list li"
+            ],
+            "detailPattern": "/movie/"
+          }
+        ]
+      ]
     }
   ],
   "detail": [

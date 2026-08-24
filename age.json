@@ -6,7 +6,8 @@
   "iconUrl": "https://www.agedm.io/favicon.ico",
   "description": "AGE动漫视频源，源网址www.agedm.io",
   "headers": {
-    "Referer": "https://www.agedm.io/"
+    "User-Agent": "Mozilla/5.0 (Linux; Android 14; Pixel 8) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Mobile Safari/537.36",
+    "Referer": "https://m.agedm.io/"
   },
   "useWebview": true,
   "search": [
@@ -25,6 +26,12 @@
   ],
   "detail": [
     {
+      "op": "replace",
+      "pattern": "http://www.agedm.io",
+      "replacement": "https://www.agedm.io",
+      "first": true
+    },
+    {
       "op": "follow"
     },
     {
@@ -39,12 +46,27 @@
   ],
   "play": [
     {
-      "op": "follow"
-    },
-    {
       "op": "first",
       "branches": [
         [
+          {
+            "op": "replace",
+            "input": "{episodeId:raw}",
+            "pattern": "https://www.agedm.io/play/",
+            "replacement": "https://m.agedm.io/#/play/",
+            "first": true
+          },
+          {
+            "op": "sniff",
+            "goal": "video",
+            "followEmbeddedPlayer": true,
+            "timeoutMs": 45000
+          }
+        ],
+        [
+          {
+            "op": "follow"
+          },
           {
             "op": "select",
             "css": "iframe",
@@ -58,6 +80,9 @@
         ],
         [
           {
+            "op": "follow"
+          },
+          {
             "op": "select",
             "css": "iframe",
             "attr": "src"
@@ -69,10 +94,16 @@
         ],
         [
           {
+            "op": "follow"
+          },
+          {
             "op": "videoUrl"
           }
         ],
         [
+          {
+            "op": "follow"
+          },
           {
             "op": "select",
             "css": "iframe",

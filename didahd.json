@@ -63,6 +63,28 @@
             "key": "url"
           },
           {
+            "op": "setVar",
+            "name": "didaPlayerToken",
+            "value": "{url:raw}"
+          },
+          {
+            "op": "template",
+            "value": "https://www.didahd.xyz/static/player/artplayer/?url={didaPlayerToken:raw}"
+          },
+          {
+            "op": "sniff",
+            "goal": "video",
+            "followEmbeddedPlayer": true,
+            "timeoutMs": 45000
+          }
+        ],
+        [
+          {
+            "op": "playerAaaa",
+            "var": "player_aaaa",
+            "key": "url"
+          },
+          {
             "op": "videoUrl"
           }
         ],
@@ -70,7 +92,9 @@
           {
             "op": "sniff",
             "goal": "video",
-            "url": "{episodeId:raw}"
+            "url": "{episodeId:raw}",
+            "followEmbeddedPlayer": true,
+            "timeoutMs": 45000
           }
         ]
       ]

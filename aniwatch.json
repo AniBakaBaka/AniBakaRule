@@ -17,11 +17,24 @@
         [
           {
             "op": "fetch",
-            "url": "/api/animes?q={keyword}"
+            "url": "/api/animes?page=1&limit=100"
           },
           {
             "op": "jsonSeries",
-            "listPath": "",
+            "listPath": "data.list",
+            "idKey": "id",
+            "nameKey": "title",
+            "imageKey": "cover_url",
+            "detailUrlTemplate": "/anime/{id}",
+            "keywordMatch": true
+          },
+          {
+            "op": "fetch",
+            "url": "/api/animes?page=2&limit=100"
+          },
+          {
+            "op": "jsonSeries",
+            "listPath": "data.list",
             "idKey": "id",
             "nameKey": "title",
             "imageKey": "cover_url",
@@ -49,7 +62,7 @@
           {
             "op": "sniff",
             "goal": "html",
-            "url": "/api/animes?q={keyword}",
+            "url": "/api/animes?page=1&limit=100",
             "readyContains": [
               "title"
             ],
@@ -62,7 +75,7 @@
           },
           {
             "op": "jsonSeries",
-            "listPath": "",
+            "listPath": "data.list",
             "idKey": "id",
             "nameKey": "title",
             "imageKey": "cover_url",

@@ -87,6 +87,39 @@
             "value": "{url:raw}"
           },
           {
+            "op": "follow",
+            "headers": {
+              "Referer": "https://www.7sefun.top/"
+            }
+          },
+          {
+            "op": "playerAaaa",
+            "var": "player_aaaa",
+            "key": "url"
+          },
+          {
+            "op": "setVar",
+            "name": "lmmToken",
+            "value": "{url:raw}"
+          },
+          {
+            "op": "template",
+            "value": "https://yun.92cj.com/acfun58.php?id={lmmToken:raw}&referer={playerTarget}"
+          },
+          {
+            "op": "sniff",
+            "goal": "video",
+            "followEmbeddedPlayer": true,
+            "timeoutMs": 30000
+          }
+        ],
+        [
+          {
+            "op": "setVar",
+            "name": "playerTarget",
+            "value": "{url:raw}"
+          },
+          {
             "op": "template",
             "value": "https://dp.no3acg.com/player/ec.php?code=qw&if=1&from=lmm&url={playerTarget}"
           },
@@ -112,7 +145,8 @@
     {
       "op": "setMediaHeaders",
       "headers": {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "Referer": "https://www.7sefun.top/"
       }
     }
   ]

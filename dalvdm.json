@@ -81,7 +81,9 @@
           {
             "op": "sniff",
             "goal": "video",
-            "url": "{url:raw}"
+            "url": "{url:raw}",
+            "followEmbeddedPlayer": true,
+            "timeoutMs": 45000
           }
         ],
         [
@@ -93,7 +95,9 @@
           {
             "op": "sniff",
             "goal": "video",
-            "url": "{episodeId:raw}"
+            "url": "{episodeId:raw}",
+            "followEmbeddedPlayer": true,
+            "timeoutMs": 45000
           }
         ]
       ]
