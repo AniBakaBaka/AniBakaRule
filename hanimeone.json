@@ -42,13 +42,14 @@
   ],
   "detail": [
     {
-      "op": "follow"
+      "op": "template",
+      "value": "{\"episodes\":[{\"id\":\"{seriesId:raw}\",\"name\":\"正片\"}]}"
     },
     {
-      "op": "episodes",
-      "listSelectors": [
-        "#hanime1-single-video"
-      ]
+      "op": "jsonEpisodes",
+      "episodesPath": "episodes",
+      "episodeIdTemplate": "{id:raw}",
+      "sourceName": "Hanime1"
     }
   ],
   "play": [
