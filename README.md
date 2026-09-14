@@ -2,7 +2,7 @@
 
 AniBaka 动漫源规则仓库，订阅索引见 [`index.json`](index.json)。
 
-## 规则列表（34）
+## 规则列表（32）
 
 | 规则 | 标签 | 配置 |
 | --- | --- | --- |
@@ -31,10 +31,8 @@ AniBaka 动漫源规则仓库，订阅索引见 [`index.json`](index.json)。
 | [Anime1](https://anime1.me/) | 无广告、高清 | [`anime1.json`](anime1.json) |
 | [動漫花園](https://share.dmhy.org/) | 无广告、高清 | [`dmhy.json`](dmhy.json) |
 | [蜜柑计划](https://mikanani.me/) | 无广告、高清 | [`mikan.json`](mikan.json) |
-| [青空次元 (Sorani)](https://www.sorani.net/) | 无广告、高清 | [`sorani.json`](sorani.json) |
 | [DM84](https://dmbus.cc/) | 少广告、高清 | [`dm84.json`](dm84.json) |
 | [番薯动漫](https://www.fsdm02.com/) | 无广告、高清 | [`fsdm02.json`](fsdm02.json) |
-| [囧次元](https://www.jcydmz.com/) | 少广告、高清 | [`jcydmz.json`](jcydmz.json) |
 | [Mgnacg 橘子动漫](https://www.mgnacg.com/) | 少广告、高清 | [`mgnacg.json`](mgnacg.json) |
 | [Moonci](https://www.moonci.com/) | 无广告、高清 | [`moonci.json`](moonci.json) |
 | [动漫窝](https://www.dmwo.one/) | 少广告、高清 | [`dmwo.json`](dmwo.json) |

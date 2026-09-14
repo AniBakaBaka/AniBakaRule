@@ -1,91 +1,228 @@
 {
   "format": "anx-rule/2",
-  "id": "akianime",
-  "name": "AkiAnime",
-  "baseUrl": "https://www.akianime.com",
-  "iconUrl": "https://www.akianime.com/template/dsn2/static/img/ico.png",
-  "description": "AkiAnime-最新动漫尽在Aki",
-  "headers": {
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36",
-    "Referer": "https://www.akianime.com/"
+  "id": "ai_www_moefun_cc_mtv53mtf",
+  "name": "萌番 AkiAnime",
+  "baseUrl": "https://www.moefun.cc/",
+  "iconUrl": "https://www.moefun.cc/template/dsn2/static/img/ico.png",
+  "description": "萌番(moefun.cc / AkiAnime)动漫源",
+  "pipeline": {
+    "headers": {
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36",
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+      "Referer": "https://www.moefun.cc/"
+    },
+    "search": [
+      {
+        "op": "fetch",
+        "url": "/bgmsearch/-------------.html?wd={keyword}"
+      },
+      {
+        "op": "searchList",
+        "selectors": [
+          ".search-list",
+          ".vod-detail",
+          "#dataList .public-list-box"
+        ],
+        "detailPattern": "/bgmdetail/",
+        "keywordMatch": true
+      }
+    ],
+    "detail": [
+      {
+        "op": "follow",
+        "headers": {
+          "Referer": "https://www.moefun.cc/"
+        }
+      },
+      {
+        "op": "episodes",
+        "listSelectors": [
+          ".anthology-list-box",
+          ".anthology-list-play"
+        ],
+        "tabSelectors": [
+          ".anthology-tab .swiper-slide",
+          ".anthology-tab a",
+          ".module-tab-item",
+          ".tab-item"
+        ]
+      }
+    ],
+    "play": [
+      {
+        "op": "follow",
+        "headers": {
+          "Referer": "https://www.moefun.cc/"
+        }
+      },
+      {
+        "op": "setVar",
+        "name": "playHtml",
+        "value": "{url:raw}"
+      },
+      {
+        "op": "template",
+        "value": "{playHtml:raw}"
+      },
+      {
+        "op": "regex",
+        "pattern": "\"from\"\\s*:\\s*\"([^\"]+)\"",
+        "group": 1
+      },
+      {
+        "op": "setVar",
+        "name": "playerFrom",
+        "value": "{url:raw}"
+      },
+      {
+        "op": "template",
+        "value": "{playHtml:raw}"
+      },
+      {
+        "op": "regex",
+        "pattern": "player_aaaa=(\\{[\\s\\S]*?\\})\\s*</script>",
+        "group": 1
+      },
+      {
+        "op": "json",
+        "path": "url"
+      },
+      {
+        "op": "setVar",
+        "name": "playerUrl",
+        "value": "{url:raw}"
+      },
+      {
+        "op": "first",
+        "branches": [
+          [
+            {
+              "op": "template",
+              "value": "{playerUrl:raw}"
+            },
+            {
+              "op": "regex",
+              "pattern": "(https?://[^\"'\\s]+\\.(?:m3u8|mp4|flv)[^\"'\\s]*)",
+              "group": 1
+            },
+            {
+              "op": "videoUrl"
+            }
+          ],
+          [
+            {
+              "op": "fetch",
+              "url": "/static/js/playerconfig.js",
+              "headers": {
+                "Referer": "https://www.moefun.cc/"
+              }
+            },
+            {
+              "op": "regex",
+              "pattern": "\"{playerFrom:raw}\"\\s*:\\s*\\{[\\s\\S]*?\"parse\"\\s*:\\s*\"([^\"]*)\"",
+              "group": 1
+            },
+            {
+              "op": "replace",
+              "pattern": "\\/",
+              "replacement": "/"
+            },
+            {
+              "op": "setVar",
+              "name": "parserBase",
+              "value": "{url:raw}"
+            },
+            {
+              "op": "template",
+              "value": "{parserBase:raw}"
+            },
+            {
+              "op": "regex",
+              "pattern": "(https?://[^/]+)",
+              "group": 1
+            },
+            {
+              "op": "setVar",
+              "name": "parserHost",
+              "value": "{url:raw}"
+            },
+            {
+              "op": "fetch",
+              "url": "{parserBase:raw}{playerUrl:raw}",
+              "headers": {
+                "Referer": "https://www.moefun.cc/"
+              }
+            },
+            {
+              "op": "setVar",
+              "name": "parserHtml",
+              "value": "{url:raw}"
+            },
+            {
+              "op": "template",
+              "value": "{parserHtml:raw}"
+            },
+            {
+              "op": "regex",
+              "pattern": "\"time\"\\s*:\\s*\"([^\"]+)\"",
+              "group": 1
+            },
+            {
+              "op": "setVar",
+              "name": "parserTime",
+              "value": "{url:raw}"
+            },
+            {
+              "op": "template",
+              "value": "{parserHtml:raw}"
+            },
+            {
+              "op": "regex",
+              "pattern": "\"key\"\\s*:\\s*\"([^\"]+)\"",
+              "group": 1
+            },
+            {
+              "op": "setVar",
+              "name": "parserKey",
+              "value": "{url:raw}"
+            },
+            {
+              "op": "fetch",
+              "url": "{parserHost:raw}/api_config.php",
+              "method": "POST",
+              "contentType": "application/x-www-form-urlencoded",
+              "headers": {
+                "X-Requested-With": "XMLHttpRequest",
+                "Origin": "{parserHost:raw}",
+                "Referer": "{parserBase:raw}"
+              },
+              "body": "url={playerUrl:raw}&time={parserTime:raw}&key={parserKey:raw}"
+            },
+            {
+              "op": "json",
+              "path": "url"
+            },
+            {
+              "op": "videoUrl"
+            }
+          ],
+          [
+            {
+              "op": "sniff",
+              "goal": "video",
+              "url": "{episodeId:raw}",
+              "resolveMediaRedirects": true,
+              "timeoutMs": 60000,
+              "settleMs": 2000
+            }
+          ]
+        ]
+      }
+    ],
+    "useWebview": true,
+    "mediaValidationTimeoutMs": 30000
   },
-  "useWebview": true,
-  "search": [
-    {
-      "op": "fetch",
-      "url": "https://www.akianime.com/bgmsearch/-------------.html?wd={keyword}"
-    },
-    {
-      "op": "first",
-      "branches": [
-        [
-          {
-            "op": "jsonSeries",
-            "listPath": "list",
-            "idKey": "id",
-            "nameKey": "name",
-            "imageKey": "pic",
-            "urlKey": "url"
-          }
-        ],
-        [
-          {
-            "op": "searchList",
-            "selectors": [
-              "a[href*=\"/bgmdetail/\"], .vod-detail.search-list, .search-list, .module-card-item, .stui-vodlist__box"
-            ]
-          }
-        ]
-      ]
-    }
-  ],
-  "detail": [
-    {
-      "op": "follow"
-    },
-    {
-      "op": "episodes",
-      "listSelectors": [
-        "a[href*=\"/bgmplay/\"], .anthology-list-play, .module-player-list, .play-list, .playlist"
-      ]
-    }
-  ],
-  "play": [
-    {
-      "op": "follow"
-    },
-    {
-      "op": "first",
-      "branches": [
-        [
-          {
-            "op": "playerAaaa",
-            "var": "player_aaaa",
-            "key": "url"
-          }
-        ],
-        [
-          {
-            "op": "videoUrl"
-          }
-        ]
-      ]
-    },
-    {
-      "op": "first",
-      "branches": [
-        [
-          {
-            "op": "videoUrl"
-          }
-        ],
-        [
-          {
-            "op": "sniff",
-            "goal": "video"
-          }
-        ]
-      ]
-    }
-  ]
+  "enabled": true,
+  "createdAt": "2026-09-10T14:26:51.355801",
+  "updatedAt": "2026-09-10T14:27:44.898825"
 }

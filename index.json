@@ -2,7 +2,7 @@
   "format": "anx-rulehub/2",
   "title": "AniBaka 规则库",
   "intro": "提供各动漫站点的搜索、详情、播放解析规则，支持在 App 内一键安装。",
-  "synced": "2026-08-11T12:40:57.361Z",
+  "synced": "2026-09-14T00:00:00.000Z",
   "entries": [
     {
       "key": "7sefun",
@@ -167,7 +167,7 @@
       "key": "tvtfun",
       "title": "TvTFun",
       "by": "anibaka",
-      "rev": 8,
+      "rev": 10,
       "intro": "TvTFun 动漫视频规则，支持搜索、详情与播放解析。",
       "site": "https://tvtfun.net/",
       "badge": "https://tvtfun.net/favicon.ico",
@@ -404,26 +404,10 @@
       "engine": "anx-rule/2"
     },
     {
-      "key": "sorani",
-      "title": "青空次元 (Sorani)",
-      "by": "anibaka",
-      "rev": 2,
-      "intro": "青空次元 (Sorani)，提供高质量 1080P 动画在线播放。",
-      "site": "https://www.sorani.net/",
-      "badge": "https://www.sorani.net/favicon.ico",
-      "labels": [
-        "anime",
-        "无广告",
-        "高清"
-      ],
-      "ref": "sorani.json",
-      "engine": "anx-rule/2"
-    },
-    {
       "key": "dm84",
       "title": "DM84",
       "by": "anibaka",
-      "rev": 1,
+      "rev": 2,
       "intro": "DM84 动漫视频源，源网站 dm84.net（当前入口 dmbus.cc）。",
       "site": "https://dmbus.cc/",
       "badge": "https://dmbus.cc/favicon.ico",
@@ -449,22 +433,6 @@
         "高清"
       ],
       "ref": "fsdm02.json",
-      "engine": "anx-rule/2"
-    },
-    {
-      "key": "jcydmz",
-      "title": "囧次元",
-      "by": "anibaka",
-      "rev": 1,
-      "intro": "囧次元动漫网页版视频源。",
-      "site": "https://www.jcydmz.com/",
-      "badge": "https://www.jcydmz.com/favicon.ico",
-      "labels": [
-        "anime",
-        "少广告",
-        "高清"
-      ],
-      "ref": "jcydmz.json",
       "engine": "anx-rule/2"
     },
     {

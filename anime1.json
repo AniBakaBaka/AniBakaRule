@@ -13,7 +13,7 @@
   "search": [
     {
       "op": "anime1Search",
-      "url": "https://d1zquzjgwo9yb.cloudfront.net/",
+      "url": "https://anime1.me/animelist.json",
       "idIndex": 0,
       "nameIndex": 1,
       "caseSensitive": true

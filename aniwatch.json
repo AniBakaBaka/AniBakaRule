@@ -183,53 +183,10 @@
       }
     },
     {
-      "op": "first",
-      "branches": [
-        [
-          {
-            "op": "regex",
-            "pattern": "(\\d+)",
-            "group": 1
-          },
-          {
-            "op": "fetch",
-            "url": "/api/episodes/{url:raw}"
-          },
-          {
-            "op": "json",
-            "path": "data.video_url"
-          },
-          {
-            "op": "videoUrl"
-          }
-        ],
-        [
-          {
-            "op": "regex",
-            "pattern": "(\\d+)",
-            "group": 1
-          },
-          {
-            "op": "fetch",
-            "url": "/api/episodes/{url:raw}"
-          },
-          {
-            "op": "json",
-            "path": "video_url"
-          },
-          {
-            "op": "videoUrl"
-          }
-        ],
-        [
-          {
-            "op": "sniff",
-            "goal": "video",
-            "url": "{episodeId:raw}",
-            "timeoutMs": 10000
-          }
-        ]
-      ]
+      "op": "sniff",
+      "goal": "video",
+      "url": "{episodeId:raw}",
+      "timeoutMs": 10000
     }
   ]
 }

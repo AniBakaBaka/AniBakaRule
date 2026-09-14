@@ -5,67 +5,130 @@
   "baseUrl": "https://www.dmwo.one",
   "iconUrl": "https://www.dmwo.one/template/shoutu7/img/favicon.ico",
   "description": "动漫窝提供最新动画、热门动漫和动画电影在线观看。",
-  "headers": {
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
-    "Accept": "*/*",
-    "Referer": "https://www.dmwo.one/"
-  },
-  "useWebview": true,
-  "search": [
-    {
-      "op": "maccmsSuggest",
-      "detailUrlTemplate": "/voddetail/{id}.html",
-      "verify": true
-    }
-  ],
-  "detail": [
-    {
-      "op": "follow"
+  "pipeline": {
+    "headers": {
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+      "Accept": "*/*",
+      "Referer": "https://www.dmwo.one/"
     },
-    {
-      "op": "episodes",
-      "listSelectors": [
-        "ul.stui-content__playlist"
-      ],
-      "tabSelectors": [
-        ".stui-pannel__head h3.title"
-      ]
-    }
-  ],
-  "play": [
-    {
-      "op": "first",
-      "branches": [
-        [
-          {
-            "op": "follow"
-          },
-          {
-            "op": "playerAaaa",
-            "var": "player_aaaa",
-            "key": "url"
-          },
-          {
-            "op": "regex",
-            "pattern": "^(https?://\\S+\\.(?:m3u8|mp4)(?:[?#]\\S*)?)$",
-            "group": 1
-          }
-        ],
-        [
-          {
-            "op": "sniff",
-            "goal": "video",
-            "url": "{episodeId:raw}"
-          }
-        ]
-      ]
-    },
-    {
-      "op": "setMediaHeaders",
-      "headers": {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
-        "Referer": "https://www.dmwo.one/"
+    "search": [
+      {
+        "op": "sniff",
+        "goal": "html",
+        "url": "https://dmwo.one/index.php/ajax/suggest?mid=1&wd={keyword}",
+        "settleMs": 3000,
+        "timeoutMs": 30000
+      },
+      {
+        "op": "regex",
+        "pattern": "<pre[^>]*>([\\s\\S]*?)</pre>",
+        "group": 1
+      },
+      {
+        "op": "jsonSeries",
+        "listPath": "list",
+        "idKey": "id",
+        "nameKey": "name",
+        "imageKey": "pic",
+        "detailUrlTemplate": "/voddetail/{id}.html"
       }
-    }
-  ]
+    ],
+    "detail": [
+      {
+        "op": "sniff",
+        "goal": "html",
+        "url": "{url:raw}",
+        "settleMs": 2500,
+        "timeoutMs": 30000
+      },
+      {
+        "op": "episodes",
+        "listSelectors": [
+          "ul.stui-content__playlist"
+        ]
+      }
+    ],
+    "play": [
+      {
+        "op": "regex",
+        "pattern": "(vodplay/[0-9]+-[0-9]+-[0-9]+\\.html)",
+        "group": 1
+      },
+      {
+        "op": "setVar",
+        "name": "dmwoPlayUrl",
+        "value": "https://www.dmwo.one/{url:raw}"
+      },
+      {
+        "op": "sniff",
+        "goal": "html",
+        "url": "{dmwoPlayUrl:raw}",
+        "settleMs": 3000,
+        "timeoutMs": 40000
+      },
+      {
+        "op": "first",
+        "branches": [
+          [
+            {
+              "op": "regex",
+              "pattern": "url=(https?://[^\"'&\\s]+\\.m3u8[^\"'&\\s]*)",
+              "group": 1
+            },
+            {
+              "op": "setMediaHeaders",
+              "headers": {
+                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+                "Referer": "https://www.dmwo.one/"
+              }
+            }
+          ],
+          [
+            {
+              "op": "playerAaaa",
+              "var": "player_aaaa",
+              "key": "url"
+            },
+            {
+              "op": "setMediaHeaders",
+              "headers": {
+                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+                "Referer": "https://www.dmwo.one/"
+              }
+            }
+          ],
+          [
+            {
+              "op": "regex",
+              "pattern": "(https?://[^\"'\\s]+\\.m3u8[^\"'\\s]*)",
+              "group": 1
+            },
+            {
+              "op": "setMediaHeaders",
+              "headers": {
+                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+                "Referer": "https://www.dmwo.one/"
+              }
+            }
+          ],
+          [
+            {
+              "op": "sniff",
+              "goal": "video",
+              "url": "{dmwoPlayUrl:raw}",
+              "followEmbeddedPlayer": true,
+              "resolveMediaRedirects": true,
+              "settleMs": 3000,
+              "timeoutMs": 45000
+            }
+          ]
+        ]
+      }
+    ],
+    "useWebview": true,
+    "mediaValidationTimeoutMs": 25000
+  },
+  "enabled": true,
+  "createdAt": "2026-08-14T14:00:12.422879",
+  "updatedAt": "2026-09-12T22:23:12.815377"
 }
