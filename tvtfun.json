@@ -7,7 +7,7 @@
   "description": "TvTFun 动漫视频源。",
   "headers": {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36",
-    "Referer": "https://tvtfun.net/"
+    "Referer": "https://www.tvtfun.net/"
   },
   "search": [
     {
@@ -52,7 +52,7 @@
       "episodesKey": "episodes",
       "sourceNameKey": "name",
       "episodeNameKey": "name",
-      "episodeIdTemplate": "{id:raw}|{tvtVideoSlug:raw}"
+      "episodeIdTemplate": "{id:raw}|{tvtVideoSlug:raw}|{source_index:raw}|{sort:raw}"
     }
   ],
   "play": [
@@ -63,7 +63,7 @@
     },
     {
       "op": "regex",
-      "pattern": "^([^|]+)\\|(.+)$",
+      "pattern": "^([^|]+)",
       "group": 1
     },
     {
@@ -77,8 +77,8 @@
     },
     {
       "op": "regex",
-      "pattern": "^([^|]+)\\|(.+)$",
-      "group": 2
+      "pattern": "^[^|]+\\|([^|]+)",
+      "group": 1
     },
     {
       "op": "setVar",
@@ -86,8 +86,37 @@
       "value": "{url:raw}"
     },
     {
+      "op": "template",
+      "value": "{tvtPackedEpisode:raw}"
+    },
+    {
+      "op": "regex",
+      "pattern": "^[^|]+\\|[^|]+\\|([^|]+)",
+      "group": 1
+    },
+    {
+      "op": "setVar",
+      "name": "tvtSourceIndex",
+      "value": "{url:raw}"
+    },
+    {
+      "op": "template",
+      "value": "{tvtPackedEpisode:raw}"
+    },
+    {
+      "op": "regex",
+      "pattern": "^[^|]+\\|[^|]+\\|[^|]+\\|([^|]+)",
+      "group": 1
+    },
+    {
+      "op": "setVar",
+      "name": "tvtEpisodeIndex",
+      "value": "{url:raw}"
+    },
+    {
       "op": "fetch",
-      "url": "/video/{tvtVideoSlug}/play?source=0&episode=0",
+      "url": "/video/{tvtVideoSlug}/play?source={tvtSourceIndex}&episode={tvtEpisodeIndex}",
+      "cookieSession": true,
       "headers": {
         "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
         "Referer": "https://www.tvtfun.net/video/{tvtVideoSlug}"
@@ -96,15 +125,17 @@
     {
       "op": "fetch",
       "url": "/api/videos/resolve-play-url?episodeId={tvtEpisodeId}",
+      "delayMs": 600,
       "headers": {
         "Accept": "application/json",
-        "Referer": "https://www.tvtfun.net/video/{tvtVideoSlug}/play?source=0&episode=0",
+        "Referer": "https://www.tvtfun.net/video/{tvtVideoSlug}/play?source={tvtSourceIndex}&episode={tvtEpisodeIndex}",
         "X-Play-Ctx": "eyJmIjozMDAsInYiOjEsInciOjEyODAsImhndCI6NzIwLCJwIjoxfQ=="
       }
     },
     {
       "op": "setMediaHeaders",
-      "jsonPath": "data.headers"
+      "jsonPath": "data.headers",
+      "remove": ["Referer"]
     },
     {
       "op": "json",
