@@ -64,77 +64,64 @@
   ],
   "play": [
     {
-      "op": "first",
-      "branches": [
-        [
-          {
-            "op": "regex",
-            "pattern": "chapter_id=([A-Za-z0-9_-]+)",
-            "group": 1
-          },
-          {
-            "op": "setVar",
-            "name": "chapterId",
-            "value": "{url:raw}"
-          },
-          {
-            "op": "fetch",
-            "url": "/user/amp/content_pframe_url?chapter_id={chapterId:raw}&level=middle&expires=3600"
-          },
-          {
-            "op": "json",
-            "path": "data"
-          },
-          {
-            "op": "regex",
-            "pattern": "vid=([a-f0-9-]+)",
-            "group": 1
-          },
-          {
-            "op": "template",
-            "value": "https://xgct-video.bzcdn.net/{url:raw}/playlist.m3u8"
-          },
-          {
-            "op": "regex",
-            "pattern": "^(https://xgct-video\\.bzcdn\\.net/[a-f0-9-]+/playlist\\.m3u8)$",
-            "group": 1
-          }
-        ],
-        [
-          {
-            "op": "follow"
-          },
-          {
-            "op": "select",
-            "css": "iframe[src*=\"vid=\"]",
-            "attr": "src"
-          },
-          {
-            "op": "regex",
-            "pattern": "vid=([a-f0-9-]+)",
-            "group": 1
-          },
-          {
-            "op": "template",
-            "value": "https://xgct-video.bzcdn.net/{url:raw}/playlist.m3u8"
-          },
-          {
-            "op": "regex",
-            "pattern": "^(https://xgct-video\\.bzcdn\\.net/[a-f0-9-]+/playlist\\.m3u8)$",
-            "group": 1
-          }
-        ],
-        [
-          {
-            "op": "sniff",
-            "goal": "video",
-            "url": "{episodeId:raw}",
-            "resolveMediaRedirects": true,
-            "timeoutMs": 60000,
-            "settleMs": 1000
-          }
-        ]
-      ]
+      "op": "regex",
+      "pattern": "^(?:https?://[^/?#]+)?(?:/user/page_direct\\?[^#]*?chapter_id=|/video/[^/?#]+/)([A-Za-z0-9_-]+)(?:\\.html)?(?:[&#][^#]*)?$",
+      "group": 1
+    },
+    {
+      "op": "template",
+      "value": "https://www.xgcartoon.com/user/amp/content_pframe_url?chapter_id={url:raw}&level=middle&expires=3600"
+    },
+    {
+      "op": "regex",
+      "pattern": "^(https://www\\.xgcartoon\\.com/user/amp/content_pframe_url\\?chapter_id=[A-Za-z0-9_-]+&level=middle&expires=3600)$",
+      "group": 1
+    },
+    {
+      "op": "follow"
+    },
+    {
+      "op": "json",
+      "path": "data"
+    },
+    {
+      "op": "regex",
+      "pattern": "^https://pframe\\.xgcartoon\\.com/pframe/player\\.htm\\?vid=([a-f0-9]+-[a-f0-9]+-[a-f0-9]+-[a-f0-9]+-[a-f0-9]+)(?:&[^\\s]*)?$",
+      "group": 1,
+      "ignoreCase": true
+    },
+    {
+      "op": "template",
+      "value": "https://xgct-video.bzcdn.net/{url:raw}/video_info.json"
+    },
+    {
+      "op": "regex",
+      "pattern": "^(https://xgct-video\\.bzcdn\\.net/[a-f0-9]+-[a-f0-9]+-[a-f0-9]+-[a-f0-9]+-[a-f0-9]+/video_info\\.json)$",
+      "group": 1,
+      "ignoreCase": true
+    },
+    {
+      "op": "follow"
+    },
+    {
+      "op": "json",
+      "path": "guid"
+    },
+    {
+      "op": "regex",
+      "pattern": "^([a-f0-9]+-[a-f0-9]+-[a-f0-9]+-[a-f0-9]+-[a-f0-9]+)$",
+      "group": 1,
+      "ignoreCase": true
+    },
+    {
+      "op": "template",
+      "value": "https://xgct-video.bzcdn.net/{url:raw}/playlist.m3u8"
+    },
+    {
+      "op": "regex",
+      "pattern": "^(https://xgct-video\\.bzcdn\\.net/[a-f0-9]+-[a-f0-9]+-[a-f0-9]+-[a-f0-9]+-[a-f0-9]+/playlist\\.m3u8)$",
+      "group": 1,
+      "ignoreCase": true
     }
   ]
 }
