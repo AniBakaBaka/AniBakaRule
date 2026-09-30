@@ -16,13 +16,16 @@
         "op": "sniff",
         "goal": "html",
         "url": "https://dmwo.one/index.php/ajax/suggest?mid=1&wd={keyword}",
-        "settleMs": 3000,
-        "timeoutMs": 30000
+        "settleMs": 0,
+        "timeoutMs": 30000,
+        "readyContains": [
+          "\"list\""
+        ]
       },
       {
-        "op": "regex",
-        "pattern": "<pre[^>]*>([\\s\\S]*?)</pre>",
-        "group": 1
+        "op": "select",
+        "css": "body",
+        "attr": "text"
       },
       {
         "op": "jsonSeries",
@@ -38,8 +41,11 @@
         "op": "sniff",
         "goal": "html",
         "url": "{url:raw}",
-        "settleMs": 2500,
-        "timeoutMs": 30000
+        "settleMs": 0,
+        "timeoutMs": 30000,
+        "readyContains": [
+          "stui-content__playlist"
+        ]
       },
       {
         "op": "episodes",
@@ -63,8 +69,11 @@
         "op": "sniff",
         "goal": "html",
         "url": "{dmwoPlayUrl:raw}",
-        "settleMs": 3000,
-        "timeoutMs": 40000
+        "settleMs": 0,
+        "timeoutMs": 40000,
+        "readyContains": [
+          "player_aaaa"
+        ]
       },
       {
         "op": "first",
@@ -88,6 +97,11 @@
               "op": "playerAaaa",
               "var": "player_aaaa",
               "key": "url"
+            },
+            {
+              "op": "regex",
+              "pattern": "^(https?://\\S+\\.(?:m3u8|mp4|mkv|flv)(?:[?#]\\S*)?)$",
+              "group": 1
             },
             {
               "op": "setMediaHeaders",

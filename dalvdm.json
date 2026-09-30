@@ -6,6 +6,7 @@
   "iconUrl": "https://xffkws.iflytek.com/group1/M00/B2/45/rB_aXmf1F1-AfbABAACZDIxclBE816.png",
   "description": "大千视界_打驴动漫，无广告所有樱花动漫番剧免费看，全蓝光画质永久免费观看。",
   "useWebview": true,
+  "directConnection": true,
   "headers": {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
     "Referer": "https://www.dalvdm.cc/"
@@ -15,10 +16,6 @@
       "op": "first",
       "branches": [
         [
-          {
-            "op": "fetch",
-            "url": "/"
-          },
           {
             "op": "maccmsSuggest",
             "detailUrlTemplate": "/index.php/vod/detail/id/{id}.html",
@@ -63,6 +60,21 @@
     {
       "op": "first",
       "branches": [
+        [
+          {
+            "op": "playerAaaa",
+            "var": "player_aaaa",
+            "key": "url"
+          },
+          {
+            "op": "regex",
+            "pattern": "^(https?://\\S+\\.(?:m3u8|mp4|mkv|flv)(?:[?#]\\S*)?)$",
+            "group": 1
+          },
+          {
+            "op": "videoUrl"
+          }
+        ],
         [
           {
             "op": "playerAaaa",

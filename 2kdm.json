@@ -102,6 +102,18 @@
       "branches": [
         [
           {
+            "op": "template",
+            "value": "{mediaToken:raw}"
+          },
+          {
+            "op": "regex",
+            "pattern": "^(https?://\\S+\\.(?:m3u8|mp4|flv|mkv)(?:[?#]\\S*)?)$",
+            "group": 1,
+            "ignoreCase": true
+          }
+        ],
+        [
+          {
             "op": "fetch",
             "url": "/addons/dp/player/dp.php?key=0&from={playerFrom}&id={playerId}&api=&url={mediaToken}&jump="
           },

@@ -68,58 +68,77 @@
             "op": "follow"
           },
           {
-            "op": "select",
-            "css": "iframe",
-            "attr": "src"
+            "op": "setVar",
+            "name": "playHtml",
+            "value": "{url:raw}"
           },
           {
-            "op": "regex",
-            "pattern": "[?&](?:url|v|vid)=(https?[^&]+)",
-            "group": 1
-          }
-        ],
-        [
-          {
-            "op": "follow"
-          },
-          {
-            "op": "select",
-            "css": "iframe",
-            "attr": "src"
-          },
-          {
-            "op": "sniff",
-            "goal": "video"
-          }
-        ],
-        [
-          {
-            "op": "follow"
-          },
-          {
-            "op": "videoUrl"
-          }
-        ],
-        [
-          {
-            "op": "follow"
-          },
-          {
-            "op": "select",
-            "css": "iframe",
-            "attr": "src"
-          },
-          {
-            "op": "follow"
-          },
-          {
-            "op": "videoUrl"
-          },
-          {
-            "op": "regex",
-            "pattern": "^(?!.*(?:adposter|/Play/ad|advertis|/ads?/|poster\\.mp4|loading\\.|ploading|preroll|midroll|postroll|commercial|promo\\.))https?://\\S+",
-            "group": 0,
-            "ignoreCase": true
+            "op": "first",
+            "branches": [
+              [
+                {
+                  "op": "template",
+                  "value": "{playHtml:raw}"
+                },
+                {
+                  "op": "select",
+                  "css": "iframe",
+                  "attr": "src"
+                },
+                {
+                  "op": "regex",
+                  "pattern": "[?&](?:url|v|vid)=(https?[^&]+)",
+                  "group": 1
+                }
+              ],
+              [
+                {
+                  "op": "template",
+                  "value": "{playHtml:raw}"
+                },
+                {
+                  "op": "select",
+                  "css": "iframe",
+                  "attr": "src"
+                },
+                {
+                  "op": "sniff",
+                  "goal": "video"
+                }
+              ],
+              [
+                {
+                  "op": "template",
+                  "value": "{playHtml:raw}"
+                },
+                {
+                  "op": "videoUrl"
+                }
+              ],
+              [
+                {
+                  "op": "template",
+                  "value": "{playHtml:raw}"
+                },
+                {
+                  "op": "select",
+                  "css": "iframe",
+                  "attr": "src"
+                },
+                {
+                  "op": "follow"
+                },
+                {
+                  "op": "videoUrl"
+                },
+                {
+                  "op": "regex",
+                  "pattern": "^(?!.*(?:adposter|/Play/ad|advertis|/ads?/|poster\\.mp4|loading\\.|ploading|preroll|midroll|postroll|commercial|promo\\.))https?://\\S+",
+                  "group": 0,
+                  "ignoreCase": true
+                }
+              ]
+            ]
           }
         ]
       ]

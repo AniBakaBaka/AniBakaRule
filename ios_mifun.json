@@ -72,6 +72,11 @@
           {
             "op": "json",
             "path": "url"
+          },
+          {
+            "op": "regex",
+            "pattern": "^(https?://\\S+\\.(?:m3u8|mp4|mkv|flv)(?:[?#]\\S*)?)$",
+            "group": 1
           }
         ],
         [
@@ -87,7 +92,8 @@
         [
           {
             "op": "sniff",
-            "goal": "video"
+            "goal": "video",
+            "url": "{episodeId:raw}"
           }
         ]
       ]
@@ -96,7 +102,10 @@
       "op": "setMediaHeaders",
       "headers": {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
-      }
+      },
+      "remove": [
+        "Referer"
+      ]
     }
   ]
 }

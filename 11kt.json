@@ -21,6 +21,31 @@
         ],
         [
           {
+            "op": "fetch",
+            "url": "/index.php/vod/search.html?wd={keyword}"
+          },
+          {
+            "op": "searchList",
+            "selectors": [
+              "dl.fed-deta-info"
+            ]
+          }
+        ],
+        [
+          {
+            "op": "sniff",
+            "goal": "html",
+            "url": "/index.php/vod/search.html?wd={keyword}",
+            "readyContains": [
+              "fed-deta-info"
+            ],
+            "rejectContains": [
+              "just a moment"
+            ],
+            "timeoutMs": 30000,
+            "settleMs": 0
+          },
+          {
             "op": "searchList",
             "selectors": [
               "dl.fed-deta-info"
@@ -32,52 +57,144 @@
   ],
   "detail": [
     {
-      "op": "follow"
-    },
-    {
-      "op": "episodes",
-      "listSelectors": [
-        ".fed-play-item"
+      "op": "first",
+      "branches": [
+        [
+          {
+            "op": "follow"
+          },
+          {
+            "op": "episodes",
+            "listSelectors": [
+              ".fed-play-item"
+            ]
+          }
+        ],
+        [
+          {
+            "op": "sniff",
+            "goal": "html",
+            "url": "{seriesId:raw}",
+            "readyContains": [
+              "fed-play-item"
+            ],
+            "rejectContains": [
+              "just a moment"
+            ],
+            "timeoutMs": 30000,
+            "settleMs": 0
+          },
+          {
+            "op": "episodes",
+            "listSelectors": [
+              ".fed-play-item"
+            ]
+          }
+        ]
       ]
     }
   ],
   "play": [
     {
-      "op": "follow"
-    },
-    {
       "op": "first",
       "branches": [
         [
           {
-            "op": "select",
-            "css": "#fed-play-iframe",
-            "attr": "data-play"
+            "op": "follow"
           },
           {
-            "op": "regex",
-            "pattern": "^...(.*)",
-            "group": 1
-          },
-          {
-            "op": "crypto",
-            "algo": "base64",
-            "mode": "decrypt"
+            "op": "first",
+            "branches": [
+              [
+                {
+                  "op": "select",
+                  "css": "#fed-play-iframe",
+                  "attr": "data-play"
+                },
+                {
+                  "op": "regex",
+                  "pattern": "^...(.*)",
+                  "group": 1
+                },
+                {
+                  "op": "crypto",
+                  "algo": "base64",
+                  "mode": "decrypt"
+                }
+              ],
+              [
+                {
+                  "op": "playerAaaa",
+                  "var": "player_aaaa",
+                  "key": "url"
+                }
+              ],
+              [
+                {
+                  "op": "videoUrl"
+                }
+              ]
+            ]
           }
         ],
         [
           {
-            "op": "playerAaaa",
-            "var": "player_aaaa",
-            "key": "url"
+            "op": "sniff",
+            "goal": "html",
+            "url": "{episodeId:raw}",
+            "readyContains": [
+              "id=\"fed-play-iframe\""
+            ],
+            "rejectContains": [
+              "just a moment"
+            ],
+            "timeoutMs": 30000,
+            "settleMs": 0
+          },
+          {
+            "op": "first",
+            "branches": [
+              [
+                {
+                  "op": "select",
+                  "css": "#fed-play-iframe",
+                  "attr": "data-play"
+                },
+                {
+                  "op": "regex",
+                  "pattern": "^...(.*)",
+                  "group": 1
+                },
+                {
+                  "op": "crypto",
+                  "algo": "base64",
+                  "mode": "decrypt"
+                }
+              ],
+              [
+                {
+                  "op": "playerAaaa",
+                  "var": "player_aaaa",
+                  "key": "url"
+                }
+              ],
+              [
+                {
+                  "op": "videoUrl"
+                }
+              ]
+            ]
           }
         ],
         [
           {
-            "op": "videoUrl"
+            "op": "sniff",
+            "goal": "video",
+            "url": "{episodeId:raw}"
           }
         ]
       ]
     }
-  ]
+  ],
+  "useWebview": true
 }

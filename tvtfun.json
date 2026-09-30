@@ -5,6 +5,7 @@
   "baseUrl": "https://www.tvtfun.net",
   "iconUrl": "https://www.tvtfun.net/favicon-32x32.png",
   "description": "TvTFun 动漫视频源。",
+  "directConnection": true,
   "headers": {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36",
     "Referer": "https://www.tvtfun.net/"
@@ -134,8 +135,8 @@
     },
     {
       "op": "setMediaHeaders",
-      "jsonPath": "data.headers",
-      "remove": ["Referer"]
+      "headers": { "Referer": "" },
+      "jsonPath": "data.headers"
     },
     {
       "op": "json",

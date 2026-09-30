@@ -2,12 +2,12 @@
   "format": "anx-rule/2",
   "id": "moonci",
   "name": "Moonci",
-  "baseUrl": "https://moonci.com",
-  "iconUrl": "https://moonci.com/favicon.ico",
+  "baseUrl": "https://www.moonci.com",
+  "iconUrl": "https://www.moonci.com/favicon.ico",
   "description": "Moonci 动漫视频源。",
   "headers": {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36",
-    "Referer": "https://moonci.com/"
+    "Referer": "https://www.moonci.com/"
   },
   "search": [
     {
@@ -49,15 +49,36 @@
   ],
   "play": [
     {
-      "op": "follow"
-    },
-    {
-      "op": "sniff",
-      "goal": "video",
-      "url": "{episodeId:raw}",
-      "resolveMediaRedirects": true,
-      "timeoutMs": 60000,
-      "settleMs": 1000
+      "op": "first",
+      "branches": [
+        [
+          {
+            "op": "fetch",
+            "url": "{episodeId:raw}"
+          },
+          {
+            "op": "playerAaaa"
+          },
+          {
+            "op": "regex",
+            "pattern": "^(https?://\\S+\\.(?:m3u8|mp4|mkv|flv)(?:[?#]\\S*)?)$",
+            "group": 1
+          },
+          {
+            "op": "videoUrl"
+          }
+        ],
+        [
+          {
+            "op": "sniff",
+            "goal": "video",
+            "url": "{episodeId:raw}",
+            "resolveMediaRedirects": true,
+            "timeoutMs": 60000,
+            "settleMs": 1000
+          }
+        ]
+      ]
     }
   ],
   "useWebview": true

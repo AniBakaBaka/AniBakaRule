@@ -55,12 +55,19 @@
     },
     {
       "op": "first",
+      "filterHlsAds": true,
       "branches": [
         [
           {
             "op": "playerAaaa",
             "var": "player_aaaa",
             "key": "url"
+          },
+          {
+            "op": "regex",
+            "pattern": "^(https?://\\S+\\.(?:m3u8|mp4|flv|mkv)(?:[?#]\\S*)?)$",
+            "group": 1,
+            "ignoreCase": true
           }
         ],
         [
@@ -76,6 +83,13 @@
           }
         ]
       ]
+    },
+    {
+      "op": "setMediaHeaders",
+      "remove": [
+        "Referer"
+      ]
     }
-  ]
+  ],
+  "useWebview": true
 }

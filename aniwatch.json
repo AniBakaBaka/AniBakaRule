@@ -12,97 +12,17 @@
   "useWebview": true,
   "search": [
     {
-      "op": "first",
-      "branches": [
-        [
-          {
-            "op": "fetch",
-            "url": "/api/animes?page=1&limit=100"
-          },
-          {
-            "op": "jsonSeries",
-            "listPath": "data.list",
-            "idKey": "id",
-            "nameKey": "title",
-            "imageKey": "cover_url",
-            "detailUrlTemplate": "/anime/{id}",
-            "keywordMatch": true
-          },
-          {
-            "op": "fetch",
-            "url": "/api/animes?page=2&limit=100"
-          },
-          {
-            "op": "jsonSeries",
-            "listPath": "data.list",
-            "idKey": "id",
-            "nameKey": "title",
-            "imageKey": "cover_url",
-            "detailUrlTemplate": "/anime/{id}",
-            "keywordMatch": true
-          }
-        ],
-        [
-          {
-            "op": "fetch",
-            "url": "/?q={keyword}"
-          },
-          {
-            "op": "searchList",
-            "selectors": [
-              ".anime-card",
-              "a[href*=\"/anime/\"]",
-              ".grid a"
-            ],
-            "detailPattern": "/anime/",
-            "keywordMatch": true
-          }
-        ],
-        [
-          {
-            "op": "sniff",
-            "goal": "html",
-            "url": "/api/animes?page=1&limit=100",
-            "readyContains": [
-              "title"
-            ],
-            "timeoutMs": 8000
-          },
-          {
-            "op": "select",
-            "css": "body",
-            "attr": "text"
-          },
-          {
-            "op": "jsonSeries",
-            "listPath": "data.list",
-            "idKey": "id",
-            "nameKey": "title",
-            "imageKey": "cover_url",
-            "detailUrlTemplate": "/anime/{id}",
-            "keywordMatch": true
-          }
-        ],
-        [
-          {
-            "op": "sniff",
-            "goal": "html",
-            "url": "/?q={keyword}",
-            "readyContains": [
-              "anime"
-            ],
-            "timeoutMs": 8000
-          },
-          {
-            "op": "searchList",
-            "selectors": [
-              ".anime-card",
-              "a[href*=\"/anime/\"]"
-            ],
-            "detailPattern": "/anime/"
-          }
-        ]
-      ]
+      "op": "fetch",
+      "url": "/api/animes?page=1&limit=100&q={keyword}"
+    },
+    {
+      "op": "jsonSeries",
+      "listPath": "data.list",
+      "idKey": "id",
+      "nameKey": "title",
+      "imageKey": "cover_url",
+      "detailUrlTemplate": "/anime/{id}",
+      "keywordMatch": true
     }
   ],
   "detail": [

@@ -98,7 +98,8 @@
         [
           {
             "op": "sniff",
-            "goal": "video"
+            "goal": "video",
+            "url": "{episodeId:raw}"
           }
         ]
       ]

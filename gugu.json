@@ -147,7 +147,8 @@
               "time": "{time:raw}",
               "key": "{key:raw}",
               "vkey": "{vkey:raw}"
-            }
+            },
+            "contentType": "form"
           },
           {
             "op": "json",
@@ -155,7 +156,21 @@
           },
           {
             "op": "regex",
-            "pattern": "^(https?://\\S+\\.(?:m3u8|mp4)(?:[?#]\\S*)?)$",
+            "pattern": "^(?!https?://player\\.gugu3\\.com/milimili\\.mp4(?:[?#]|$))(https?://\\S+\\.(?:m3u8|mp4)(?:[?#]\\S*)?)$",
+            "group": 1
+          }
+        ],
+        [
+          {
+            "op": "sniff",
+            "goal": "video",
+            "url": "{episodeId:raw}",
+            "followEmbeddedPlayer": true,
+            "timeoutMs": 30000
+          },
+          {
+            "op": "regex",
+            "pattern": "^(?!https?://player\\.gugu3\\.com/milimili\\.mp4(?:[?#]|$))(https?://\\S+)$",
             "group": 1
           }
         ]
@@ -169,5 +184,6 @@
         "Referer": "https://player.gugu3.com/"
       }
     }
-  ]
+  ],
+  "useWebview": true
 }

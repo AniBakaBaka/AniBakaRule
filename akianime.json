@@ -1,20 +1,20 @@
 {
   "format": "anx-rule/2",
-  "id": "ai_www_moefun_cc_mtv53mtf",
+  "id": "akianime",
   "name": "萌番 AkiAnime",
-  "baseUrl": "https://www.moefun.cc/",
-  "iconUrl": "https://www.moefun.cc/template/dsn2/static/img/ico.png",
-  "description": "萌番(moefun.cc / AkiAnime)动漫源",
+  "baseUrl": "https://www.akianime.cc/",
+  "iconUrl": "https://www.akianime.cc/template/dsn2/static/img/ico.png",
+  "description": "萌番 AkiAnime 动漫源，源网址 https://www.akianime.cc/",
   "pipeline": {
     "headers": {
       "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36",
       "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-      "Referer": "https://www.moefun.cc/"
+      "Referer": "https://www.akianime.cc/"
     },
     "search": [
       {
         "op": "fetch",
-        "url": "/bgmsearch/-------------.html?wd={keyword}"
+        "url": "/bgmsearch/{keyword}-------------.html"
       },
       {
         "op": "searchList",
@@ -31,7 +31,7 @@
       {
         "op": "follow",
         "headers": {
-          "Referer": "https://www.moefun.cc/"
+          "Referer": "https://www.akianime.cc/"
         }
       },
       {
@@ -52,7 +52,7 @@
       {
         "op": "follow",
         "headers": {
-          "Referer": "https://www.moefun.cc/"
+          "Referer": "https://www.akianime.cc/"
         }
       },
       {
@@ -79,13 +79,9 @@
         "value": "{playHtml:raw}"
       },
       {
-        "op": "regex",
-        "pattern": "player_aaaa=(\\{[\\s\\S]*?\\})\\s*</script>",
-        "group": 1
-      },
-      {
-        "op": "json",
-        "path": "url"
+        "op": "playerAaaa",
+        "var": "player_aaaa",
+        "key": "url"
       },
       {
         "op": "setVar",
@@ -114,7 +110,7 @@
               "op": "fetch",
               "url": "/static/js/playerconfig.js",
               "headers": {
-                "Referer": "https://www.moefun.cc/"
+                "Referer": "https://www.akianime.cc/"
               }
             },
             {
@@ -150,7 +146,7 @@
               "op": "fetch",
               "url": "{parserBase:raw}{playerUrl:raw}",
               "headers": {
-                "Referer": "https://www.moefun.cc/"
+                "Referer": "https://www.akianime.cc/"
               }
             },
             {
@@ -217,6 +213,12 @@
             }
           ]
         ]
+      },
+      {
+        "op": "setMediaHeaders",
+        "remove": [
+          "Referer"
+        ]
       }
     ],
     "useWebview": true,
@@ -224,5 +226,5 @@
   },
   "enabled": true,
   "createdAt": "2026-09-10T14:26:51.355801",
-  "updatedAt": "2026-09-10T14:27:44.898825"
+  "updatedAt": "2026-09-28T10:30:00.000000"
 }

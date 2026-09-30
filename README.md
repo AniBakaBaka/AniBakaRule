@@ -38,3 +38,22 @@ AniBaka 动漫源规则仓库，订阅索引见 [`index.json`](index.json)。
 | [动漫窝](https://www.dmwo.one/) | 少广告、高清 | [`dmwo.json`](dmwo.json) |
 | [GoFilm（幕白）](https://m.mubai.link/) | 无广告、高清 | [`mubai.json`](mubai.json) |
 | [E站弹幕网](https://www.ezdmw.org/) | 少广告、高清 | [`ezdmw.json`](ezdmw.json) |
+
+## index.json 的自动维护
+
+规则文件改完推到 `main` 后，[`Sync rule index`](.github/workflows/sync-rule-index.yml) 工作流会自动更新 [`index.json`](index.json)，不需要手动改：
+
+- 本次改动过的每个规则条目 `rev` 加一，App 端据此判断“有更新”；
+- 用规则文件里的 `baseUrl`、`iconUrl`、`description` 覆盖条目的 `site`、`badge`、`intro`；
+- 更新 `synced` 时间戳，然后把 `index.json` 作为一次 `chore: bump rule revisions [skip ci]` 提交推回 `main`。
+
+工作流只处理已登记的规则。新增规则文件仍要先手动补一条 `entries`（`key`、`title`、`labels` 等无法从规则文件推断），否则工作流会警告并跳过该文件；`title` 与规则文件的 `name` 不一致时同样会警告。
+
+同一个脚本可以在本机直接运行：
+
+```bash
+node scripts/sync-index.mjs --dry-run --all      # 预览全库改动，不写文件
+node scripts/sync-index.mjs --all                # 按当前工作区全部规则对齐
+node scripts/sync-index.mjs --files=7sefun.json  # 只处理指定规则
+node scripts/sync-index.mjs --no-intro           # 保留 index.json 里手写的简介
+```

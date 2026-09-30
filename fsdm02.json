@@ -8,7 +8,8 @@
   "headers": {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36",
     "Accept": "application/json, text/plain, */*",
-    "Referer": "https://www.fsdm02.com/"
+    "Referer": "https://www.fsdm02.com/",
+    "X-Forwarded-For": "127.0.0.1"
   },
   "search": [
     {
@@ -69,14 +70,17 @@
     },
     {
       "op": "maccmsApiEpisodes",
-      "preferHls": true
+      "preferHls": true,
+      "directOnly": true
     }
   ],
   "play": [
     {
       "op": "template",
-      "value": "{episodeId:raw}"
+      "value": "{episodeId:raw}",
+      "filterHlsAds": true
     }
   ],
-  "useWebview": true
+  "useWebview": true,
+  "directConnection": true
 }

@@ -2,9 +2,9 @@
   "format": "anx-rule/2",
   "id": "mikan",
   "name": "蜜柑计划",
-  "baseUrl": "https://mikanime.tv",
-  "iconUrl": "https://mikanime.tv/images/favicon.ico?v=2",
-  "description": "蜜柑计划结构化番剧 BT 资源，按字幕组与实际集数整理。",
+  "baseUrl": "https://mikanani.me",
+  "iconUrl": "https://mikanani.me/images/favicon.ico?v=2",
+  "description": "按番剧展示搜索结果，字幕组作为播放线路，按实际集数对齐。",
   "headers": {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
     "Accept": "text/html,application/xhtml+xml",
@@ -16,11 +16,18 @@
       "url": "/Home/Search?searchstr={keyword}"
     },
     {
-      "op": "searchList",
-      "selectors": [
-        "ul.an-ul li"
+      "op": "torrentRecords",
+      "mode": "series",
+      "rowSelector": "ul.an-ul > li",
+      "titleSelector": ".an-text",
+      "titleAttrs": [
+        "title",
+        "text"
       ],
-      "detailPattern": "/Home/Bangumi/"
+      "idSelector": "a[href*=\"/Home/Bangumi/\"]",
+      "idAttr": "href",
+      "imageSelector": "[data-src]",
+      "imageAttr": "data-src"
     }
   ],
   "detail": [
@@ -76,12 +83,12 @@
       "excludePatterns": [
         "\\b(?:batch|complete)\\b",
         "合集|全集|一括",
-        "(?:^|[\\[\\(\\s-])\\d{1,3}\\s*(?:-|~|～|至)\\s*\\d{1,3}(?:[話话集\\]\\)\\s]|$)"
+        "(?:^|[\\[【(（\\s|]|第)\\d{1,3}\\s*(?:-|~|～|至)\\s*\\d{1,3}(?:[話话集\\]】)）\\s+]|$)"
       ],
       "requireEpisodeNumber": true,
       "episodeIndexMode": "number",
       "dedupeByEpisode": true,
-      "episodeNameTemplate": "{title:raw}",
+      "episodeNameTemplate": "第{episode:raw}话{sizeSuffix:raw}",
       "unknownSourceName": "未知字幕组",
       "sourceNameBonus": 1,
       "scoreRules": [

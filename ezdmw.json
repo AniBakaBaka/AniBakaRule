@@ -43,12 +43,34 @@
       "attr": "src"
     },
     {
-      "op": "fetch"
-    },
-    {
-      "op": "select",
-      "css": "video#video",
-      "attr": "src"
+      "op": "first",
+      "branches": [
+        [
+          {
+            "op": "query",
+            "name": "src",
+            "input": "{url:raw}"
+          },
+          {
+            "op": "regex",
+            "pattern": "^(https?:\\/\\/\\S+\\.(?:m3u8|mp4|mkv|flv)(?:[?#]\\S*)?)$",
+            "group": 1
+          },
+          {
+            "op": "videoUrl"
+          }
+        ],
+        [
+          {
+            "op": "fetch"
+          },
+          {
+            "op": "select",
+            "css": "video#video",
+            "attr": "src"
+          }
+        ]
+      ]
     },
     {
       "op": "setMediaHeaders",

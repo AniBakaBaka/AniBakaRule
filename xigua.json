@@ -5,6 +5,7 @@
   "baseUrl": "https://www.xgcartoon.com",
   "iconUrl": "https://www.xgcartoon.com/xgct/icon/favicon-32x32.png",
   "description": "西瓜卡通视频源，源网址www.xgcartoon.com",
+  "useWebview": true,
   "headers": {
     "Referer": "https://www.xgcartoon.com/"
   },
@@ -17,30 +18,92 @@
       "op": "searchList",
       "listXPath": "//a[contains(@class,\"topic-list-item\")]",
       "nameXPath": ".//div[contains(@class,\"h3\")]",
-      "linkXPath": "",
-      "nameFilter": "^([^(（【]+)",
-      "keywordMatch": true
+      "linkXPath": ""
     }
   ],
   "detail": [
     {
-      "op": "follow"
-    },
-    {
-      "op": "episodes",
-      "listSelectors": [
-        ".detail-right__volumes"
+      "op": "first",
+      "branches": [
+        [
+          {
+            "op": "fetch",
+            "url": "{seriesId:raw}"
+          },
+          {
+            "op": "episodes",
+            "listSelectors": [
+              ".detail-right__volumes"
+            ]
+          }
+        ],
+        [
+          {
+            "op": "sniff",
+            "goal": "html",
+            "url": "{seriesId:raw}",
+            "readyContains": [
+              "detail-right__volumes"
+            ],
+            "rejectContains": [
+              "Page not found",
+              "页面不存在"
+            ],
+            "timeoutMs": 30000,
+            "settleMs": 1500
+          },
+          {
+            "op": "episodes",
+            "listSelectors": [
+              ".detail-right__volumes"
+            ]
+          }
+        ]
       ]
     }
   ],
   "play": [
     {
-      "op": "follow"
-    },
-    {
       "op": "first",
       "branches": [
         [
+          {
+            "op": "regex",
+            "pattern": "chapter_id=([A-Za-z0-9_-]+)",
+            "group": 1
+          },
+          {
+            "op": "setVar",
+            "name": "chapterId",
+            "value": "{url:raw}"
+          },
+          {
+            "op": "fetch",
+            "url": "/user/amp/content_pframe_url?chapter_id={chapterId:raw}&level=middle&expires=3600"
+          },
+          {
+            "op": "json",
+            "path": "data"
+          },
+          {
+            "op": "regex",
+            "pattern": "vid=([a-f0-9-]+)",
+            "group": 1
+          },
+          {
+            "op": "template",
+            "value": "https://xgct-video.bzcdn.net/{url:raw}/playlist.m3u8"
+          },
+          {
+            "op": "regex",
+            "pattern": "^(https://xgct-video\\.bzcdn\\.net/[a-f0-9-]+/playlist\\.m3u8)$",
+            "group": 1
+          }
+        ],
+        [
+          {
+            "op": "follow"
+          },
           {
             "op": "select",
             "css": "iframe[src*=\"vid=\"]",
@@ -63,23 +126,12 @@
         ],
         [
           {
-            "op": "regex",
-            "pattern": "vid=([a-f0-9-]+)",
-            "group": 1
-          },
-          {
-            "op": "template",
-            "value": "https://xgct-video.bzcdn.net/{url:raw}/playlist.m3u8"
-          },
-          {
-            "op": "regex",
-            "pattern": "^(https://xgct-video\\.bzcdn\\.net/[a-f0-9-]+/playlist\\.m3u8)$",
-            "group": 1
-          }
-        ],
-        [
-          {
-            "op": "videoUrl"
+            "op": "sniff",
+            "goal": "video",
+            "url": "{episodeId:raw}",
+            "resolveMediaRedirects": true,
+            "timeoutMs": 60000,
+            "settleMs": 1000
           }
         ]
       ]

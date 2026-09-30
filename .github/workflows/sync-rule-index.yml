@@ -1,0 +1,57 @@
+name: Sync rule index
+
+# 规则文件改动推到 main 后，自动更新 index.json 里对应条目的版本与展示信息。
+# 同一次提交的规则文件只需要提交规则本身，不必再手动改 rev / site / badge / intro。
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '*.json'
+      - '!index.json'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-rule-index-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    # 机器人自己的提交不再触发；提交信息里的 [skip ci] 是第二道保险。
+    if: >-
+      github.actor != 'github-actions[bot]' &&
+      !contains(github.event.head_commit.message || '', '[skip ci]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          # 需要推送前的提交才能算出本次改动了哪些规则文件。
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Bump changed rule revisions
+        env:
+          GITHUB_BEFORE: ${{ github.event.before }}
+          GITHUB_AFTER: ${{ github.sha }}
+        run: node scripts/sync-index.mjs
+
+      - name: Commit and push
+        run: |
+          if git diff --quiet -- index.json; then
+            echo 'index.json 已是最新，无需提交。'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add index.json
+          git commit -m 'chore: bump rule revisions [skip ci]'
+          git push

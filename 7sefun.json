@@ -56,88 +56,89 @@
       "op": "follow"
     },
     {
-      "op": "first",
-      "branches": [
-        [
-          {
-            "op": "playerAaaa",
-            "var": "player_aaaa",
-            "key": "url"
-          }
-        ],
-        [
-          {
-            "op": "videoUrl"
-          }
-        ]
-      ]
+      "op": "setVar",
+      "name": "page",
+      "value": "{url:raw}"
+    },
+    {
+      "op": "regex",
+      "pattern": "\"from\":\"([^\"]*)\"",
+      "group": 1
+    },
+    {
+      "op": "setVar",
+      "name": "from",
+      "value": "{url:raw}"
+    },
+    {
+      "op": "template",
+      "value": "{episodeId:raw}"
+    },
+    {
+      "op": "regex",
+      "pattern": "/vodplay/(\\d+)-",
+      "group": 1
+    },
+    {
+      "op": "setVar",
+      "name": "vodId",
+      "value": "{url:raw}"
+    },
+    {
+      "op": "template",
+      "value": "{page:raw}"
     },
     {
       "op": "first",
       "branches": [
         [
           {
-            "op": "videoUrl"
-          }
-        ],
-        [
-          {
-            "op": "setVar",
-            "name": "playerTarget",
-            "value": "{url:raw}"
-          },
-          {
-            "op": "follow",
-            "headers": {
-              "Referer": "https://www.7sefun.top/"
-            }
-          },
-          {
             "op": "playerAaaa",
             "var": "player_aaaa",
             "key": "url"
           },
           {
             "op": "setVar",
-            "name": "lmmToken",
+            "name": "playUrl",
             "value": "{url:raw}"
           },
           {
-            "op": "template",
-            "value": "https://yun.92cj.com/acfun58.php?id={lmmToken:raw}&referer={playerTarget}"
-          },
+            "op": "first",
+            "branches": [
+              [
+                {
+                  "op": "template",
+                  "value": "{playUrl:raw}"
+                },
+                {
+                  "op": "regex",
+                  "pattern": "^(https?://\\S+\\.(?:m3u8|mp4|flv|mkv)(?:[?#]\\S*)?)$",
+                  "group": 1,
+                  "ignoreCase": true
+                }
+              ],
+              [
+                {
+                  "op": "fetch",
+                  "url": "/addons/dp/player/art.php?key=0&uid=0&from={from:raw}&id={vodId:raw}&jump=&url={playUrl:raw}"
+                },
+                {
+                  "op": "regex",
+                  "pattern": "\"url\"\\s*:\\s*\"(https?:[^\"]+)\"",
+                  "group": 1
+                }
+              ]
+            ]
+          }
+        ],
+        [
           {
             "op": "sniff",
             "goal": "video",
+            "url": "{episodeId:raw}",
             "followEmbeddedPlayer": true,
-            "timeoutMs": 30000
-          }
-        ],
-        [
-          {
-            "op": "setVar",
-            "name": "playerTarget",
-            "value": "{url:raw}"
-          },
-          {
-            "op": "template",
-            "value": "https://dp.no3acg.com/player/ec.php?code=qw&if=1&from=lmm&url={playerTarget}"
-          },
-          {
-            "op": "follow",
-            "headers": {
-              "Referer": "https://www.7sefun.top/"
-            }
-          },
-          {
-            "op": "ecPlayer"
-          }
-        ],
-        [
-          {
-            "op": "sniff",
-            "goal": "video",
-            "url": "{episodeId:raw}"
+            "timeoutMs": 45000,
+            "settleMs": 1500
           }
         ]
       ]

@@ -11,13 +11,13 @@
   "search": [
     {
       "op": "fetch",
-      "url": "https://rzmsnqblptbceicadbyd.supabase.co/rest/v1/rpc/search_animes",
+      "url": "https://api.xifanacg.com/rest/v1/rpc/search_animes",
       "method": "POST",
       "contentType": "application/json",
       "headers": {
         "Accept": "application/json",
-        "apikey": "sb_publishable_aCb7uwyLN6H-sMjze4dRGA_2MDuROLF",
-        "Authorization": "Bearer sb_publishable_aCb7uwyLN6H-sMjze4dRGA_2MDuROLF",
+        "apikey": "sb_publishable_OBIVAWACIX6lPXrO98_z24_HcsmalkA",
+        "Authorization": "Bearer sb_publishable_OBIVAWACIX6lPXrO98_z24_HcsmalkA",
         "Origin": "https://next.xifanacg.com"
       },
       "body": {
@@ -60,13 +60,13 @@
         [
           {
             "op": "fetch",
-            "url": "https://rzmsnqblptbceicadbyd.supabase.co/functions/v1/issue-web-playback",
+            "url": "https://api.xifanacg.com/functions/v1/issue-web-playback",
             "method": "POST",
             "contentType": "application/json",
             "headers": {
               "Accept": "application/json",
-              "apikey": "sb_publishable_aCb7uwyLN6H-sMjze4dRGA_2MDuROLF",
-              "Authorization": "Bearer sb_publishable_aCb7uwyLN6H-sMjze4dRGA_2MDuROLF",
+              "apikey": "sb_publishable_OBIVAWACIX6lPXrO98_z24_HcsmalkA",
+              "Authorization": "Bearer sb_publishable_OBIVAWACIX6lPXrO98_z24_HcsmalkA",
               "Origin": "https://next.xifanacg.com"
             },
             "body": "{\"action\":\"hls\",\"episode_id\":{xifanEpisodeId:raw}}"
@@ -82,13 +82,13 @@
         [
           {
             "op": "fetch",
-            "url": "https://rzmsnqblptbceicadbyd.supabase.co/functions/v1/issue-web-playback",
+            "url": "https://api.xifanacg.com/functions/v1/issue-web-playback",
             "method": "POST",
             "contentType": "application/json",
             "headers": {
               "Accept": "application/json",
-              "apikey": "sb_publishable_aCb7uwyLN6H-sMjze4dRGA_2MDuROLF",
-              "Authorization": "Bearer sb_publishable_aCb7uwyLN6H-sMjze4dRGA_2MDuROLF",
+              "apikey": "sb_publishable_OBIVAWACIX6lPXrO98_z24_HcsmalkA",
+              "Authorization": "Bearer sb_publishable_OBIVAWACIX6lPXrO98_z24_HcsmalkA",
               "Origin": "https://next.xifanacg.com"
             },
             "body": "{\"action\":\"fallback\",\"episode_id\":{xifanEpisodeId:raw}}"
@@ -102,6 +102,10 @@
           }
         ]
       ]
+    },
+    {
+      "op": "setMediaHeaders",
+      "remove": ["Referer"]
     }
   ]
 }

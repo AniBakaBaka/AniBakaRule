@@ -22,6 +22,10 @@
         ],
         [
           {
+            "op": "fetch",
+            "url": "/search.html?wd={keyword}"
+          },
+          {
             "op": "searchList",
             "selectors": [
               ".module-card-item, .module-items .module-item"
@@ -50,23 +54,31 @@
     {
       "op": "playerAaaa",
       "var": "player_aaaa",
-      "key": "url"
+      "key": "url",
+      "hlsManifestDecode": {
+        "scheme": "xor",
+        "prefix": "enc",
+        "key": [
+          144,
+          223,
+          214,
+          167,
+          22,
+          76,
+          53
+        ],
+        "period": 10,
+        "fallbackIndex": 6,
+        "xor": 165,
+        "skipBytes": 3,
+        "trimPrefixBeforeM3u8": true
+      }
     },
     {
-      "op": "first",
-      "branches": [
-        [
-          {
-            "op": "videoUrl"
-          }
-        ],
-        [
-          {
-            "op": "sniff",
-            "goal": "video"
-          }
-        ]
-      ]
+      "op": "regex",
+      "pattern": "^(https?://\\S+\\.(?:m3u8|mp4|flv|mkv)(?:[?#]\\S*)?)$",
+      "group": 1,
+      "ignoreCase": true
     }
   ]
 }
