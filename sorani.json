@@ -1,0 +1,76 @@
+{
+  "format": "anx-rule/2",
+  "id": "sorani",
+  "name": "青空次元 (Sorani)",
+  "baseUrl": "https://www.sorani.net",
+  "iconUrl": "https://www.sorani.net/favicon.ico",
+  "description": "青空次元 (Sorani)，支持番剧搜索、分集列表和公开播放接口。",
+  "headers": {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+    "Referer": "https://www.sorani.net/",
+    "Origin": "https://www.sorani.net"
+  },
+  "search": [
+    {
+      "op": "fetch",
+      "url": "https://api.sorani.cc/sorani-cms/api/video?page=1&size=100&keyword={keyword}&enabled=true&sortMode=relevance_popular"
+    },
+    {
+      "op": "replace",
+      "regex": true,
+      "pattern": "\"cover\"\\s*:\\s*\"/sorani-cms/",
+      "replacement": "\"cover\":\"https://api.sorani.cc/sorani-cms/"
+    },
+    {
+      "op": "jsonSeries",
+      "listPath": "data.records",
+      "idKey": "id",
+      "nameKey": "title",
+      "imageKey": "cover",
+      "descKey": "summary",
+      "detailUrlTemplate": "/anime/mal/{id}"
+    }
+  ],
+  "detail": [
+    {
+      "op": "regex",
+      "pattern": "/anime/(?:mal|myanimelist)/(\\d+)",
+      "group": 1
+    },
+    {
+      "op": "fetch",
+      "url": "https://api.sorani.cc/sorani-cms/api/video/{url:raw}"
+    },
+    {
+      "op": "jsonEpisodes",
+      "episodesPath": "data.episodes",
+      "episodeNameKey": "title",
+      "episodeIdTemplate": "https://api.sorani.cc/sorani-cms/api/video/episode/{episodeId}/play",
+      "sourceName": "青空次元"
+    }
+  ],
+  "play": [
+    {
+      "op": "fetch",
+      "url": "{episodeId:raw}",
+      "headers": {
+        "Referer": "https://www.sorani.net/",
+        "Origin": "https://www.sorani.net"
+      }
+    },
+    {
+      "op": "regex",
+      "pattern": "^(?=[\\s\\S]*\"canPlay\"\\s*:\\s*true\\b)[\\s\\S]+$",
+      "group": 0
+    },
+    {
+      "op": "json",
+      "path": "data.playUrl"
+    },
+    {
+      "op": "regex",
+      "pattern": "^(https?://\\S+)$",
+      "group": 1
+    }
+  ]
+}

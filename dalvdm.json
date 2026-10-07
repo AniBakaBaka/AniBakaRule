@@ -2,105 +2,170 @@
   "format": "anx-rule/2",
   "id": "dalvdm",
   "name": "打驴动漫 (dalvdm)",
-  "baseUrl": "https://www.dalvdm.cc",
+  "baseUrl": "https://www.sbdl.cc",
   "iconUrl": "https://xffkws.iflytek.com/group1/M00/B2/45/rB_aXmf1F1-AfbABAACZDIxclBE816.png",
-  "description": "大千视界_打驴动漫，无广告所有樱花动漫番剧免费看，全蓝光画质永久免费观看。",
+  "description": "打驴动漫，支持新版站点的番剧搜索、多线路分集和播放解析。",
   "useWebview": true,
   "directConnection": true,
   "headers": {
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
-    "Referer": "https://www.dalvdm.cc/"
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+    "Referer": "https://www.sbdl.cc/"
   },
   "search": [
+    {
+      "op": "maccmsSuggest",
+      "detailUrlTemplate": "/index.php/vod/detail/id/{id}.html"
+    }
+  ],
+  "detail": [
     {
       "op": "first",
       "branches": [
         [
           {
-            "op": "maccmsSuggest",
-            "detailUrlTemplate": "/index.php/vod/detail/id/{id}.html",
-            "verify": true
+            "op": "follow"
+          },
+          {
+            "op": "episodes",
+            "listSelectors": [
+              ".tab-content .tab-pane.lists-box",
+              "ul.anthology-list-play"
+            ],
+            "tabSelectors": [
+              ".player_name a[data-toggle=\"tab\"]",
+              ".anthology-tab .swiper-slide"
+            ]
           }
         ],
         [
           {
-            "op": "fetch",
-            "url": "/index.php/vod/search/wd/{keyword}.html"
+            "op": "sniff",
+            "goal": "html",
+            "url": "{seriesId:raw}",
+            "readyContains": [
+              "lists-box",
+              "anthology-list-play"
+            ],
+            "rejectContains": [
+              "403 Forbidden",
+              "Sorry, you have been blocked"
+            ],
+            "timeoutMs": 30000
           },
           {
-            "op": "searchList",
-            "selectors": [
-              ".public-list-box, .module-card-item, .module-poster-item, .module-search-item, a[href*=\"/vod/detail/\"]"
+            "op": "episodes",
+            "listSelectors": [
+              ".tab-content .tab-pane.lists-box",
+              "ul.anthology-list-play"
+            ],
+            "tabSelectors": [
+              ".player_name a[data-toggle=\"tab\"]",
+              ".anthology-tab .swiper-slide"
             ]
           }
         ]
       ]
     }
   ],
-  "detail": [
-    {
-      "op": "follow"
-    },
-    {
-      "op": "episodes",
-      "listSelectors": [
-        ".anthology-list-box:not(:first-child) ul.anthology-list-play",
-        "ul.anthology-list-play"
-      ],
-      "tabSelectors": [
-        ".anthology-tab .swiper-slide:not(:first-child)",
-        ".anthology-tab .swiper-slide"
-      ]
-    }
-  ],
   "play": [
     {
-      "op": "follow"
+      "op": "setMediaHeaders",
+      "remove": [
+        "Referer",
+        "Origin"
+      ]
     },
     {
       "op": "first",
       "branches": [
         [
           {
-            "op": "playerAaaa",
-            "var": "player_aaaa",
-            "key": "url"
+            "op": "follow"
           },
           {
-            "op": "regex",
-            "pattern": "^(https?://\\S+\\.(?:m3u8|mp4|mkv|flv)(?:[?#]\\S*)?)$",
-            "group": 1
+            "op": "playerAaaa"
           },
           {
-            "op": "videoUrl"
-          }
-        ],
-        [
-          {
-            "op": "playerAaaa",
-            "var": "player_aaaa",
-            "key": "url"
-          },
-          {
-            "op": "setVar",
-            "name": "dalvSniffToken",
-            "value": "{url:raw}"
-          },
-          {
-            "op": "template",
-            "value": "https://dm.dalvdm.cc/?url={dalvSniffToken}"
-          },
-          {
-            "op": "sniff",
-            "goal": "video",
-            "url": "{url:raw}",
-            "followEmbeddedPlayer": true,
-            "timeoutMs": 45000
-          }
-        ],
-        [
-          {
-            "op": "videoUrl"
+            "op": "first",
+            "branches": [
+              [
+                {
+                  "op": "regex",
+                  "pattern": "^(https?://\\S+\\.(?:m3u8|mp4|mkv|flv)(?:[?#]\\S*)?)$",
+                  "group": 1
+                }
+              ],
+              [
+                {
+                  "op": "fetch",
+                  "url": "https://dm.sbdl.cc/?url={url}"
+                },
+                {
+                  "op": "setVar",
+                  "name": "playerHtml",
+                  "value": "{url:raw}"
+                },
+                {
+                  "op": "regex",
+                  "pattern": "\"url\"\\s*:\\s*\"([^\"]+)\"",
+                  "group": 1
+                },
+                {
+                  "op": "setVar",
+                  "name": "playerUrl",
+                  "value": "{url:raw}"
+                },
+                {
+                  "op": "template",
+                  "value": "{playerHtml:raw}"
+                },
+                {
+                  "op": "regex",
+                  "pattern": "\"time\"\\s*:\\s*\"([^\"]+)\"",
+                  "group": 1
+                },
+                {
+                  "op": "setVar",
+                  "name": "playerTime",
+                  "value": "{url:raw}"
+                },
+                {
+                  "op": "template",
+                  "value": "{playerHtml:raw}"
+                },
+                {
+                  "op": "regex",
+                  "pattern": "\"key\"\\s*:\\s*\"([^\"]+)\"",
+                  "group": 1
+                },
+                {
+                  "op": "fetch",
+                  "url": "https://dm.sbdl.cc/api.php",
+                  "method": "POST",
+                  "contentType": "form",
+                  "body": {
+                    "url": "{playerUrl:raw}",
+                    "time": "{playerTime:raw}",
+                    "key": "{url:raw}"
+                  }
+                },
+                {
+                  "op": "json",
+                  "path": "url"
+                },
+                {
+                  "op": "crypto",
+                  "algo": "aes-cbc",
+                  "key": "p9sBvL2gJkR5tWcX",
+                  "iv": "hZ3kM7fD8qR1wEaV"
+                },
+                {
+                  "op": "regex",
+                  "pattern": "^(https?://\\S+)$",
+                  "group": 1
+                }
+              ]
+            ]
           }
         ],
         [

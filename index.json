@@ -2,7 +2,7 @@
   "format": "anx-rulehub/2",
   "title": "AniBaka 规则库",
   "intro": "提供各动漫站点的搜索、详情、播放解析规则，支持在 App 内一键安装。",
-  "synced": "2026-09-30T14:06:42.924Z",
+  "synced": "2026-10-07T08:28:17.380Z",
   "entries": [
     {
       "key": "7sefun",
@@ -18,23 +18,8 @@
         "高清"
       ],
       "ref": "7sefun.json",
-      "engine": "anx-rule/2"
-    },
-    {
-      "key": "4kcz",
-      "title": "厂长资源",
-      "by": "anibaka",
-      "rev": 3,
-      "intro": "厂长资源提供电影、剧集、番剧和动漫剧场版等高清影视资源在线观看。",
-      "site": "https://www.4kcz.com/",
-      "badge": "https://gimg1.baidu.com/gimg/app=2001&n=0&g=0n&fmt=png&src=img.czzy66.com/2020/05/cropped-90b07fe57d6142-192x192.png",
-      "labels": [
-        "anime",
-        "有广告",
-        "超清"
-      ],
-      "ref": "4kcz.json",
-      "engine": "anx-rule/2"
+      "engine": "anx-rule/2",
+      "contentHash": "ffe79381fef1aa8bfc02b161ff75cd10082bb1cb3c91ed1b72ac13e206d48505"
     },
     {
       "key": "cyfz",
@@ -50,23 +35,25 @@
         "高清"
       ],
       "ref": "cyfz.json",
-      "engine": "anx-rule/2"
+      "engine": "anx-rule/2",
+      "contentHash": "f3796473c6da79ee8b79af5ff66a2073a007aa6fa3bd897087a64ff2bed4f02b"
     },
     {
-      "key": "11kt",
-      "title": "去看吧 (QuKanBa)",
-      "by": "auto-generator",
-      "rev": 6,
-      "intro": "海外更新最快的动漫社区，为您提供无修动漫、BL动漫等丰富动漫资源在线免费观看。",
-      "site": "https://11kt.net/",
-      "badge": "https://k8dm.com/template/vfed/asset/img/favicon.png",
+      "key": "5dm",
+      "title": "五弹幕 (5DM)",
+      "by": "anibaka",
+      "rev": 1,
+      "intro": "五弹幕动漫源，支持番剧搜索、多线路分集与播放解析。搜索遇到站点验证时使用 WebView。",
+      "site": "https://www.5dm.dev/",
+      "badge": "https://www.5dm.dev/wp-content/themes/5dm-next/assets/brand/mascot-face-32.png",
       "labels": [
         "anime",
-        "无广告",
+        "有广告",
         "高清"
       ],
-      "ref": "11kt.json",
-      "engine": "anx-rule/2"
+      "ref": "5dm.json",
+      "engine": "anx-rule/2",
+      "contentHash": "06ae64132c7c133ea73810be1596ddef4106ea49e5909b85229d97643ac25bac"
     },
     {
       "key": "ani_pekolove",
@@ -82,7 +69,8 @@
         "高清"
       ],
       "ref": "ani_pekolove.json",
-      "engine": "anx-rule/2"
+      "engine": "anx-rule/2",
+      "contentHash": "6714a74fb6e9266c41572a095e5de2f430b47fb2a4de4c4b9dcaba6908068d45"
     },
     {
       "key": "lm6",
@@ -98,23 +86,8 @@
         "高清"
       ],
       "ref": "lm6.json",
-      "engine": "anx-rule/2"
-    },
-    {
-      "key": "dalvdm",
-      "title": "打驴动漫 (dalvdm)",
-      "by": "auto-generator",
-      "rev": 7,
-      "intro": "大千视界_打驴动漫，无广告所有樱花动漫番剧免费看，全蓝光画质永久免费观看。",
-      "site": "https://www.dalvdm.cc/",
-      "badge": "https://xffkws.iflytek.com/group1/M00/B2/45/rB_aXmf1F1-AfbABAACZDIxclBE816.png",
-      "labels": [
-        "anime",
-        "无广告",
-        "高清"
-      ],
-      "ref": "dalvdm.json",
-      "engine": "anx-rule/2"
+      "engine": "anx-rule/2",
+      "contentHash": "0f0504ecc9b6465bd5371f8e2a48d2bccad74e2c2bd40aa8fbccde9c4d0f38b7"
     },
     {
       "key": "aniwatch",
@@ -129,7 +102,8 @@
         "高清"
       ],
       "ref": "aniwatch.json",
-      "engine": "anx-rule/2"
+      "engine": "anx-rule/2",
+      "contentHash": "58d7ba90080de6294b0ff95a1a6babe53911dfee575e9894075d2617495fa1ca"
     },
     {
       "key": "akianime",
@@ -145,7 +119,8 @@
         "超清"
       ],
       "ref": "akianime.json",
-      "engine": "anx-rule/2"
+      "engine": "anx-rule/2",
+      "contentHash": "b70c323d243f8f92eccb1c9c6fd644e0a386035a5da00badfd9866da9009e4d0"
     },
     {
       "key": "animoe",
@@ -161,7 +136,8 @@
         "高清"
       ],
       "ref": "animoe.json",
-      "engine": "anx-rule/2"
+      "engine": "anx-rule/2",
+      "contentHash": "bdeb989ee0eb0de341bdbf8fc23089554691675626b1b3f8f54dd21cbb402af7"
     },
     {
       "key": "tvtfun",
@@ -177,7 +153,8 @@
         "高清"
       ],
       "ref": "tvtfun.json",
-      "engine": "anx-rule/2"
+      "engine": "anx-rule/2",
+      "contentHash": "77b0e0740e0a637eda2d834725bed790701b1a99efc9a33d37cdb15284c11f07"
     },
     {
       "key": "ios_mifun",
@@ -193,14 +170,15 @@
         "高清"
       ],
       "ref": "ios_mifun.json",
-      "engine": "anx-rule/2"
+      "engine": "anx-rule/2",
+      "contentHash": "251a56f92aa1a902040bc9184f988e71d806c571f456ebb11d0df8a1be887edb"
     },
     {
       "key": "agekkkk",
       "title": "4K动漫",
       "by": "auto-generator",
       "rev": 2,
-      "intro": "4K动漫，提供4K超高清动漫在线观看，涵盖日漫、国漫、美漫、剧场版等资源。",
+      "intro": "4K动漫，提供日漫、国漫、美漫和剧场版等在线资源。",
       "site": "https://cn.agekkkk.com/",
       "badge": "https://cn.agekkkk.com/template/the4/statics/img/favicon.ico",
       "labels": [
@@ -209,7 +187,8 @@
         "超清"
       ],
       "ref": "agekkkk.json",
-      "engine": "anx-rule/2"
+      "engine": "anx-rule/2",
+      "contentHash": "065741accc12b413b32976636eaa917417de93b2b138f885da07079a49d8b84b"
     },
     {
       "key": "didahd",
@@ -225,23 +204,25 @@
         "超清"
       ],
       "ref": "didahd.json",
-      "engine": "anx-rule/2"
+      "engine": "anx-rule/2",
+      "contentHash": "d29b9611364c170d4ed03822673e9517ba597406005ec02e5bf550f4e4571340"
     },
     {
       "key": "anime7",
       "title": "Anime7 动画线上看",
       "by": "auto-generator",
-      "rev": 4,
-      "intro": "Anime7 动画线上看，提供日韩动漫、剧场版、国产动漫等高清在线观看。",
+      "rev": 5,
+      "intro": "Anime7 动画线上看，提供日韩动漫、剧场版、国产动漫等高清在线观看。含广告。",
       "site": "https://anime7.top/",
       "badge": "https://ani7.b-cdn.net/upload/logo/web-icon.png",
       "labels": [
         "anime",
-        "少广告",
+        "有广告",
         "高清"
       ],
       "ref": "anime7.json",
-      "engine": "anx-rule/2"
+      "engine": "anx-rule/2",
+      "contentHash": "8934d34fccf385793e9891ff44e80a8318bb35ad8db2b0dd844cfa6f689abfbc"
     },
     {
       "key": "hanimeone",
@@ -257,7 +238,8 @@
         "高清"
       ],
       "ref": "hanimeone.json",
-      "engine": "anx-rule/2"
+      "engine": "anx-rule/2",
+      "contentHash": "4128ea922eb96827d6aa57cf64e35cba6a9dc14826a09504ad1288d2ca9ff584"
     },
     {
       "key": "girigirilove",
@@ -273,7 +255,24 @@
         "高清"
       ],
       "ref": "girigirilove.json",
-      "engine": "anx-rule/2"
+      "engine": "anx-rule/2",
+      "contentHash": "f9a5875d38dd15251b2632643307d38f23b29e07c215315f1b292e39b2af2427"
+    },
+    {
+      "key": "girigirilove_beta",
+      "title": "GirigiriLove Beta",
+      "by": "anibaka",
+      "rev": 1,
+      "intro": "GirigiriLove Beta 动漫源，支持搜索、多线路分集和直连播放。",
+      "site": "https://beta.girigirilove.com/",
+      "badge": "https://beta.girigirilove.com/brand/icon.png",
+      "labels": [
+        "anime",
+        "高清"
+      ],
+      "ref": "girigirilove_beta.json",
+      "engine": "anx-rule/2",
+      "contentHash": "c9ca56e4393c691acdaf913953629d884763d67fed31a1d69dd624fac05cd490"
     },
     {
       "key": "xifanacg",
@@ -289,7 +288,8 @@
         "高清"
       ],
       "ref": "xifanacg.json",
-      "engine": "anx-rule/2"
+      "engine": "anx-rule/2",
+      "contentHash": "16bcac203f90bb0c499ba43ee1de3b3ecd95bd3e6512a295f42e0ec5ee15a778"
     },
     {
       "key": "age",
@@ -305,7 +305,8 @@
         "高清"
       ],
       "ref": "age.json",
-      "engine": "anx-rule/2"
+      "engine": "anx-rule/2",
+      "contentHash": "210aa259618977b62366b7531cf653521001f5bef16f851960dc9b51b40c5dd8"
     },
     {
       "key": "xigua",
@@ -321,7 +322,8 @@
         "高清"
       ],
       "ref": "xigua.json",
-      "engine": "anx-rule/2"
+      "engine": "anx-rule/2",
+      "contentHash": "fb328302311a2c7778cb226f7410d5b08f883b3fdb6ccec30f562aa177d6bbab"
     },
     {
       "key": "2kdm",
@@ -337,7 +339,8 @@
         "高清"
       ],
       "ref": "2kdm.json",
-      "engine": "anx-rule/2"
+      "engine": "anx-rule/2",
+      "contentHash": "b1502cb2aac1fae35e64785a49aead99a3a1e9eadafe1be82adcbdbdfaf0732e"
     },
     {
       "key": "gugu",
@@ -353,7 +356,8 @@
         "高清"
       ],
       "ref": "gugu.json",
-      "engine": "anx-rule/2"
+      "engine": "anx-rule/2",
+      "contentHash": "c1e1e5ac9e39c6daaf586733fc24da30861857990fde0df103e19ba378c14444"
     },
     {
       "key": "anime1",
@@ -369,7 +373,8 @@
         "高清"
       ],
       "ref": "anime1.json",
-      "engine": "anx-rule/2"
+      "engine": "anx-rule/2",
+      "contentHash": "5963883380606d4830eb3c616986214958941ef1c56830e41846ab8dec77ca05"
     },
     {
       "key": "dmhy",
@@ -385,7 +390,8 @@
         "高清"
       ],
       "ref": "dmhy.json",
-      "engine": "anx-rule/2"
+      "engine": "anx-rule/2",
+      "contentHash": "15b8b359e2a494c17d1e2827f724a66c1ceb525d3a93e37f1b296415b2c7a703"
     },
     {
       "key": "mikan",
@@ -401,14 +407,15 @@
         "高清"
       ],
       "ref": "mikan.json",
-      "engine": "anx-rule/2"
+      "engine": "anx-rule/2",
+      "contentHash": "9d2fe8e8a5b0a2e32cd8018ada1a49e17e732c33d30aab55ee7850bce234b5db"
     },
     {
       "key": "dm84",
       "title": "DM84",
       "by": "anibaka",
       "rev": 2,
-      "intro": "DM84 动漫视频源，源网站 dm84.net（当前入口 dmbus.cc）。",
+      "intro": "DM84 动漫视频源。",
       "site": "https://dmbus.cc/",
       "badge": "https://dmbus.cc/favicon.ico",
       "labels": [
@@ -417,7 +424,8 @@
         "高清"
       ],
       "ref": "dm84.json",
-      "engine": "anx-rule/2"
+      "engine": "anx-rule/2",
+      "contentHash": "9453601a81e355526d98dd7c92bc07566daece789c9b23b2f55f255dd143298a"
     },
     {
       "key": "fsdm02",
@@ -433,7 +441,8 @@
         "高清"
       ],
       "ref": "fsdm02.json",
-      "engine": "anx-rule/2"
+      "engine": "anx-rule/2",
+      "contentHash": "36d5a916995fe8e9cf51893f3993ddea3ef0896ecfadfa4fa3d7ef955316c52b"
     },
     {
       "key": "mgnacg",
@@ -449,7 +458,8 @@
         "高清"
       ],
       "ref": "mgnacg.json",
-      "engine": "anx-rule/2"
+      "engine": "anx-rule/2",
+      "contentHash": "be6161d13afedbc2e94ab96a1e948c611ed705a8963c93f538a26272abbea647"
     },
     {
       "key": "moonci",
@@ -465,45 +475,29 @@
         "高清"
       ],
       "ref": "moonci.json",
-      "engine": "anx-rule/2"
+      "engine": "anx-rule/2",
+      "contentHash": "03c750a3e8ec2a5090ce90962504238b46719eb00aefc7ccc725fbcc28d76dfc"
     },
     {
-      "key": "dmwo",
-      "title": "动漫窝",
-      "by": "anibaka",
-      "rev": 3,
-      "intro": "动漫窝提供最新动画、热门动漫和动画电影在线观看。",
-      "site": "https://www.dmwo.one/",
-      "badge": "https://www.dmwo.one/template/shoutu7/img/favicon.ico",
-      "labels": [
-        "anime",
-        "少广告",
-        "高清"
-      ],
-      "ref": "dmwo.json",
-      "engine": "anx-rule/2"
-    },
-    {
-      "key": "mubai",
-      "title": "GoFilm（幕白）",
+      "key": "silisili",
+      "title": "嘶哩嘶哩",
       "by": "anibaka",
       "rev": 1,
-      "intro": "GoFilm（幕白）提供电影、剧集、综艺和动漫的在线搜索与播放。",
-      "site": "https://m.mubai.link/",
-      "badge": "https://m.mubai.link/favicon.ico",
+      "intro": "嘶哩嘶哩动漫源。保留站点访问会话 Cookie，优先通过本站播放接口解密直链，WebView 作为后备。",
+      "site": "https://www.silisilifun.com/",
+      "badge": "https://www.silisilifun.com/favicon.ico?20190911",
       "labels": [
-        "anime",
-        "无广告",
-        "高清"
+        "anime"
       ],
-      "ref": "mubai.json",
-      "engine": "anx-rule/2"
+      "ref": "silisili.json",
+      "engine": "anx-rule/2",
+      "contentHash": "2f1f9979a6555d499a08c1864d0a25c91f0b2c042a0895b18d1e9b944f02a87f"
     },
     {
       "key": "ezdmw",
       "title": "E站弹幕网",
       "by": "anibaka",
-      "rev": 3,
+      "rev": 4,
       "intro": "E站弹幕网提供动漫搜索、分集观看和弹幕播放器。",
       "site": "https://www.ezdmw.org/",
       "badge": "https://www.ezdmw.org/Public/images/icon.png",
@@ -513,7 +507,40 @@
         "高清"
       ],
       "ref": "ezdmw.json",
-      "engine": "anx-rule/2"
+      "engine": "anx-rule/2",
+      "contentHash": "df648d6c8ee3bd40050337370548df9a158dcba271fd2d834ba2f5ca470e0c87"
+    },
+    {
+      "key": "dalvdm",
+      "title": "打驴动漫 (dalvdm)",
+      "by": "anibaka",
+      "rev": 9,
+      "intro": "打驴动漫，支持新版站点的番剧搜索、多线路分集和播放解析。",
+      "site": "https://www.sbdl.cc/",
+      "badge": "https://xffkws.iflytek.com/group1/M00/B2/45/rB_aXmf1F1-AfbABAACZDIxclBE816.png",
+      "labels": [
+        "anime",
+        "高清"
+      ],
+      "ref": "dalvdm.json",
+      "engine": "anx-rule/2",
+      "contentHash": "b3c83fb65287fc77eda9d35d5c0cc57a72299a8f1aee13a4810ddb5bac8794a6"
+    },
+    {
+      "key": "sorani",
+      "title": "青空次元 (Sorani)",
+      "by": "anibaka",
+      "rev": 1,
+      "intro": "青空次元 (Sorani)，支持番剧搜索、分集列表和公开播放接口。",
+      "site": "https://www.sorani.net/",
+      "badge": "https://www.sorani.net/favicon.ico",
+      "labels": [
+        "anime",
+        "高清"
+      ],
+      "ref": "sorani.json",
+      "engine": "anx-rule/2",
+      "contentHash": "0e12842c7e7e47105acd632b67c0cea2e94e243e2c5388349f12c8a632b5b17c"
     }
   ]
 }

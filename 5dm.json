@@ -1,0 +1,154 @@
+{
+  "format": "anx-rule/2",
+  "id": "5dm",
+  "name": "五弹幕 (5DM)",
+  "baseUrl": "https://www.5dm.dev",
+  "iconUrl": "https://www.5dm.dev/wp-content/themes/5dm-next/assets/brand/mascot-face-32.png",
+  "description": "五弹幕动漫源，支持番剧搜索、多线路分集与播放解析。搜索遇到站点验证时使用 WebView。",
+  "headers": {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+    "Referer": "https://www.5dm.dev/"
+  },
+  "search": [
+    {
+      "op": "first",
+      "branches": [
+        [
+          {
+            "op": "fetch",
+            "url": "/?s={keyword}&cat=-1%2C4%2C3%2C11"
+          },
+          {
+            "op": "searchList",
+            "selectors": [
+              "main.archive-page .anime-card"
+            ],
+            "detailPattern": "/dv"
+          }
+        ],
+        [
+          {
+            "op": "sniff",
+            "goal": "html",
+            "url": "/?s={keyword}&cat=-1%2C4%2C3%2C11",
+            "readyContains": [
+              "class=\"page-width archive-page\""
+            ],
+            "rejectContains": [
+              "just a moment",
+              "Sorry, you have been blocked"
+            ],
+            "timeoutMs": 30000,
+            "settleMs": 0
+          },
+          {
+            "op": "searchList",
+            "selectors": [
+              "main.archive-page .anime-card"
+            ],
+            "detailPattern": "/dv"
+          }
+        ]
+      ]
+    }
+  ],
+  "detail": [
+    {
+      "op": "first",
+      "branches": [
+        [
+          {
+            "op": "follow"
+          },
+          {
+            "op": "episodes",
+            "listSelectors": [
+              ".tm-multilink .episode-grid"
+            ],
+            "tabSelectors": [
+              ".tm-multilink .multilink-title"
+            ]
+          }
+        ],
+        [
+          {
+            "op": "sniff",
+            "goal": "html",
+            "url": "{seriesId:raw}",
+            "readyContains": [
+              "class=\"tm-multilink\""
+            ],
+            "rejectContains": [
+              "just a moment",
+              "Sorry, you have been blocked"
+            ],
+            "timeoutMs": 30000,
+            "settleMs": 0
+          },
+          {
+            "op": "episodes",
+            "listSelectors": [
+              ".tm-multilink .episode-grid"
+            ],
+            "tabSelectors": [
+              ".tm-multilink .multilink-title"
+            ]
+          }
+        ]
+      ]
+    }
+  ],
+  "play": [
+    {
+      "op": "first",
+      "branches": [
+        [
+          {
+            "op": "follow"
+          },
+          {
+            "op": "select",
+            "css": "script#moe-player-config",
+            "attr": "text"
+          },
+          {
+            "op": "json",
+            "path": "url"
+          }
+        ],
+        [
+          {
+            "op": "sniff",
+            "goal": "html",
+            "url": "{episodeId:raw}",
+            "readyContains": [
+              "id=\"moe-player-config\""
+            ],
+            "rejectContains": [
+              "just a moment",
+              "Sorry, you have been blocked"
+            ],
+            "timeoutMs": 30000,
+            "settleMs": 0
+          },
+          {
+            "op": "select",
+            "css": "script#moe-player-config",
+            "attr": "text"
+          },
+          {
+            "op": "json",
+            "path": "url"
+          }
+        ]
+      ]
+    },
+    {
+      "op": "setMediaHeaders",
+      "headers": {
+        "Referer": "https://www.5dm.dev/"
+      }
+    }
+  ],
+  "useWebview": true
+}

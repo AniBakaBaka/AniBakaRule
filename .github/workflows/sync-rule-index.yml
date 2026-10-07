@@ -1,57 +1,105 @@
 name: Sync rule index
 
-# 规则文件改动推到 main 后，自动更新 index.json 里对应条目的版本与展示信息。
-# 同一次提交的规则文件只需要提交规则本身，不必再手动改 rev / site / badge / intro。
 on:
   push:
-    branches:
-      - main
+    branches: [main]
     paths:
       - '*.json'
-      - '!index.json'
+      - 'scripts/*.mjs'
+      - '.github/workflows/sync-rule-index.yml'
+  pull_request:
+    paths:
+      - '*.json'
+      - 'scripts/*.mjs'
+      - '.github/workflows/sync-rule-index.yml'
   workflow_dispatch:
+    inputs:
+      dry_run:
+        description: '只校验和预览，不提交索引'
+        type: boolean
+        default: false
 
 permissions:
-  contents: write
+  contents: read
 
 concurrency:
-  group: sync-rule-index-${{ github.ref }}
-  cancel-in-progress: false
+  group: sync-rule-index-${{ github.event.pull_request.number || github.ref }}
+  # PR 只保留最新检查；main 写入不中断。全库内容指纹可补齐被替换的待运行任务。
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
-  sync:
-    # 机器人自己的提交不再触发；提交信息里的 [skip ci] 是第二道保险。
-    if: >-
-      github.actor != 'github-actions[bot]' &&
-      !contains(github.event.head_commit.message || '', '[skip ci]')
+  validate:
+    if: github.event_name == 'pull_request' || github.ref != 'refs/heads/main' || inputs.dry_run == true
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 5
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
-          # 需要推送前的提交才能算出本次改动了哪些规则文件。
-          fetch-depth: 0
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+          persist-credentials: false
+      - uses: actions/setup-node@v7
         with:
-          node-version: 20
+          node-version: '24'
+          package-manager-cache: false
+      - name: Test sync behavior
+        run: node --test scripts/sync-index.test.mjs
+      - name: Validate and preview rule index
+        run: node scripts/sync-index.mjs --dry-run
 
-      - name: Bump changed rule revisions
-        env:
-          GITHUB_BEFORE: ${{ github.event.before }}
-          GITHUB_AFTER: ${{ github.sha }}
-        run: node scripts/sync-index.mjs
-
-      - name: Commit and push
+  sync:
+    if: >-
+      github.event_name != 'pull_request' &&
+      github.ref == 'refs/heads/main' &&
+      inputs.dry_run != true
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: main
+          fetch-depth: 1
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '24'
+          package-manager-cache: false
+      - name: Sync and push latest index
+        shell: bash
         run: |
-          if git diff --quiet -- index.json; then
-            echo 'index.json 已是最新，无需提交。'
-            exit 0
-          fi
+          set -euo pipefail
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add index.json
-          git commit -m 'chore: bump rule revisions [skip ci]'
-          git push
+
+          # 只运行在 Actions 临时 checkout；不允许丢弃预先存在的工作区改动。
+          if [[ -n "$(git status --porcelain)" ]]; then
+            echo '::error::同步前工作区必须干净。'
+            exit 1
+          fi
+
+          for attempt in 1 2 3; do
+            # 不 rebase 旧的生成结果：基于最新规则和索引重新计算，避免覆盖新规则。
+            git fetch --no-tags --depth=1 origin refs/heads/main
+            git reset --hard FETCH_HEAD
+            base=$(git rev-parse HEAD)
+            node --test scripts/sync-index.test.mjs
+            node scripts/sync-index.mjs
+
+            if git diff --quiet -- index.json; then
+              echo 'index.json 已是最新，无需提交。'
+              exit 0
+            fi
+            git add -- index.json
+            git commit -m 'chore: sync rule index [skip ci]'
+            if git push origin HEAD:refs/heads/main; then
+              exit 0
+            fi
+
+            git fetch --no-tags --depth=1 origin refs/heads/main
+            if [[ "$(git rev-parse FETCH_HEAD)" == "$base" ]]; then
+              echo '::error::远端没有新提交，推送失败并非并发更新，请检查写权限或分支保护。'
+              exit 1
+            fi
+            echo "远端已有新提交，重新计算索引（第 $attempt 次尝试）。"
+          done
+          echo '::error::连续 3 次推送均发生冲突，请重新运行此任务。'
+          exit 1

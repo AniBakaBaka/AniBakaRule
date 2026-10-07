@@ -20,21 +20,72 @@
       "branches": [
         [
           {
-            "op": "searchList",
-            "selectors": [
-              "a[itemprop=\"name\"]"
+            "op": "first",
+            "branches": [
+              [
+                {
+                  "op": "searchList",
+                  "selectors": [
+                    "a[itemprop=\"name\"]"
+                  ]
+                }
+              ],
+              [
+                {
+                  "op": "searchList",
+                  "selectors": [
+                    "a[itemprop=\"name\"][href*=\"/anime/\"]",
+                    "a[class^=\"ptl-\"][href*=\"/anime/\"]",
+                    "a[class*=\" ptl-\"][href*=\"/anime/\"]"
+                  ],
+                  "detailPattern": "/anime/"
+                }
+              ]
             ]
           }
         ],
         [
           {
-            "op": "searchList",
-            "selectors": [
-              "a[itemprop=\"name\"][href*=\"/anime/\"]",
-              "a[class^=\"ptl-\"][href*=\"/anime/\"]",
-              "a[class*=\" ptl-\"][href*=\"/anime/\"]"
-            ],
-            "detailPattern": "/anime/"
+            "op": "regex",
+            "pattern": "f\\.action\\s*=\\s*[\"\\'](/pvs_search)[\"\\']",
+            "group": 1
+          },
+          {
+            "op": "fetch",
+            "method": "POST",
+            "contentType": "form",
+            "body": {
+              "js_run": "ok",
+              "uri": "/"
+            }
+          },
+          {
+            "op": "fetch",
+            "url": "https://ani.pekolove.net/?s={keyword}"
+          },
+          {
+            "op": "first",
+            "branches": [
+              [
+                {
+                  "op": "searchList",
+                  "selectors": [
+                    "a[itemprop=\"name\"]"
+                  ]
+                }
+              ],
+              [
+                {
+                  "op": "searchList",
+                  "selectors": [
+                    "a[itemprop=\"name\"][href*=\"/anime/\"]",
+                    "a[class^=\"ptl-\"][href*=\"/anime/\"]",
+                    "a[class*=\" ptl-\"][href*=\"/anime/\"]"
+                  ],
+                  "detailPattern": "/anime/"
+                }
+              ]
+            ]
           }
         ]
       ]
@@ -45,9 +96,41 @@
       "op": "follow"
     },
     {
-      "op": "episodes",
-      "roadsXPath": "//div[contains(@class, \"entry-content\")]",
-      "itemsXPath": ".//div[contains(@class, \"wp-block-columns\") and contains(@class, \"is-not-stacked-on-mobile\")]//a[contains(@class, \"pbb-\") and contains(text(), \"集\")]"
+      "op": "first",
+      "branches": [
+        [
+          {
+            "op": "episodes",
+            "roadsXPath": "//div[contains(@class, \"entry-content\")]",
+            "itemsXPath": ".//div[contains(@class, \"wp-block-columns\") and contains(@class, \"is-not-stacked-on-mobile\")]//a[contains(@class, \"pbb-\") and contains(text(), \"集\")]"
+          }
+        ],
+        [
+          {
+            "op": "regex",
+            "pattern": "f\\.action\\s*=\\s*[\"\\'](/pvs_search)[\"\\']",
+            "group": 1
+          },
+          {
+            "op": "fetch",
+            "method": "POST",
+            "contentType": "form",
+            "body": {
+              "js_run": "ok",
+              "uri": "/"
+            }
+          },
+          {
+            "op": "fetch",
+            "url": "{seriesId:raw}"
+          },
+          {
+            "op": "episodes",
+            "roadsXPath": "//div[contains(@class, \"entry-content\")]",
+            "itemsXPath": ".//div[contains(@class, \"wp-block-columns\") and contains(@class, \"is-not-stacked-on-mobile\")]//a[contains(@class, \"pbb-\") and contains(text(), \"集\")]"
+          }
+        ]
+      ]
     }
   ],
   "play": [
@@ -60,9 +143,45 @@
       }
     },
     {
-      "op": "select",
-      "css": "iframe[data-src*=\"/anime/player/?url=\"]",
-      "attr": "data-src"
+      "op": "first",
+      "branches": [
+        [
+          {
+            "op": "select",
+            "css": "iframe[data-src*=\"/anime/player/?url=\"]",
+            "attr": "data-src"
+          }
+        ],
+        [
+          {
+            "op": "regex",
+            "pattern": "f\\.action\\s*=\\s*[\"\\'](/pvs_search)[\"\\']",
+            "group": 1
+          },
+          {
+            "op": "fetch",
+            "method": "POST",
+            "contentType": "form",
+            "body": {
+              "js_run": "ok",
+              "uri": "/"
+            }
+          },
+          {
+            "op": "fetch",
+            "url": "{episodeId:raw}/?_={timestamp:raw}",
+            "headers": {
+              "Cache-Control": "no-cache",
+              "Referer": "https://ani.pekolove.net/"
+            }
+          },
+          {
+            "op": "select",
+            "css": "iframe[data-src*=\"/anime/player/?url=\"]",
+            "attr": "data-src"
+          }
+        ]
+      ]
     },
     {
       "op": "setVar",
@@ -92,6 +211,54 @@
           }
         ]
       ]
+    },
+    {
+      "op": "setVar",
+      "name": "mediaUrl",
+      "value": "{url:raw}"
+    },
+    {
+      "op": "query",
+      "name": "st",
+      "input": "{mediaUrl:raw}",
+      "var": "st"
+    },
+    {
+      "op": "query",
+      "name": "token",
+      "input": "{mediaUrl:raw}",
+      "var": "token"
+    },
+    {
+      "op": "setVar",
+      "name": "pulsePlayerUrl",
+      "value": "https://video.pekolove.mov/anime/player/?url={mediaUrl:raw}"
+    },
+    {
+      "op": "fetch",
+      "url": "https://ani.pekolove.net/pvs_pulse.php?st={st}&token={token}&m_url={pulsePlayerUrl}",
+      "headers": {
+        "Referer": "{playerUrl:raw}",
+        "Origin": "https://video.pekolove.mov",
+        "Cache-Control": "no-cache"
+      },
+      "playbackKeepAlive": true,
+      "intervalSeconds": 28,
+      "expectedBody": "ok",
+      "variables": {
+        "pulsePlayerUrl": "https://video.pekolove.mov/anime/player/?url={mediaUrl:raw}",
+        "playerUrl": "https://video.pekolove.mov/anime/player/?url={mediaUrl}&st={st}&e={e}&token={token}"
+      }
+    },
+    {
+      "op": "regex",
+      "pattern": "^\\s*(ok)\\s*$",
+      "group": 1
+    },
+    {
+      "op": "replace",
+      "pattern": "ok",
+      "replacement": "{mediaUrl:raw}"
     },
     {
       "op": "setMediaHeaders",

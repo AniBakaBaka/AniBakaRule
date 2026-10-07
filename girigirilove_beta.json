@@ -1,0 +1,57 @@
+{
+  "format": "anx-rule/2",
+  "id": "girigirilove_beta",
+  "name": "GirigiriLove Beta",
+  "baseUrl": "https://beta.girigirilove.com",
+  "iconUrl": "https://beta.girigirilove.com/brand/icon.png",
+  "description": "GirigiriLove Beta 动漫源，支持搜索、多线路分集和直连播放。",
+  "headers": {
+    "Referer": "https://beta.girigirilove.com/",
+    "Origin": "https://beta.girigirilove.com"
+  },
+  "search": [
+    {
+      "op": "fetch",
+      "url": "https://m3u8.girigirilove.com/api.php/Vod/get_list?vod_name={keyword}&offset=0&limit=100"
+    },
+    {
+      "op": "jsonSeries",
+      "listPath": "info.rows",
+      "idKey": "vod_id",
+      "nameKey": "vod_name",
+      "imageKey": "vod_pic",
+      "descKey": "vod_blurb",
+      "detailUrlTemplate": "/detail/{id}"
+    }
+  ],
+  "detail": [
+    {
+      "op": "regex",
+      "pattern": "/detail/(\\d+)",
+      "group": 1
+    },
+    {
+      "op": "fetch",
+      "url": "https://m3u8.girigirilove.com/api.php/Vod/get_detail?vod_id={url:raw}&user_id="
+    },
+    {
+      "op": "regex",
+      "pattern": "\"info\"\\s*:\\s*(\\{[\\s\\S]*\\})\\s*\\}\\s*$",
+      "group": 1
+    },
+    {
+      "op": "template",
+      "value": "[{url:raw}]"
+    },
+    {
+      "op": "maccmsApiEpisodes",
+      "listPath": "",
+      "directOnly": true
+    }
+  ],
+  "play": [
+    {
+      "op": "videoUrl"
+    }
+  ]
+}

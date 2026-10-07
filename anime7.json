@@ -4,7 +4,7 @@
   "name": "Anime7 动画线上看",
   "baseUrl": "https://anime7.top",
   "iconUrl": "https://ani7.b-cdn.net/upload/logo/web-icon.png",
-  "description": "Anime7 动画线上看，提供日韩动漫、剧场版、国产动漫等高清在线观看。",
+  "description": "Anime7 动画线上看，提供日韩动漫、剧场版、国产动漫等高清在线观看。含广告。",
   "headers": {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
     "Referer": "https://anime7.top/"
