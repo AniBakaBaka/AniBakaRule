@@ -2,7 +2,11 @@
   "format": "anx-rulehub/2",
   "title": "AniBaka 规则库",
   "intro": "提供各动漫站点的搜索、详情、播放解析规则，支持在 App 内一键安装。",
+<<<<<<< HEAD
   "synced": "2026-10-07T08:28:17.380Z",
+=======
+  "synced": "2026-09-30T14:42:19.048Z",
+>>>>>>> 0f79e8bfab8fe16f8830e24018eee64869ac24e5
   "entries": [
     {
       "key": "7sefun",
@@ -312,7 +316,7 @@
       "key": "xigua",
       "title": "西瓜卡通",
       "by": "anibaka",
-      "rev": 7,
+      "rev": 8,
       "intro": "西瓜卡通视频源，源网址www.xgcartoon.com",
       "site": "https://www.xgcartoon.com/",
       "badge": "https://www.xgcartoon.com/xgct/icon/favicon-32x32.png",
