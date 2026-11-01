@@ -20,14 +20,11 @@
       "mode": "series",
       "rowSelector": "ul.an-ul > li",
       "titleSelector": ".an-text",
-      "titleAttrs": [
-        "title",
-        "text"
-      ],
       "idSelector": "a[href*=\"/Home/Bangumi/\"]",
       "idAttr": "href",
       "imageSelector": "[data-src]",
-      "imageAttr": "data-src"
+      "imageAttr": "data-src",
+      "titleAttr": "title"
     }
   ],
   "detail": [
@@ -43,17 +40,6 @@
       "rowSelector": "tbody tr",
       "titleSelector": ".magnet-link-wrap",
       "titleAttr": "text",
-      "idSelectors": [
-        "input[data-magnet]",
-        "a[data-clipboard-text^=\"magnet:\"]",
-        "a[href^=\"magnet:\"]",
-        "a[href*=\".torrent\"]"
-      ],
-      "idAttrs": [
-        "data-magnet",
-        "data-clipboard-text",
-        "href"
-      ],
       "exactSourceSelector": "a[href*=\".torrent\"]",
       "exactSourceAttr": "href",
       "sizeSelector": "td:nth-child(3)",
@@ -128,7 +114,9 @@
           "pattern": "hevc|h\\.?265",
           "score": 2
         }
-      ]
+      ],
+      "idSelector": "input.js-episode-select[data-magnet]",
+      "idAttr": "data-magnet"
     }
   ],
   "play": [

@@ -18,10 +18,12 @@
     {
       "op": "searchList",
       "selectors": [
-        ".cata_video_item",
-        ".card"
+        ".cata_video_item"
       ],
-      "detailPattern": "/detail/"
+      "linkSelector": ".card-title > a",
+      "titleSelector": ".card-title > a",
+      "imageSelector": ".video_cover img",
+      "imageAttr": "data-original"
     }
   ],
   "detail": [
@@ -36,11 +38,11 @@
     },
     {
       "op": "episodes",
-      "tabSelectors": [
-        "button[data-bs-target^=\"#playlist-source-\"]"
-      ],
       "listSelectors": [
         "div[id^=\"playlist-source-\"]"
+      ],
+      "tabSelectors": [
+        "button[data-bs-target^=\"#playlist-source-\"]"
       ]
     }
   ],

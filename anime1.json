@@ -12,21 +12,35 @@
   },
   "search": [
     {
-      "op": "anime1Search",
-      "url": "https://anime1.me/animelist.json",
-      "idIndex": 0,
-      "nameIndex": 1,
+      "op": "fetch",
+      "url": "https://anime1.me/animelist.json"
+    },
+    {
+      "op": "jsonSeries",
+      "idKey": "[0]",
+      "nameKey": "[1]",
+      "keywordMatch": true,
       "caseSensitive": true
     }
   ],
   "detail": [
     {
-      "op": "anime1Detail",
-      "url": "https://anime1.me/?cat={seriesId:raw}",
-      "itemSelector": "video[data-apireq]",
-      "tokenAttribute": "data-apireq",
+      "op": "fetch",
+      "url": "https://anime1.me/?cat={seriesId:raw}"
+    },
+    {
+      "op": "select",
+      "css": "video[data-apireq]",
+      "attr": "data-apireq",
+      "all": true,
+      "unique": true,
       "nextSelector": ".nav-previous a",
-      "maxPages": 32,
+      "maxPages": 32
+    },
+    {
+      "op": "jsonEpisodes",
+      "episodesPath": "",
+      "episodeIdTemplate": "{id:raw}",
       "reverse": true,
       "sourceName": "Anime1",
       "episodeNameTemplate": "第{index}集"
@@ -34,13 +48,39 @@
   ],
   "play": [
     {
-      "op": "anime1Play",
+      "op": "urlDecode"
+    },
+    {
+      "op": "setVar",
+      "name": "token",
+      "value": "{url:raw}"
+    },
+    {
+      "op": "fetch",
       "url": "https://v.anime1.me/api",
       "method": "POST",
       "contentType": "form",
-      "tokenField": "d",
-      "sourcePath": "s[0].src",
-      "mediaBaseUrl": "https://v.anime1.me/",
+      "body": {
+        "d": "{token:raw}"
+      },
+      "headers": {
+        "Accept": "application/json, text/plain, */*",
+        "Origin": "https://anime1.me",
+        "Referer": "https://anime1.me/"
+      },
+      "cookieSession": true
+    },
+    {
+      "op": "json",
+      "path": "s[0].src"
+    },
+    {
+      "op": "setMediaHeaders",
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 13_3_1) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.4 Safari/605.1.15",
+        "Accept": "*/*",
+        "Referer": "https://anime1.me/"
+      },
       "cookieNames": [
         "e",
         "p",
@@ -49,16 +89,6 @@
       "cookiePrefixes": [
         "_ga"
       ],
-      "headers": {
-        "Accept": "application/json, text/plain, */*",
-        "Origin": "https://anime1.me",
-        "Referer": "https://anime1.me/"
-      },
-      "mediaHeaders": {
-        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 13_3_1) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.4 Safari/605.1.15",
-        "Accept": "*/*",
-        "Referer": "https://anime1.me/"
-      },
       "validateWithCookies": true
     }
   ]

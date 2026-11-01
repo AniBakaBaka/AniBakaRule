@@ -11,60 +11,34 @@
   },
   "search": [
     {
-      "op": "maccmsSuggest",
-      "urlKey": "url",
+      "op": "fetch",
+      "url": "/index.php/ajax/suggest?mid=1&wd={keyword}&limit=20",
+      "headers": {
+        "X-Requested-With": "XMLHttpRequest"
+      }
+    },
+    {
+      "op": "jsonSeries",
+      "listPath": "list",
+      "idKey": "id",
+      "nameKey": "name",
+      "imageKey": "pic",
       "detailUrlTemplate": "/pages/{id}.html"
     }
   ],
   "detail": [
     {
-      "op": "first",
-      "branches": [
-        [
-          {
-            "op": "follow"
-          },
-          {
-            "op": "episodes",
-            "listSelectors": [
-              ".anthology-list-box",
-              ".anthology-list-play"
-            ],
-            "tabSelectors": [
-              ".anthology-tab .swiper-slide",
-              ".anthology-tab a",
-              ".module-tab-item",
-              ".tab-item"
-            ]
-          }
-        ],
-        [
-          {
-            "op": "sniff",
-            "goal": "html",
-            "url": "{seriesId:raw}",
-            "readyContains": [
-              "anthology-list-play",
-              "anthology-list-box"
-            ],
-            "timeoutMs": 30000,
-            "settleMs": 0
-          },
-          {
-            "op": "episodes",
-            "listSelectors": [
-              ".anthology-list-box",
-              ".anthology-list-play"
-            ],
-            "tabSelectors": [
-              ".anthology-tab .swiper-slide",
-              ".anthology-tab a",
-              ".module-tab-item",
-              ".tab-item"
-            ]
-          }
-        ]
-      ]
+      "op": "follow"
+    },
+    {
+      "op": "episodes",
+      "listSelectors": [
+        "ul.anthology-list-play"
+      ],
+      "tabSelectors": [
+        ".anthology-tab a.swiper-slide"
+      ],
+      "tabAttr": "ownText"
     }
   ],
   "play": [

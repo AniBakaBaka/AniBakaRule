@@ -17,9 +17,13 @@
     },
     {
       "op": "searchList",
-      "listXPath": "//*[@id='some_drama']/div",
-      "nameXPath": ".//p/span",
-      "linkXPath": ".//a"
+      "selectors": [
+        "#some_drama > div"
+      ],
+      "linkSelector": "a",
+      "titleSelector": "p > span.play_some",
+      "imageSelector": "img.img1",
+      "imageAttr": "src"
     }
   ],
   "detail": [

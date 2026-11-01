@@ -13,22 +13,8 @@
   "useWebview": true,
   "search": [
     {
-      "op": "first",
-      "branches": [
-        [
-          {
-            "op": "fetch",
-            "url": "/topics/list?keyword={keyword}"
-          }
-        ],
-        [
-          {
-            "op": "sniff",
-            "goal": "html",
-            "url": "/topics/list?keyword={keyword}"
-          }
-        ]
-      ]
+      "op": "fetch",
+      "url": "/topics/list?keyword={keyword}"
     },
     {
       "op": "torrentRecords",
@@ -98,21 +84,7 @@
   ],
   "detail": [
     {
-      "op": "first",
-      "branches": [
-        [
-          {
-            "op": "follow"
-          }
-        ],
-        [
-          {
-            "op": "sniff",
-            "goal": "html",
-            "url": "{seriesId:raw}"
-          }
-        ]
-      ]
+      "op": "follow"
     },
     {
       "op": "torrentRecords",

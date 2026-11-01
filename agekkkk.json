@@ -22,10 +22,12 @@
     {
       "op": "searchList",
       "selectors": [
-        "li.col-md-6",
-        "a[href*=\"/anime/\"]"
+        "li.col-md-6"
       ],
-      "detailPattern": "/anime/"
+      "linkSelector": "h4.title > a",
+      "titleSelector": "h4.title > a",
+      "imageSelector": "a[data-original]",
+      "imageAttr": "data-original"
     }
   ],
   "detail": [
@@ -34,12 +36,13 @@
     },
     {
       "op": "episodes",
-      "tabSelectors": [
-        "ul.channel-tab li"
-      ],
       "listSelectors": [
         "ul.play-list-content"
-      ]
+      ],
+      "tabSelectors": [
+        "ul.channel-tab > li > a"
+      ],
+      "tabAttr": "ownText"
     }
   ],
   "play": [

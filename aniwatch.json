@@ -27,71 +27,20 @@
   ],
   "detail": [
     {
-      "op": "first",
-      "branches": [
-        [
-          {
-            "op": "regex",
-            "pattern": "(\\d+)",
-            "group": 1
-          },
-          {
-            "op": "fetch",
-            "url": "/api/animes/{url:raw}"
-          },
-          {
-            "op": "first",
-            "branches": [
-              [
-                {
-                  "op": "jsonEpisodes",
-                  "episodesPath": "data.episodes",
-                  "idKey": "id",
-                  "nameKey": "title",
-                  "detailUrlTemplate": "/play/{id}"
-                }
-              ],
-              [
-                {
-                  "op": "jsonEpisodes",
-                  "episodesPath": "episodes",
-                  "idKey": "id",
-                  "nameKey": "title",
-                  "detailUrlTemplate": "/play/{id}"
-                }
-              ]
-            ]
-          }
-        ],
-        [
-          {
-            "op": "regex",
-            "pattern": "(\\d+)",
-            "group": 1
-          },
-          {
-            "op": "sniff",
-            "goal": "html",
-            "url": "/api/animes/{url:raw}",
-            "readyContains": [
-              "episodes"
-            ],
-            "timeoutMs": 8000
-          },
-          {
-            "op": "select",
-            "css": "body",
-            "attr": "text"
-          },
-          {
-            "op": "jsonEpisodes",
-            "episodesPath": "data.episodes",
-            "idKey": "id",
-            "nameKey": "title",
-            "detailUrlTemplate": "/play/{id}"
-          }
-        ]
-      ]
+      "op": "regex",
+      "pattern": "(\\d+)",
+      "group": 1
+    },
+    {
+      "op": "fetch",
+      "url": "/api/animes/{url:raw}"
+    },
+    {
+      "op": "jsonEpisodes",
+      "episodesPath": "data.episodes",
+      "idKey": "id",
+      "nameKey": "title",
+      "detailUrlTemplate": "/play/{id}"
     }
   ],
   "play": [

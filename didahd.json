@@ -12,24 +12,19 @@
   },
   "search": [
     {
-      "op": "first",
-      "branches": [
-        [
-          {
-            "op": "maccmsSuggest",
-            "detailUrlTemplate": "/detail/{id}.html",
-            "verify": true
-          }
-        ],
-        [
-          {
-            "op": "searchList",
-            "selectors": [
-              ".myui-vodlist__thumb, .searchkey"
-            ]
-          }
-        ]
-      ]
+      "op": "fetch",
+      "url": "/index.php/ajax/suggest?mid=1&wd={keyword}&limit=20",
+      "headers": {
+        "X-Requested-With": "XMLHttpRequest"
+      }
+    },
+    {
+      "op": "jsonSeries",
+      "listPath": "list",
+      "idKey": "id",
+      "nameKey": "name",
+      "imageKey": "pic",
+      "detailUrlTemplate": "/detail/{id}.html"
     }
   ],
   "detail": [
@@ -42,7 +37,7 @@
     {
       "op": "episodes",
       "listSelectors": [
-        ".myui-content__list"
+        "ul.myui-content__list"
       ]
     }
   ],

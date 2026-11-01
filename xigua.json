@@ -16,49 +16,24 @@
     },
     {
       "op": "searchList",
-      "listXPath": "//a[contains(@class,\"topic-list-item\")]",
-      "nameXPath": ".//div[contains(@class,\"h3\")]",
-      "linkXPath": ""
+      "selectors": [
+        ".container.search a.topic-list-item"
+      ],
+      "linkSelector": "",
+      "titleSelector": ".topic-list-item__info > .h3",
+      "imageSelector": "amp-img",
+      "imageAttr": "src"
     }
   ],
   "detail": [
     {
-      "op": "first",
-      "branches": [
-        [
-          {
-            "op": "fetch",
-            "url": "{seriesId:raw}"
-          },
-          {
-            "op": "episodes",
-            "listSelectors": [
-              ".detail-right__volumes"
-            ]
-          }
-        ],
-        [
-          {
-            "op": "sniff",
-            "goal": "html",
-            "url": "{seriesId:raw}",
-            "readyContains": [
-              "detail-right__volumes"
-            ],
-            "rejectContains": [
-              "Page not found",
-              "页面不存在"
-            ],
-            "timeoutMs": 30000,
-            "settleMs": 1500
-          },
-          {
-            "op": "episodes",
-            "listSelectors": [
-              ".detail-right__volumes"
-            ]
-          }
-        ]
+      "op": "fetch",
+      "url": "{seriesId:raw}"
+    },
+    {
+      "op": "episodes",
+      "listSelectors": [
+        ".detail-right__volumes"
       ]
     }
   ],

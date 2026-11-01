@@ -12,28 +12,19 @@
   },
   "search": [
     {
-      "op": "first",
-      "branches": [
-        [
-          {
-            "op": "maccmsSuggest",
-            "detailUrlTemplate": "/info/{id}.html"
-          }
-        ],
-        [
-          {
-            "op": "fetch",
-            "url": "/search.html?wd={keyword}"
-          },
-          {
-            "op": "searchList",
-            "selectors": [
-              ".module-card-item, .module-items .module-item"
-            ],
-            "detailPattern": "/info/"
-          }
-        ]
-      ]
+      "op": "fetch",
+      "url": "/index.php/ajax/suggest?mid=1&wd={keyword}&limit=20",
+      "headers": {
+        "X-Requested-With": "XMLHttpRequest"
+      }
+    },
+    {
+      "op": "jsonSeries",
+      "listPath": "list",
+      "idKey": "id",
+      "nameKey": "name",
+      "imageKey": "pic",
+      "detailUrlTemplate": "/info/{id}.html"
     }
   ],
   "detail": [
@@ -44,7 +35,11 @@
       "op": "episodes",
       "listSelectors": [
         ".module-play-list"
-      ]
+      ],
+      "tabSelectors": [
+        ".module-tab-item[data-dropdown-value]"
+      ],
+      "tabAttr": "data-dropdown-value"
     }
   ],
   "play": [

@@ -17,27 +17,14 @@
       "url": "https://hanimeone.me/search?query={keyword}"
     },
     {
-      "op": "first",
-      "branches": [
-        [
-          {
-            "op": "jsonSeries",
-            "listPath": "list",
-            "idKey": "id",
-            "nameKey": "name",
-            "imageKey": "pic",
-            "urlKey": "url"
-          }
-        ],
-        [
-          {
-            "op": "searchList",
-            "selectors": [
-              "a.video-link[href*=\"/watch?v=\"]"
-            ]
-          }
-        ]
-      ]
+      "op": "searchList",
+      "selectors": [
+        "a.video-link[href*=\"/watch?v=\"]"
+      ],
+      "linkSelector": "",
+      "titleSelector": ".title",
+      "imageSelector": "img.main-thumb",
+      "imageAttr": "src"
     }
   ],
   "detail": [

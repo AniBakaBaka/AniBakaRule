@@ -18,11 +18,12 @@
     {
       "op": "searchList",
       "selectors": [
-        "#content article",
-        "main article",
-        "article"
+        "#content article.post-list"
       ],
-      "detailPattern": "/voddetail/"
+      "linkSelector": ".entry-title > a",
+      "titleSelector": ".entry-title > a",
+      "imageSelector": ".search-image img",
+      "imageAttr": "srcset"
     }
   ],
   "detail": [
@@ -32,8 +33,7 @@
     {
       "op": "episodes",
       "listSelectors": [
-        ".play-pannel-list ul.stui-content__playlist",
-        "ul.stui-content__playlist"
+        ".play-pannel-list ul.stui-content__playlist"
       ],
       "tabSelectors": [
         ".play-pannel_hd .widget-title"

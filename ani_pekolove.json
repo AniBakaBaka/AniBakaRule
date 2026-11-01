@@ -13,124 +13,43 @@
   "search": [
     {
       "op": "fetch",
-      "url": "https://ani.pekolove.net/?s={keyword}"
+      "url": "/pvs_search",
+      "method": "POST",
+      "contentType": "form",
+      "body": {
+        "js_run": "ok",
+        "uri": "/?s={keyword}"
+      }
     },
     {
-      "op": "first",
-      "branches": [
-        [
-          {
-            "op": "first",
-            "branches": [
-              [
-                {
-                  "op": "searchList",
-                  "selectors": [
-                    "a[itemprop=\"name\"]"
-                  ]
-                }
-              ],
-              [
-                {
-                  "op": "searchList",
-                  "selectors": [
-                    "a[itemprop=\"name\"][href*=\"/anime/\"]",
-                    "a[class^=\"ptl-\"][href*=\"/anime/\"]",
-                    "a[class*=\" ptl-\"][href*=\"/anime/\"]"
-                  ],
-                  "detailPattern": "/anime/"
-                }
-              ]
-            ]
-          }
-        ],
-        [
-          {
-            "op": "regex",
-            "pattern": "f\\.action\\s*=\\s*[\"\\'](/pvs_search)[\"\\']",
-            "group": 1
-          },
-          {
-            "op": "fetch",
-            "method": "POST",
-            "contentType": "form",
-            "body": {
-              "js_run": "ok",
-              "uri": "/"
-            }
-          },
-          {
-            "op": "fetch",
-            "url": "https://ani.pekolove.net/?s={keyword}"
-          },
-          {
-            "op": "first",
-            "branches": [
-              [
-                {
-                  "op": "searchList",
-                  "selectors": [
-                    "a[itemprop=\"name\"]"
-                  ]
-                }
-              ],
-              [
-                {
-                  "op": "searchList",
-                  "selectors": [
-                    "a[itemprop=\"name\"][href*=\"/anime/\"]",
-                    "a[class^=\"ptl-\"][href*=\"/anime/\"]",
-                    "a[class*=\" ptl-\"][href*=\"/anime/\"]"
-                  ],
-                  "detailPattern": "/anime/"
-                }
-              ]
-            ]
-          }
-        ]
-      ]
+      "op": "searchList",
+      "selectors": [
+        "#ag-main-container a[itemprop=\"name\"]"
+      ],
+      "linkSelector": "",
+      "titleSelector": ""
     }
   ],
   "detail": [
     {
-      "op": "follow"
+      "op": "regex",
+      "pattern": "^https?://[^/]+(/.*)$",
+      "group": 1
     },
     {
-      "op": "first",
-      "branches": [
-        [
-          {
-            "op": "episodes",
-            "roadsXPath": "//div[contains(@class, \"entry-content\")]",
-            "itemsXPath": ".//div[contains(@class, \"wp-block-columns\") and contains(@class, \"is-not-stacked-on-mobile\")]//a[contains(@class, \"pbb-\") and contains(text(), \"集\")]"
-          }
-        ],
-        [
-          {
-            "op": "regex",
-            "pattern": "f\\.action\\s*=\\s*[\"\\'](/pvs_search)[\"\\']",
-            "group": 1
-          },
-          {
-            "op": "fetch",
-            "method": "POST",
-            "contentType": "form",
-            "body": {
-              "js_run": "ok",
-              "uri": "/"
-            }
-          },
-          {
-            "op": "fetch",
-            "url": "{seriesId:raw}"
-          },
-          {
-            "op": "episodes",
-            "roadsXPath": "//div[contains(@class, \"entry-content\")]",
-            "itemsXPath": ".//div[contains(@class, \"wp-block-columns\") and contains(@class, \"is-not-stacked-on-mobile\")]//a[contains(@class, \"pbb-\") and contains(text(), \"集\")]"
-          }
-        ]
-      ]
+      "op": "fetch",
+      "url": "/pvs_search",
+      "method": "POST",
+      "contentType": "form",
+      "body": {
+        "js_run": "ok",
+        "uri": "{url:raw}"
+      }
+    },
+    {
+      "op": "episodes",
+      "roadsXPath": "//div[contains(@class, \"entry-content\")]",
+      "itemsXPath": ".//div[contains(@class, \"wp-block-columns\") and contains(@class, \"is-not-stacked-on-mobile\")]//a[contains(@class, \"pbb-\") and contains(text(), \"集\")]"
     }
   ],
   "play": [
@@ -143,45 +62,9 @@
       }
     },
     {
-      "op": "first",
-      "branches": [
-        [
-          {
-            "op": "select",
-            "css": "iframe[data-src*=\"/anime/player/?url=\"]",
-            "attr": "data-src"
-          }
-        ],
-        [
-          {
-            "op": "regex",
-            "pattern": "f\\.action\\s*=\\s*[\"\\'](/pvs_search)[\"\\']",
-            "group": 1
-          },
-          {
-            "op": "fetch",
-            "method": "POST",
-            "contentType": "form",
-            "body": {
-              "js_run": "ok",
-              "uri": "/"
-            }
-          },
-          {
-            "op": "fetch",
-            "url": "{episodeId:raw}/?_={timestamp:raw}",
-            "headers": {
-              "Cache-Control": "no-cache",
-              "Referer": "https://ani.pekolove.net/"
-            }
-          },
-          {
-            "op": "select",
-            "css": "iframe[data-src*=\"/anime/player/?url=\"]",
-            "attr": "data-src"
-          }
-        ]
-      ]
+      "op": "select",
+      "css": "iframe[data-src*=\"/anime/player/?url=\"]",
+      "attr": "data-src"
     },
     {
       "op": "setVar",
@@ -196,21 +79,9 @@
       }
     },
     {
-      "op": "first",
-      "branches": [
-        [
-          {
-            "op": "query",
-            "name": "url",
-            "input": "{playerUrl:raw}"
-          }
-        ],
-        [
-          {
-            "op": "videoUrl"
-          }
-        ]
-      ]
+      "op": "query",
+      "name": "url",
+      "input": "{playerUrl:raw}"
     },
     {
       "op": "setVar",
