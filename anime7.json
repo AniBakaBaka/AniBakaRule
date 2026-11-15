@@ -11,19 +11,39 @@
   },
   "search": [
     {
-      "op": "fetch",
-      "url": "/index.php/ajax/suggest?mid=1&wd={keyword}&limit=20",
-      "headers": {
-        "X-Requested-With": "XMLHttpRequest"
-      }
-    },
-    {
-      "op": "jsonSeries",
-      "listPath": "list",
-      "idKey": "id",
-      "nameKey": "name",
-      "imageKey": "pic",
-      "detailUrlTemplate": "/vod-detail/{id}/"
+      "op": "first",
+      "branches": [
+        [
+          {
+            "op": "fetch",
+            "url": "/index.php/ajax/suggest?mid=1&wd={keyword}&limit=20",
+            "headers": {
+              "X-Requested-With": "XMLHttpRequest"
+            }
+          },
+          {
+            "op": "jsonSeries",
+            "listPath": "list",
+            "idKey": "id",
+            "nameKey": "name",
+            "imageKey": "pic",
+            "detailUrlTemplate": "/vod-detail/{id}/"
+          }
+        ],
+        [
+          {
+            "op": "fetch",
+            "url": "/vod-search/wd/{keyword}/"
+          },
+          {
+            "op": "searchList",
+            "selectors": ["li.hl-list-item"],
+            "linkSelector": ".hl-item-title > a[href^=\"/vod-detail/\"]",
+            "imageSelector": ".hl-item-thumb",
+            "imageAttr": "data-original"
+          }
+        ]
+      ]
     }
   ],
   "detail": [

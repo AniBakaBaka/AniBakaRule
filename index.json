@@ -2,7 +2,7 @@
   "format": "anx-rulehub/2",
   "title": "AniBaka 规则库",
   "intro": "提供各动漫站点的搜索、详情、播放解析规则，支持在 App 内一键安装。",
-  "synced": "2026-10-07T08:28:17.380Z",
+  "synced": "2026-11-13T10:32:25.461Z",
   "entries": [
     {
       "key": "7sefun",
@@ -59,7 +59,7 @@
       "key": "ani_pekolove",
       "title": "佩可爱动漫 (peko.love)",
       "by": "auto-generator",
-      "rev": 9,
+      "rev": 10,
       "intro": "佩可爱动漫 (peko.love)，为您提供优质的动漫在线播放与分享。",
       "site": "https://ani.pekolove.net/",
       "badge": "https://ani.pekolove.net/wp-content/uploads/cropped-acglogo2-2-32x32.png",
@@ -70,7 +70,7 @@
       ],
       "ref": "ani_pekolove.json",
       "engine": "anx-rule/2",
-      "contentHash": "6714a74fb6e9266c41572a095e5de2f430b47fb2a4de4c4b9dcaba6908068d45"
+      "contentHash": "8951e8d31b57bc0b08eeef70116519bec01221d3ea62581788d87de237f3c817"
     },
     {
       "key": "lm6",
@@ -109,10 +109,10 @@
       "key": "akianime",
       "title": "AkiAnime",
       "by": "anibaka",
-      "rev": 6,
-      "intro": "萌番 AkiAnime 动漫源，源网址 https://www.akianime.cc/",
-      "site": "https://www.akianime.cc/",
-      "badge": "https://www.akianime.cc/template/dsn2/static/img/ico.png",
+      "rev": 8,
+      "intro": "萌番 AkiAnime 动漫源，源网址 https://www.akianime.com/",
+      "site": "https://www.akianime.com/",
+      "badge": "https://www.akianime.com/template/dsn2/static/img/ico.png",
       "labels": [
         "anime",
         "无广告",
@@ -120,7 +120,7 @@
       ],
       "ref": "akianime.json",
       "engine": "anx-rule/2",
-      "contentHash": "b70c323d243f8f92eccb1c9c6fd644e0a386035a5da00badfd9866da9009e4d0"
+      "contentHash": "2ed66fbb2dee41d4831142d9b5f220cd3a006856fac32039d29ec2f22ba07851"
     },
     {
       "key": "animoe",
@@ -160,7 +160,7 @@
       "key": "ios_mifun",
       "title": "MiFun",
       "by": "auto-generator",
-      "rev": 6,
+      "rev": 9,
       "intro": "MiFun在线动漫专注于资源收集整理，海量有效的高质量动漫资源在线观看，完全免费。",
       "site": "https://ios.mifun.org/",
       "badge": "https://ugc.hitv.com/1/230324151010E2CA349174CE432E9353E29DE5C0EQ0NF/sVoWeL0.png?mxtheme/images/favicon.png",
@@ -171,7 +171,7 @@
       ],
       "ref": "ios_mifun.json",
       "engine": "anx-rule/2",
-      "contentHash": "251a56f92aa1a902040bc9184f988e71d806c571f456ebb11d0df8a1be887edb"
+      "contentHash": "fe96f9d7038bdc299afce8fa52ac72cbd3218a3784529b4d7e1131d6d03f0498"
     },
     {
       "key": "agekkkk",
@@ -211,7 +211,7 @@
       "key": "anime7",
       "title": "Anime7 动画线上看",
       "by": "auto-generator",
-      "rev": 5,
+      "rev": 6,
       "intro": "Anime7 动画线上看，提供日韩动漫、剧场版、国产动漫等高清在线观看。含广告。",
       "site": "https://anime7.top/",
       "badge": "https://ani7.b-cdn.net/upload/logo/web-icon.png",
@@ -222,7 +222,7 @@
       ],
       "ref": "anime7.json",
       "engine": "anx-rule/2",
-      "contentHash": "8934d34fccf385793e9891ff44e80a8318bb35ad8db2b0dd844cfa6f689abfbc"
+      "contentHash": "5a908fba6bad891a54cde11df7926c626a079373cc1a01eb4511202c3980a7a3"
     },
     {
       "key": "hanimeone",
@@ -312,7 +312,7 @@
       "key": "xigua",
       "title": "西瓜卡通",
       "by": "anibaka",
-      "rev": 8,
+      "rev": 9,
       "intro": "西瓜卡通视频源，源网址www.xgcartoon.com",
       "site": "https://www.xgcartoon.com/",
       "badge": "https://www.xgcartoon.com/xgct/icon/favicon-32x32.png",
@@ -323,7 +323,7 @@
       ],
       "ref": "xigua.json",
       "engine": "anx-rule/2",
-      "contentHash": "fb328302311a2c7778cb226f7410d5b08f883b3fdb6ccec30f562aa177d6bbab"
+      "contentHash": "4c9abddd9871be8db90106e9f2936ff52508ca3f1129bfadc406263f5bc17b06"
     },
     {
       "key": "2kdm",
@@ -465,7 +465,7 @@
       "key": "moonci",
       "title": "Moonci",
       "by": "anibaka",
-      "rev": 3,
+      "rev": 5,
       "intro": "Moonci 动漫视频源。",
       "site": "https://www.moonci.com/",
       "badge": "https://www.moonci.com/favicon.ico",
@@ -476,7 +476,7 @@
       ],
       "ref": "moonci.json",
       "engine": "anx-rule/2",
-      "contentHash": "03c750a3e8ec2a5090ce90962504238b46719eb00aefc7ccc725fbcc28d76dfc"
+      "contentHash": "bd5a7b1d11049c837307a1cc14afad20937733bc819d78164e436267ac754d6a"
     },
     {
       "key": "silisili",

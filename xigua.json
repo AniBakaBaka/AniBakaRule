@@ -67,29 +67,6 @@
     },
     {
       "op": "template",
-      "value": "https://xgct-video.bzcdn.net/{url:raw}/video_info.json"
-    },
-    {
-      "op": "regex",
-      "pattern": "^(https://xgct-video\\.bzcdn\\.net/[a-f0-9]+-[a-f0-9]+-[a-f0-9]+-[a-f0-9]+-[a-f0-9]+/video_info\\.json)$",
-      "group": 1,
-      "ignoreCase": true
-    },
-    {
-      "op": "follow"
-    },
-    {
-      "op": "json",
-      "path": "guid"
-    },
-    {
-      "op": "regex",
-      "pattern": "^([a-f0-9]+-[a-f0-9]+-[a-f0-9]+-[a-f0-9]+-[a-f0-9]+)$",
-      "group": 1,
-      "ignoreCase": true
-    },
-    {
-      "op": "template",
       "value": "https://xgct-video.bzcdn.net/{url:raw}/playlist.m3u8"
     },
     {
