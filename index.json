@@ -2,7 +2,7 @@
   "format": "anx-rulehub/2",
   "title": "AniBaka 规则库",
   "intro": "提供各动漫站点的搜索、详情、播放解析规则，支持在 App 内一键安装。",
-  "synced": "2026-11-13T10:32:25.461Z",
+  "synced": "2026-11-16T12:44:35.087Z",
   "entries": [
     {
       "key": "7sefun",
@@ -25,7 +25,7 @@
       "key": "cyfz",
       "title": "次元番",
       "by": "anibaka",
-      "rev": 7,
+      "rev": 8,
       "intro": "次元番，提供高清动漫资源在线搜索与免费观看。",
       "site": "https://www.cyfz.top/",
       "badge": "https://hec-community-online.cdn.bcebos.com/COMMENT/98d18b1002eb5dd3dd1faf88162b7045/1781019621344.png",
@@ -36,7 +36,7 @@
       ],
       "ref": "cyfz.json",
       "engine": "anx-rule/2",
-      "contentHash": "7e4ee5fd38d271536ca0f513350e23e0a58d99086d8025525f33febabba45fec"
+      "contentHash": "6854fd9eb4ea2dda698fd56fa9c56e9f3ab74137d7832cfc961a0aa40fefb176"
     },
     {
       "key": "5dm",
@@ -77,7 +77,7 @@
       "key": "lm6",
       "title": "路漫漫动漫",
       "by": "anibaka",
-      "rev": 5,
+      "rev": 6,
       "intro": "路漫漫在线动漫提供日本动漫、国产动漫、动画电影等免费在线观看。",
       "site": "https://m.lm6.net/",
       "badge": "https://m.lm6.net/template/jable/statics/icon/favicon-32x32.png",
@@ -88,7 +88,7 @@
       ],
       "ref": "lm6.json",
       "engine": "anx-rule/2",
-      "contentHash": "0f0504ecc9b6465bd5371f8e2a48d2bccad74e2c2bd40aa8fbccde9c4d0f38b7"
+      "contentHash": "f0c453a1040bfa3fe206846152ce17c6d373abd099046d0b864891bf41fc67fe"
     },
     {
       "key": "aniwatch",

@@ -74,27 +74,59 @@
                   "key": "url"
                 },
                 {
-                  "op": "template",
-                  "value": "https://playvod.manzhanw.top/player/ec.php?code=cyfz&if=1&url={url}"
-                },
-                {
-                  "op": "regex",
-                  "pattern": "^(https://playvod\\.manzhanw\\.top/player/ec\\.php\\?code=cyfz&if=1&url=\\S+)$",
-                  "group": 1
-                },
-                {
-                  "op": "follow",
-                  "headers": {
-                    "Referer": "https://www.cyfz.top/"
-                  }
-                },
-                {
-                  "op": "ecPlayer"
-                },
-                {
-                  "op": "regex",
-                  "pattern": "^(https?://\\S+\\.(?:m3u8|mp4|mkv|flv)(?:[?#]\\S*)?)$",
-                  "group": 1
+                  "op": "first",
+                  "branches": [
+                    [
+                      {
+                        "op": "template",
+                        "value": "https://player.0072233.xyz/player/ec.php?code=cyfz&if=1&url={url}"
+                      },
+                      {
+                        "op": "regex",
+                        "pattern": "^(https://player\\.0072233\\.xyz/player/ec\\.php\\?code=cyfz&if=1&url=\\S+)$",
+                        "group": 1
+                      },
+                      {
+                        "op": "follow",
+                        "headers": {
+                          "Referer": "https://www.cyfz.top/"
+                        }
+                      },
+                      {
+                        "op": "ecPlayer"
+                      },
+                      {
+                        "op": "regex",
+                        "pattern": "^(https?://\\S+\\.(?:m3u8|mp4|mkv|flv)(?:[?#]\\S*)?)$",
+                        "group": 1
+                      }
+                    ],
+                    [
+                      {
+                        "op": "template",
+                        "value": "https://playvod.manzhanw.top/player/ec.php?code=cyfz&if=1&url={url}"
+                      },
+                      {
+                        "op": "regex",
+                        "pattern": "^(https://playvod\\.manzhanw\\.top/player/ec\\.php\\?code=cyfz&if=1&url=\\S+)$",
+                        "group": 1
+                      },
+                      {
+                        "op": "follow",
+                        "headers": {
+                          "Referer": "https://www.cyfz.top/"
+                        }
+                      },
+                      {
+                        "op": "ecPlayer"
+                      },
+                      {
+                        "op": "regex",
+                        "pattern": "^(https?://\\S+\\.(?:m3u8|mp4|mkv|flv)(?:[?#]\\S*)?)$",
+                        "group": 1
+                      }
+                    ]
+                  ]
                 }
               ],
               [
