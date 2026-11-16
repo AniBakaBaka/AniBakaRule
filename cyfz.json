@@ -97,7 +97,7 @@
                       },
                       {
                         "op": "regex",
-                        "pattern": "^(https?://\\S+\\.(?:m3u8|mp4|mkv|flv)(?:[?#]\\S*)?)$",
+                        "pattern": "^(https?://(?:\\S+\\.(?:m3u8|mp4|mkv|flv)(?:[?#]\\S*)?|[^/?#\\s]+/tos-cn-v-[^/?#\\s]+/[^?#\\s]+\\?(?:[^#\\s]*&)?x-signature=[^&#\\s]+(?:[&#]\\S*)?))$",
                         "group": 1
                       }
                     ],
@@ -122,7 +122,7 @@
                       },
                       {
                         "op": "regex",
-                        "pattern": "^(https?://\\S+\\.(?:m3u8|mp4|mkv|flv)(?:[?#]\\S*)?)$",
+                        "pattern": "^(https?://(?:\\S+\\.(?:m3u8|mp4|mkv|flv)(?:[?#]\\S*)?|[^/?#\\s]+/tos-cn-v-[^/?#\\s]+/[^?#\\s]+\\?(?:[^#\\s]*&)?x-signature=[^&#\\s]+(?:[&#]\\S*)?))$",
                         "group": 1
                       }
                     ]

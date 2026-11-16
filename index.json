@@ -2,7 +2,7 @@
   "format": "anx-rulehub/2",
   "title": "AniBaka 规则库",
   "intro": "提供各动漫站点的搜索、详情、播放解析规则，支持在 App 内一键安装。",
-  "synced": "2026-11-16T12:44:35.087Z",
+  "synced": "2026-11-16T12:58:25.416Z",
   "entries": [
     {
       "key": "7sefun",
@@ -25,7 +25,7 @@
       "key": "cyfz",
       "title": "次元番",
       "by": "anibaka",
-      "rev": 8,
+      "rev": 9,
       "intro": "次元番，提供高清动漫资源在线搜索与免费观看。",
       "site": "https://www.cyfz.top/",
       "badge": "https://hec-community-online.cdn.bcebos.com/COMMENT/98d18b1002eb5dd3dd1faf88162b7045/1781019621344.png",
@@ -36,7 +36,7 @@
       ],
       "ref": "cyfz.json",
       "engine": "anx-rule/2",
-      "contentHash": "6854fd9eb4ea2dda698fd56fa9c56e9f3ab74137d7832cfc961a0aa40fefb176"
+      "contentHash": "9835a93fad97a82fe28bc967c53917b99cef2bf63f3e9c243e043bbdf260e3ae"
     },
     {
       "key": "5dm",
